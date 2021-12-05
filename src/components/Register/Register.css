@@ -1,0 +1,18 @@
+/* Laptop PC */
+.register {
+  margin-top: 70px;
+}
+
+/* Planshet */
+@media screen and (max-width: 959px) {
+  .register {
+    margin-top: 232px;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .register {
+    margin-top: 56px;
+  }
+}
