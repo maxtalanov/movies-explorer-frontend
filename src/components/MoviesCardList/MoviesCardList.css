@@ -1,0 +1,53 @@
+/* Laptop PC */
+.card-list {
+  padding: 0 70px;
+  margin: 70px 0 80px 0;
+}
+
+.card-list__btn-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  width: 100%;
+  max-width: 320px;
+  min-height: 36px;
+
+  border: #E8E8E8 1px solid;
+  border-radius: 10px;
+
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+
+  background: #FFFFFF;
+  color: #000000;
+
+  margin: 50px auto 80px auto;
+}
+
+/* Planshet */
+@media screen and (max-width: 959px) {
+  .card-list {
+    padding: 0 30px;
+    margin-top: 60px;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .card-list {
+    padding: 0 10px;
+    margin-top: 40px;
+  }
+
+  .card-list__btn-add {
+    max-width: 240px;
+
+    margin-top: 70px;
+  }
+}
