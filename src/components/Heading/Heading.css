@@ -1,0 +1,35 @@
+/*.container {*/
+/*  background: red;*/
+/*}*/
+
+.heading {
+  border-bottom: solid 1px #000000;
+  margin: 0;
+  padding: 0 0 23px 0;
+}
+
+.heading_padding-top_s {
+  padding-top: 100px;
+}
+
+.heading_padding-top_m {
+  padding-top: 110px;
+}
+
+.heading_padding-top_l {
+  padding-top: 114px;
+}
+
+.heading__title {
+  margin: 0;
+
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+
+  letter-spacing: -0.04em;
+
+  color: #000000;
+}
