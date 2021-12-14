@@ -1,13 +1,15 @@
 import React from "react"; //Инициализация библиотеки (не обязательное действие)
-import './Navigation.css'; //Инициализация стилей
+import './Navigation.css';
+import {socialLinks} from "../../utils/constant"; //Инициализация стилей
 
 function Navigation({ mod }) {
 
   return(
     <section className={`navigation`}>
-      <a className={`navigation__link`}>Яндекс.Практикум</a>
-      <a className={`navigation__link`}>Github</a>
-      <a className={`navigation__link`}>Facebook</a>
+      <a href={socialLinks.instagram} target="_blank" className="navigation__link" rel="noreferrer">Instagram</a>
+      <a href={socialLinks.yp} target="_blank" className="navigation__link" rel="noreferrer">Яндекс.Практикум</a>
+      <a href={socialLinks.github} target="_blank" className="navigation__link" rel="noreferrer">GitHub</a>
+      <a href={socialLinks.fb} target="_blank" className="navigation__link" rel="noreferrer">FaceBook</a>
     </section>
   );
 

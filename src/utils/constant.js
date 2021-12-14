@@ -127,3 +127,28 @@ export const navTabLinksConfig = [
     text: 'Студент',
   },
 ]
+
+export const porfolioConfig = [
+  {
+    id: 1,
+    title: 'Статичный сайт',
+    link: 'https://maxtalanov.github.io/YandexMMT/',
+  },
+  {
+    id: 2,
+    title: 'Адаптивный сайт',
+    link: 'https://maxtalanov.github.io/russian-travel/',
+  },
+  {
+    id: 3,
+    title: 'Одностраничное приложение',
+    link: 'http://mesto-new.nomoredomains.club',
+  },
+]
+
+export const socialLinks = {
+  instagram: 'https://www.instagram.com/maxtalanov/',
+  github: 'https://github.com/maxtalanov',
+  fb: 'https://www.facebook.com/talanov.max',
+  yp: 'https://practicum.yandex.ru/'
+}

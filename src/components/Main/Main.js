@@ -1,6 +1,6 @@
 import React from "react";
 import './Main.css';
-
+import { socialLinks } from "../../utils/constant";
 import Header from "../Header/Header";
 import NavButton from "../NavButton/NavButton";
 import Promo from "../Promo/Promo";
