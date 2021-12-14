@@ -2,14 +2,14 @@ import React from "react";
 import './Account.css';
 
 
-function Account({modStylePosition}) {
+function Account() {
 
   function handleClickAccount() {
     console.log('click btn account');
   }
 
   return(
-    <div className={`account ${modStylePosition}`}>
+    <div className={`account`}>
       <button
         className="account__btn button__reset"
         onClick={handleClickAccount}>

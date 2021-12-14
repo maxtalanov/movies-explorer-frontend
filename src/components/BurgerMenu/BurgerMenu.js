@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import './BurgerMenu.css'
 import { Link } from "react-router-dom";
 import Account from "../Account/Account";
 
-function BurgerMenu({items}) {
+function BurgerMenu({items, active, setActive}) {
+
   const renderItemsList = items.map((item) => {
     return (
       <li className="menu__li">
@@ -11,20 +12,17 @@ function BurgerMenu({items}) {
       </li>
     )
   })
-  function onClose() {
-
-  }
 
   return (
-    <section className="BurgerMenu">
+    <section className={active ? "BurgerMenu active" : "BurgerMenu"}>
       <menu className="menu">
-        <button className="menu__btn-close button__reset" onClick={onClose} />
+        <button className="menu__btn-close button__reset" onClick={()=> setActive(!active)} />
         <ul className="menu__ul">
           {renderItemsList}
         </ul>
-        <Account
-          modStylePosition={"account__position_center"}
-        />
+        <div className="menu__account-container">
+          <Account />
+        </div>
       </menu>
     </section>
   );

@@ -1,13 +1,6 @@
 .account {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
-}
-
-.account__position_center {
-  position: absolute;
-
-  bottom: 92px;
-  text-align: center;
 }
 
 .account__btn-icon {
@@ -20,4 +13,13 @@
   padding-top : 10px;
   padding-bottom : 10px;
   margin: 0 0 0 18px;
+}
+/* Planshet */
+@media screen and (max-width: 959px) {
+
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+
 }

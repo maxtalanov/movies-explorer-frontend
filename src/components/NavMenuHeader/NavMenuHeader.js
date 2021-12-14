@@ -1,10 +1,12 @@
-import React from "react"; //Инициализация библиотеки (не обязательное действие)
+import React, {useState} from "react"; //Инициализация библиотеки (не обязательное действие)
 import './NavMenuHeader.css'; //Инициализация стилей
 import { Link } from "react-router-dom";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import Account from "../Account/Account";
 
 function NavMenuHeader() {
+  const [menuActive, setMenuActive] = useState(false);
+
   const items = [
     {
       link: '/',
@@ -26,11 +28,15 @@ function NavMenuHeader() {
         <Link to="/movies" className="menu-header__item action">Фильмы</Link>
         <Link to="/saved-movies" className="menu-header__item">Сохранённые фильмы</Link>
       </div>
-      <Account />
-      <button className="menu-header__btn-burger button__reset" />
-      <BurgerMenu items={items} />
+
+      <div className="menu-header__account-container">
+        <Account />
+      </div>
+
+      <button className="menu-header__btn-burger button__reset" onClick={() => setMenuActive(!menuActive)} />
+      <BurgerMenu active={menuActive} setActive={setMenuActive}  items={items} />
     </section>
-  );
+    );
 }
 
 export default NavMenuHeader;

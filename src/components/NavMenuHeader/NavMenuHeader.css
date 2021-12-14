@@ -1,10 +1,9 @@
 .menu-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 
   max-width: 676px;
-  width:60%;
+  width:80%;
 }
 
 .menu-header__container-nav {
@@ -34,19 +33,28 @@
 
 }
 
+.menu-header__btn-burger {
+  display: none;
+}
+
+
 
 
 /* Planshet */
 @media screen and (max-width: 959px) {
-  .menu-header__container-account {
-  display: none;
+  .menu-header {
+    max-width: 44px;
+    width: 100%;
   }
-
   .menu-header__container-nav {
     display: none;
   }
 
   .menu-header__btn-burger {
+    display: flex;
+    margin: 0 auto;
+    justify-content: flex-end;
+    align-items: end;
     width: 44px;
     height: 44px;
 
