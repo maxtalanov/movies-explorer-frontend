@@ -1,3 +1,4 @@
+/* Laptop PC */
 .BurgerMenu {
   position: fixed;
   top: 0;
@@ -21,14 +22,20 @@
 }
 
 .menu {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 70%;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 
-  margin: 0;
-  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  width: 70vw;
+
+  margin: 0 0 0 30%;
+  padding: 160px 0 92px 0;
 
   background: #ffffff;
 }
@@ -46,7 +53,7 @@
   display: flex;
   flex-direction: column;
 
-  margin: 160px 0;
+  margin: 0;
   padding: 0;
 }
 
@@ -56,8 +63,9 @@
   list-style: none;
 }
 
-
-
+.menu__li:last-child {
+  margin-bottom: 0;
+}
 
 .link {
   font-family: Inter, sans-serif;
@@ -69,4 +77,27 @@
 
   color: #000000;
   text-decoration: none;
+}
+
+/* Planshet */
+@media screen and (max-width: 959px) {
+
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .menu {
+    width: 100vw;
+    margin-left: 0;
+    padding: 144px 0 48px 0;
+  }
+
+  .menu__btn-close {
+    top: 14px;
+    right: 14px;
+  }
+
+  .menu__li {
+    margin-bottom: 24px;
+  }
 }

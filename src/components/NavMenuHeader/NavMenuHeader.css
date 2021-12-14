@@ -29,16 +29,9 @@
   font-weight: 500;
 }
 
-.menu-header__btn-account {
-
-}
-
 .menu-header__btn-burger {
   display: none;
 }
-
-
-
 
 /* Planshet */
 @media screen and (max-width: 959px) {
@@ -46,7 +39,12 @@
     max-width: 44px;
     width: 100%;
   }
+
   .menu-header__container-nav {
+    display: none;
+  }
+
+  .menu-header__account-container {
     display: none;
   }
 
