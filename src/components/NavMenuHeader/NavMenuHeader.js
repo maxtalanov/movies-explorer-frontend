@@ -6,7 +6,6 @@ import Account from "../Account/Account";
 
 function NavMenuHeader() {
   const [menuActive, setMenuActive] = useState(false);
-
   const items = [
     {
       link: '/',

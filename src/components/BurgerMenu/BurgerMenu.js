@@ -21,7 +21,7 @@ function BurgerMenu({items, active, setActive}) {
           {renderItemsList}
         </ul>
         <div className="menu__account-container">
-          <Account />
+          <Account/>
         </div>
       </menu>
     </section>
