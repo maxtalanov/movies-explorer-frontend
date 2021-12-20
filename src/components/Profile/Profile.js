@@ -28,8 +28,8 @@ function Profile() {
 
           </fieldset>
 
-          <button className="profile__form-btn-submit button__reset">Редактировать</button>
-          <button className="profile__form-btn-exit button__reset">Выйти из аккаунта</button>
+          <button className="profile__form-btn-submit button__reset hover-opacity">Редактировать</button>
+          <button className="profile__form-btn-exit button__reset hover-opacity">Выйти из аккаунта</button>
         </form>
 
 

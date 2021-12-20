@@ -12,7 +12,7 @@ function Account() {
   return(
     <div className={`account`}>
       <button
-        className="account__btn button__reset"
+        className="account__btn button__reset hover-opacity"
         onClick={handleClickAccount}>
         аккаунт
         <i className="account__btn-icon" />

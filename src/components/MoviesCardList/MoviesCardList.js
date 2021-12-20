@@ -17,7 +17,7 @@ function MoviesCardList({ data }) {
       <div className="card-list__container">
         {renderMoviesCard}
       </div>
-      <button className="card-list__btn-add">Ещё</button>
+      <button className="card-list__btn-add hover-opacity">Ещё</button>
     </section>
   );
 }

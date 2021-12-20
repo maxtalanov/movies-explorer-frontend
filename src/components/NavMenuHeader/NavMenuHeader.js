@@ -24,15 +24,15 @@ function NavMenuHeader() {
   return(
     <section className="menu-header">
       <div className="menu-header__container-nav">
-        <Link to="/movies" className="menu-header__item action">Фильмы</Link>
-        <Link to="/saved-movies" className="menu-header__item">Сохранённые фильмы</Link>
+        <Link to="/movies" className="menu-header__item action hover-opacity">Фильмы</Link>
+        <Link to="/saved-movies" className="menu-header__item hover-opacity">Сохранённые фильмы</Link>
       </div>
 
       <div className="menu-header__account-container">
         <Account />
       </div>
 
-      <button className="menu-header__btn-burger button__reset" onClick={() => setMenuActive(!menuActive)} />
+      <button className="menu-header__btn-burger button__reset hover-opacity" onClick={() => setMenuActive(!menuActive)} />
       <BurgerMenu active={menuActive} setActive={setMenuActive}  items={items} />
     </section>
     );

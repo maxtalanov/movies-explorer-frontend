@@ -24,13 +24,13 @@ function AboutMe() {
            </p>
            {/*Написать своё БИО на 15 стр.*/}
            <ul className="about-me__contact">
-             <li className="about-me__list">
+             <li className="about-me__list hover-opacity">
                <a href={socialLinks.instagram} target="_blank" className="about__link" rel="noreferrer">Instagram</a>
              </li>
-             <li className="about-me__list">
+             <li className="about-me__list hover-opacity">
                <a href={socialLinks.github} target="_blank"  className="about__link" rel="noreferrer">GitHub</a>
              </li>
-             <li className="about-me__list">
+             <li className="about-me__list hover-opacity">
                <a href={socialLinks.fb} target="_blank"  className="about__link" rel="noreferrer">FaceBook</a>
              </li>
            </ul>

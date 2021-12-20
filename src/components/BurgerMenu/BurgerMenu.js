@@ -16,7 +16,7 @@ function BurgerMenu({items, active, setActive}) {
   return (
     <section className={active ? "BurgerMenu active" : "BurgerMenu"}>
       <menu className="menu">
-        <button className="menu__btn-close button__reset" onClick={()=> setActive(!active)} />
+        <button className="menu__btn-close button__reset hover-opacity" onClick={()=> setActive(!active)} />
         <ul className="menu__ul">
           {renderItemsList}
         </ul>

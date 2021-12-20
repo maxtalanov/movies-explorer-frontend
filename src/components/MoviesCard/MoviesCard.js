@@ -16,7 +16,7 @@ function MoviesCard({ movieData }) {
           <h3 className="card__title">{movieData.nameRU}</h3>
           <p className="card__duration">{movieData.duration}</p>
         </div>
-        <button className={`card__btn-like ${modLike}`} onClick={likeClick}/>
+        <button className={`card__btn-like ${modLike} hover-opacity`} onClick={likeClick}/>
       </div>
       <img src={movieData.image} alt={`Постер к фильму ${movieData.nameRU}`} className="card__img"/>
     </section>

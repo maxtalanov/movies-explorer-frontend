@@ -7,7 +7,7 @@ import logo from "../../images/Logotype.svg";
 function Logotype({ link, modStyle }) {
 
   return(
-    <Link className={`${modStyle.position}`} to={link}>
+    <Link className={`${modStyle.position} hover-opacity`} to={link}>
       <img className={`logotype`} src={logo} alt="Логотип проекта"/>
     </Link>
   )

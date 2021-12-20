@@ -5,7 +5,7 @@ function Portfolio() {
 
   const renderListPortfolio = porfolioConfig.map((promo) => {
     return (
-      <li key={promo.id} className="portfolio__list">
+      <li key={promo.id} className="portfolio__list hover-opacity">
         <a className="portfolio__link" href={promo.link} target="_blank" rel="noreferrer">
           <h4 className="portfolio__title-link">{promo.title}</h4>
         </a>
