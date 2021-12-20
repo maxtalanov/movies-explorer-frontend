@@ -14,7 +14,9 @@ function MoviesCardList({ data }) {
 
   return(
     <section className="card-list">
-      {renderMoviesCard}
+      <div className="card-list__container">
+        {renderMoviesCard}
+      </div>
       <button className="card-list__btn-add">Ещё</button>
     </section>
   );

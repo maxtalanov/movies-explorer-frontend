@@ -79,6 +79,8 @@
 /* Mobile */
 @media screen and (max-width: 767px) {
   .card {
+    width: 48%;
+
     margin-top: 20px;
     flex-direction:column-reverse;
   }
@@ -110,5 +112,11 @@
     width: 100%;
     margin: 0 0 14px 0;
     height: 168px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .card {
+    width: 100%;
   }
 }

@@ -1,3 +1,4 @@
+/* Laptop PC */
 .about-project {
   margin: 0;
   padding: 0 70px;
@@ -99,6 +100,7 @@
   padding: 0;
 }
 
+/* Planshet */
 @media screen and (max-width:  959px) {
   .about-project{
     padding: 0 50px;
@@ -121,6 +123,7 @@
     margin: 0 0 90px 0;  }
 }
 
+/* Mobile */
 @media screen and (max-width: 767px) {
   .about-project{
     padding: 0 18px;
