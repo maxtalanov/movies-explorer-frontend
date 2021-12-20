@@ -19,8 +19,8 @@ function Login() {
         link="/signup"
       >
         <fieldset className={`form__fieldset`}>
-          <Input label="E-mail" type="email"/>
-          <Input label="Пароль" type="password"/>
+          <Input label="E-mail" type="email"  placeholder="Ваш e-mail"/>
+          <Input label="Пароль" type="password" placeholder="Ваш пароль"/>
         </fieldset>
       </WithForm>
     </section>

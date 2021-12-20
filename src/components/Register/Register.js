@@ -20,9 +20,9 @@ function Register() {
         link="/signin"
       >
         <fieldset className={`form__fieldset`}>
-          <Input label="Имя" type="text"/>
-          <Input label="E-mail" type="email"/>
-          <Input label="Пароль" type="password" errMassage='Пароль должен бытьь...' err='form__span-err'/>
+          <Input label="Имя" type="text" placeholder="Ваше имя"/>
+          <Input label="E-mail" type="email" placeholder="Ваш e-mail"/>
+          <Input label="Пароль" type="password"  placeholder="Ваш пароль" errMassage='Пароль должен бытьь...' err='form__span-err'/>
         </fieldset>
       </WithForm>
     </section>

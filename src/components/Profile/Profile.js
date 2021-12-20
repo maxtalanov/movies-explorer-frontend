@@ -6,7 +6,6 @@ import NavMenuHeader from "../NavMenuHeader/NavMenuHeader";
 
 function Profile() {
   const nameUsers = 'Максим';
-  const emailUsers = 'test@test.ru';
 
   return (
     <>
@@ -20,11 +19,11 @@ function Profile() {
           <fieldset className="profile__form-set">
             <div className="profile__form-container container-top">
               <label className="profile__form-label" htmlFor="name">Имя</label>
-              <input className="profile__form-input" id="name"  type="text" value={nameUsers} />
+              <input className="profile__form-input" id="name"  type="text" placeholder="Ваше имя" value="Максим" />
             </div>
             <div className="profile__form-container container-bottom">
               <label className="profile__form-label" htmlFor="mail">E-mail</label>
-              <input className="profile__form-input" id="mail"  type="text" value={emailUsers} />
+              <input className="profile__form-input" id="mail"  type="email"  placeholder="Ваш e-mail" value="test@test.ru"/>
             </div>
 
           </fieldset>
