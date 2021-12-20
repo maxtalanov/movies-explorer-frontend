@@ -99,7 +99,7 @@
   padding: 0;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width:  959px) {
   .about-project{
     padding: 0 50px;
   }
@@ -121,7 +121,7 @@
     margin: 0 0 90px 0;  }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 767px) {
   .about-project{
     padding: 0 18px;
   }
