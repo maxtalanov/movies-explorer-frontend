@@ -13,7 +13,7 @@ function WithForm({ children, titleForm, titleBtnSubmit, subTitle, btnLink, modM
   return(
     <section className="with-form">
       <form className={`form`}>
-        <Logotype link="/" />
+        <Logotype link="/" modStyle={'position'} />
         <h2 className={`form__title`}>{titleForm}</h2>
         {children}
         <button className={`form__btn-submit ${modMargin}`}>{titleBtnSubmit}</button>

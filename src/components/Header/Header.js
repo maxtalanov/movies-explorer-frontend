@@ -7,7 +7,7 @@ function Header({ theme, children }) {
 
   return(
     <header className={`header header_theme_${theme}`} >
-      <Logotype link='/'/>
+      <Logotype link='/' modStyle=''/>
       {children}
     </header>
   )

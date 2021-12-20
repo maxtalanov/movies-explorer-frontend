@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import './Logotype.css'; //Инициализация стилей
 
 import logo from "../../images/Logotype.svg";
-function Logotype({ link }) {
+function Logotype({ link, modStyle }) {
 
   return(
-    <Link to={link}>
+    <Link className={`${modStyle.position}`} to={link}>
       <img className={`logotype`} src={logo} alt="Логотип проекта"/>
     </Link>
   )
