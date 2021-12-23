@@ -1,0 +1,19 @@
+/* Laptop PC */
+.logotype {
+  margin: 0;
+  padding: 0;
+
+  width: 32px;
+  height: 32px;
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .logotype {
+    margin: 0 auto;
+  }
+
+  .position {
+    margin: 0 auto;
+  }
+}

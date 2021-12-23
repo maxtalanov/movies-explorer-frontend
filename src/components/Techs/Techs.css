@@ -1,0 +1,139 @@
+.techs {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0;
+  padding: 0 70px;
+  background-color: #F5F5F5;
+}
+
+.techs__content {
+  margin: 0;
+  padding: 0;
+}
+
+.techs__title {
+  margin: 90px auto 0 auto;
+  padding: 0;
+
+  max-width: 600px;
+
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 50px;
+  line-height: 58px;
+
+  text-align: center;
+  letter-spacing: -0.04em;
+
+  color: #000000;
+}
+
+.techs__sub-title {
+  margin:  26px auto 0 auto;
+  padding: 0;
+
+  max-width: 460px;
+
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+
+  text-align: center;
+  letter-spacing: -0.04em;
+
+  color: #000000;
+}
+
+.techs__container {
+  padding: 0;
+  margin: 100px 0;
+
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+  .techs {
+    padding: 0 50px;
+  }
+
+  .techs__title {
+    margin: 80px auto 0 auto;
+  }
+
+  .techs__sub-title {
+    margin:  22px auto 0 auto;
+
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .techs__container {
+    margin: 82px auto 90px auto;
+  }
+
+  .techs__icon-card {
+    width: 84px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .techs {
+    padding: 0 18px;
+    background-color: #FFFFFF;
+  }
+
+  .techs__title {
+    margin: 60px auto 0 auto;
+    max-width: 292px;
+
+    font-size: 30px;
+    line-height: 36px;
+
+  }
+
+  .techs__sub-title {
+    margin:  24px auto 0 auto;
+
+    max-width: 292px;
+
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .techs__container {
+    margin: 50px 11% 70px 11%;
+
+    justify-content: space-between;
+  }
+}
+
+.techs__icon-card {
+  background: #E8E8E8;
+  border-radius: 10px;
+  width: 90px;
+  min-height: 60px;
+}
+
+.techs__icon-text {
+  margin: 0;
+  padding: 22px 0;
+
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+
+  text-align: center;
+  letter-spacing: -0.04em;
+
+  color: #000000;
+}

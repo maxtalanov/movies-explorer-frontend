@@ -1,0 +1,21 @@
+.NavTab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000000;
+  min-height: 66px;
+}
+
+.NavTab__link {
+  margin: 0 20px;
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+
+  text-decoration-line: underline;
+
+  color: #FFFFFF;
+}
+

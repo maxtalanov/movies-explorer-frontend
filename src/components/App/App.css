@@ -1,0 +1,26 @@
+.app {
+  margin: 0;
+  padding: 0;
+}
+
+.button__reset {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.hover-opacity {
+  opacity: 1;
+}
+
+.hover-opacity:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}

@@ -1,0 +1,87 @@
+/* Laptop PC */
+.search-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin: 60px auto 0 auto;
+  padding: 0 70px;
+
+  background-color: #FFFFFF;
+}
+
+.search-form__container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 46px;
+
+  margin: 0 0 42px 0;
+  padding: 0;
+}
+
+.search-form__input {
+  width: 100%;
+
+  background: #F9F9F9;
+  border: none;
+  border-radius: 40px;
+
+  min-height: 45px;
+
+  padding: 0;
+  margin: 0 0 42px 0;
+}
+
+.search-form__input::placeholder {
+  margin: 0;
+  padding: 14px 0 14px 26px;
+
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 17px;
+
+  opacity: 1;
+  color: #A0A0A0;
+}
+
+.search-form__input::placeholder:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.search-for__span {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  right: 6px;
+  content: "";
+  width: 80px;
+  height: 34px;
+  background: #3456F3 url(../../images/search_icon.svg) no-repeat center center;
+  border-radius: 48px;
+}
+
+.search-form__line {
+  border-bottom: 1px solid #E8E8E8;
+
+  margin: 0 0 10px 0;
+  padding: 70px 0 0 0;
+}
+
+/* Planshet */
+@media screen and (max-width: 959px) {
+ .search-form {
+   margin: 80px auto 0 auto;
+   padding: 0 30px;
+ }
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .search-form {
+    padding: 0 14px;
+  }
+}

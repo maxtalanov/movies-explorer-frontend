@@ -1,0 +1,25 @@
+.account {
+  margin: 0 auto;
+  padding: 0;
+}
+
+.account__btn-icon {
+  width: 26px;
+  height: 30px;
+  background-image: url("../../images/account__icon.svg");
+  background-repeat: no-repeat;
+  /*background-position: right;*/
+  padding-left : 32px;
+  padding-top : 10px;
+  padding-bottom : 10px;
+  margin: 0 0 0 18px;
+}
+/* Planshet */
+@media screen and (max-width: 959px) {
+
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+
+}

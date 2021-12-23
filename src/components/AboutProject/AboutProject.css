@@ -1,0 +1,171 @@
+/* Laptop PC */
+.about-project {
+  margin: 0;
+  padding: 0 70px;
+  background-color: #FFFFFF;
+}
+
+.about-project__container {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  gap: 40px;
+  margin: 70px 0 110px 0;
+  padding: 0;
+}
+
+.about-project_title {
+  margin: 0;
+
+  font-family: Inter, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+
+  color: #000000;
+}
+
+.about-project__par {
+  margin: 26px 0 0 0;
+
+  font-family: Inter, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+
+  color: #000000;
+}
+
+.table {
+  display: flex;
+  width: 100%;
+  margin: 0 0 110px 0;
+  padding: 0;
+}
+
+.table__column-left {
+  width: 20%;
+  margin: 0;
+  padding: 0;
+}
+
+.table__column-right {
+  width: 80%;
+  margin: 0;
+  padding: 0;
+}
+
+.table__title {
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+
+  color: #000000;
+
+  margin: 0;
+  padding: 0;
+}
+
+.table__title-container {
+  margin: 0 0 14px 0;
+  padding: 9px 0;
+}
+
+.table__title-container_color_left {
+  background: #2BE080;
+}
+
+.table__title-container_color_right {
+  background: #F2F2F2;
+}
+
+.table__cell {
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+
+  text-align: center;
+
+  color: #A0A0A0;
+
+  margin: 0;
+  padding: 0;
+}
+
+/* Planshet */
+@media screen and (max-width:  959px) {
+  .about-project{
+    padding: 0 50px;
+  }
+
+  .about-project__container {
+    gap: 30px;
+
+    margin: 70px 0 94px 0;
+  }
+
+  .about-project__par{
+    margin: 22px 0 0 0;
+
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .table {
+    margin: 0 0 90px 0;  }
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .about-project{
+    padding: 0 18px;
+  }
+
+  .about-project__container {
+    margin: 60px 0 ;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  .about-project_title {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .about-project__par {
+    margin: 16px 0 0 0;
+
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .table {
+    margin: 0 0 70px 0;
+  }
+
+  .table__column-left{
+    width: 35%;
+  }
+
+  .table__column-right {
+    width: 65%;
+  }
+
+  .table__title {
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .table__cell {
+    font-size: 11px;
+    line-height: 13px
+  }
+}

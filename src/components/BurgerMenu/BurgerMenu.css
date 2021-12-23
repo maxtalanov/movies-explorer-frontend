@@ -1,0 +1,103 @@
+/* Laptop PC */
+.BurgerMenu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+
+  margin: 0;
+  padding: 0;
+
+  background: rgba(0, 0, 0, 0.3);
+
+  transform: translateX(-100%);
+  transition: all 0.5s;
+}
+
+.active {
+  transform: translateX(0);
+  transition: all 0.5s;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  width: 70vw;
+
+  margin: 0 0 0 30%;
+  padding: 160px 0 92px 0;
+
+  background: #ffffff;
+}
+
+.menu__btn-close {
+  position: absolute;
+  background: url('../../images/btn-close.svg') no-repeat center;
+  top: 22px;
+  right: 22px;
+  width: 22px;
+  height: 22px;
+}
+
+.menu__ul {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0;
+  padding: 0;
+}
+
+.menu__li {
+  margin: 0 0 28px 0;
+  text-align: center;
+  list-style: none;
+}
+
+.menu__li:last-child {
+  margin-bottom: 0;
+}
+
+.link {
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+
+  color: #000000;
+  text-decoration: none;
+}
+
+/* Planshet */
+@media screen and (max-width: 959px) {
+
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .menu {
+    width: 100vw;
+    margin-left: 0;
+    padding: 144px 0 48px 0;
+  }
+
+  .menu__btn-close {
+    top: 14px;
+    right: 14px;
+  }
+
+  .menu__li {
+    margin-bottom: 24px;
+  }
+}

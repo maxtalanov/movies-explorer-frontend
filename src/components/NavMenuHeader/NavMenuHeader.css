@@ -1,0 +1,66 @@
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+
+  max-width: 676px;
+  width:80%;
+}
+
+.menu-header__container-nav {
+  display: flex;
+  gap: 16px;
+  max-width: 214px
+}
+
+.menu-header__item {
+
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 18px;
+
+  text-align: right;
+
+  color: #000000;
+}
+
+.action {
+  font-weight: 500;
+}
+
+.menu-header__btn-burger {
+  display: none;
+}
+
+/* Planshet */
+@media screen and (max-width: 959px) {
+  .menu-header {
+    max-width: 44px;
+    width: 100%;
+  }
+
+  .menu-header__container-nav {
+    display: none;
+  }
+
+  .menu-header__account-container {
+    display: none;
+  }
+
+  .menu-header__btn-burger {
+    display: flex;
+    margin: 0 auto;
+    justify-content: flex-end;
+    align-items: end;
+    width: 44px;
+    height: 44px;
+
+    background: url(../../images/BurgerMenu.svg) no-repeat center center;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+
+}
