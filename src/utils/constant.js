@@ -152,3 +152,15 @@ export const socialLinks = {
   fb: 'https://www.facebook.com/talanov.max',
   yp: 'https://practicum.yandex.ru/'
 }
+
+export const checkResponse = res => res.ok  ? res.json() : Promise.reject(`Ошибка: ${res.status} - ${res.statusText}.`);
+
+export const BASE_URL_MAIN = 'http://localhost:3000';
+
+export const BASE_HEADERS_MAIN = {
+  'Accept': 'application/json',
+  'Content-Type': 'application/json',
+  'Access-Control-Allow-Credentials': true,
+}
+
+export const BASE_URL_MOVIES = 'https://api.nomoreparties.co/beatfilm-movies';
