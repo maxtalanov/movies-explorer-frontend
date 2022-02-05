@@ -17,6 +17,7 @@ function InputEmail ({ label, placeholder, id, name, value, onChange, errMassage
         value={value}
         onChange={onChange}
 
+        pattern="([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})"
         autoComplete="off"
         required
       />

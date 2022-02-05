@@ -17,6 +17,8 @@ function InputPassword ({ label, placeholder, id, name, value, onChange, errMass
         value={value}
         onChange={onChange}
 
+        pattern="[A-Za-z0-9]{8,30}"
+        minLength={8}
         autoComplete="off"
         required
       />

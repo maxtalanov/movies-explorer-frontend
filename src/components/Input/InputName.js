@@ -17,8 +17,9 @@ function InputName({ label, placeholder, id, name, value, onChange, errMassage, 
         value={value}
         onChange={onChange}
 
-        min={2}
-        max={30}
+        pattern="[А-Яа-яЁё]{2,30}"
+        minLength={2}
+        maxLength={30}
         autoComplete="off"
         required
       />
