@@ -1,12 +1,30 @@
-// Компонент "Авторезации пользователя"
+import React from "react";
+import './Login.css';
 
-import React from "react"; //Инициализация библиотеки
-import './Login.css'; // Ф-ил стилей
+import WithForm from "../WithForm/WithForm";
+import InputEmail from "../Input/InputEmail";
+import InputPassword from "../Input/InputPassword";
 
-import Input from "../Input/Input";
-import WithForm from "../WithForm/WithForm"; //Инициализация стилей
+function Login({ onLogin }) {
+  const [loginData, setLoginData] = React.useState({
+    email: '',
+    password: '',
+  });
 
-function Login() {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setLoginData({
+      ...loginData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    onLogin(loginData);
+  }
 
   return (
     <section className="login">
@@ -17,10 +35,22 @@ function Login() {
         btnLink="Регистрация"
         modMargin="form__btn-submit_type_login"
         link="/signup"
+        handleSubmit={handleSubmit}
       >
         <fieldset className={`form__fieldset`}>
-          <Input label="E-mail" type="email"  placeholder="Ваш e-mail" required={true}/>
-          <Input label="Пароль" type="password" placeholder="Ваш пароль" required={true} />
+          <InputEmail
+            label="E-mail"
+            placeholder="Укажите Ваш email"
+
+            onChange={handleChange}
+          />
+
+          <InputPassword
+            label="Пароль"
+            placeholder="Укажите Ваш пароль"
+
+            onChange={handleChange}
+          />
         </fieldset>
       </WithForm>
     </section>
