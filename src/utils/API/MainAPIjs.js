@@ -8,30 +8,35 @@ export const getUser = () => {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     credentials: 'include',
-    BASE_HEADERS_MAIN,
+    headers: BASE_HEADERS_MAIN,
   }).then(checkResponse)
 }
 
 // РЕГИСТРАЦИЯ USER
 export const register = ({email, password, userName}) => {
   console.log(`API MAIN register | key: ${password}, user: ${email}, name: ${userName}`);
+  console.log(`${BASE_URL}/signup`);
 
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     credentials: 'include',
-    BASE_HEADERS_MAIN,
-    body: JSON.stringify({email, password, userName})
+    headers: BASE_HEADERS_MAIN,
+    body: JSON.stringify({
+      email: email,
+      password: password,
+      name: userName,
+    })
   }).then(checkResponse)
 }
 
 // АВТОРИЗАЦИЯ USER
 export const login = ({email, password}) => {
-  // console.log(`API MAIN login | key: ${password}, user: ${email}`);
+  console.log(`API MAIN login | key: ${password}, user: ${email}`);
 
   return fetch(`${BASE_URL}/signin`, {
     method: "POST",
     credentials: 'include',
-    BASE_HEADERS_MAIN,
+    headers: BASE_HEADERS_MAIN,
     body: JSON.stringify({email, password})
   }).then(checkResponse)
 }
@@ -43,7 +48,7 @@ export const updateUser = ({email, userName}) => {
   return fetch(`${BASE_URL}/users/me`, {
     method: "PATCH",
     credentials: 'include',
-    BASE_HEADERS_MAIN,
+    headers: BASE_HEADERS_MAIN,
     body: JSON.stringify({email, userName})
   }).then(checkResponse)
 }
@@ -54,7 +59,7 @@ export const userExit = () => {
   return fetch(`${BASE_URL}/signout`, {
     method: "GET",
     credentials: 'include',
-    BASE_HEADERS_MAIN,
+    headers: BASE_HEADERS_MAIN,
   }).then(checkResponse)
 }
 
