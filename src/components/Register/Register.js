@@ -30,6 +30,7 @@ function Register({ onRegister}) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    console.log('Логин', registerData)
     onRegister(registerData);
   }
 

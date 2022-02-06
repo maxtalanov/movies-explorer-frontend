@@ -12,19 +12,14 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import NotFound from "../NotFound/NotFound";
 
 import * as MainAPI from "../../utils/API/MainAPIjs";
-import {userExit} from "../../utils/API/MainAPIjs";
 
 // ф-ый компонент
 function App() {
 
-  function onRegister() {
-    const data = {
-      email: 'email@maxtalanov.ru',
-      password: 'qwerty1234',
-      userName: 'Мистер хрен'
-    }
+  function onRegister(registerData) {
+
     return MainAPI
-      .register(data)
+      .register(registerData)
       .then(res => {
         console.log(res);
       })
@@ -33,9 +28,10 @@ function App() {
       })
   }
 
-  function onLogin() {
+  function onLogin(loginData) {
+
     return MainAPI
-      .login({})
+      .login(loginData)
       .then(res => {
         console.log(res);
       })
@@ -82,7 +78,6 @@ function App() {
     <div className="app">
       <Switch>
         <Route exact path='/'>
-          onRegister
           <Main/>
         </Route>
 
@@ -99,11 +94,11 @@ function App() {
         </Route>
 
         <Route path='/signin'>
-          <Login/>
+          <Login onLogin={onLogin}/>
         </Route>
 
         <Route path='/signup'>
-          <Register/>
+          <Register onRegister={onRegister}/>
         </Route>
 
         <Route path="*">

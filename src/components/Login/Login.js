@@ -23,6 +23,7 @@ function Login({ onLogin }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    console.log('Логин', loginData)
     onLogin(loginData);
   }
 
@@ -41,14 +42,12 @@ function Login({ onLogin }) {
           <InputEmail
             label="E-mail"
             placeholder="Укажите Ваш email"
-
             onChange={handleChange}
           />
 
           <InputPassword
             label="Пароль"
             placeholder="Укажите Ваш пароль"
-
             onChange={handleChange}
           />
         </fieldset>
