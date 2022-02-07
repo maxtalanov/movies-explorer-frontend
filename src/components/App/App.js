@@ -40,9 +40,9 @@ function App() {
       })
   }
 
-  function onUpdateUser() {
+  function onUpdateUser(userData) {
     return MainAPI
-      .updateUser({})
+      .updateUser(userData)
       .then(res => {
         console.log(res);
       })
@@ -52,8 +52,9 @@ function App() {
   }
 
   function onExitUser() {
+    console.log('evt exit')
     return MainAPI
-      .userExit({})
+      .userExit()
       .then(res => {
         console.log(res);
       })
@@ -90,7 +91,7 @@ function App() {
         </Route>
 
         <Route path='/profile'>
-          <Profile/>
+          <Profile onLogout={onExitUser} onUpdateUser={onUpdateUser} />
         </Route>
 
         <Route path='/signin'>
