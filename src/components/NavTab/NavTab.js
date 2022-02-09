@@ -5,7 +5,7 @@ import { navTabLinksConfig} from "../../utils/constant";
 
 function NavTab() {
   const renderLink = navTabLinksConfig.map((m) => {
-     return (<a href={m.link} className="NavTab__link hover-opacity">{m.text}</a>)
+     return (<a key={m.id} href={m.link} className="NavTab__link hover-opacity">{m.text}</a>)
     })
 
   return(
