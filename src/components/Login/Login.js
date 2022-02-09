@@ -10,7 +10,7 @@ function Login({ onLogin }) {
     email: '',
     password: '',
   });
-
+console.log(loginData);
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -41,13 +41,23 @@ function Login({ onLogin }) {
         <fieldset className={`form__fieldset`}>
           <InputEmail
             label="E-mail"
+
             placeholder="Укажите Ваш email"
+            id="login-email"
+            name="email"
+            value={loginData.email}
+
             onChange={handleChange}
           />
 
           <InputPassword
             label="Пароль"
             placeholder="Укажите Ваш пароль"
+
+            id="login-password"
+            name="password"
+            value={loginData.password}
+
             onChange={handleChange}
           />
         </fieldset>
