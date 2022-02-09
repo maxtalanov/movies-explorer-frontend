@@ -1,8 +1,9 @@
 //Корневой компонент приложения, его создаёт CRA.
-
 import React from "react";
-import {Route, Switch} from "react-router-dom";
 import './App.css';
+import { Redirect, Switch, Route, useHistory } from "react-router-dom";
+
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
@@ -15,6 +16,23 @@ import * as MainAPI from "../../utils/API/MainAPIjs";
 
 // ф-ый компонент
 function App() {
+  // СТАЕЙТЫ И ПЕРЕМЕННЫЕ
+  const history =  useHistory();
+  const [loggedIn, setLoggedIn] = React.useState(false);
+
+  console.log(loggedIn);
+
+  React.useEffect(() => {
+    tokenCheck();
+  }, []);
+
+  React.useEffect(() => {
+    if (loggedIn) {
+      history.push('/movies');
+    } else {
+      history.push('/');
+    }
+  }, [history, loggedIn]);
 
   function onRegister(registerData) {
 
@@ -33,6 +51,7 @@ function App() {
     return MainAPI
       .login(loginData)
       .then(res => {
+        setLoggedIn(true);
         console.log(res);
       })
       .catch((err) => {
@@ -56,6 +75,7 @@ function App() {
     return MainAPI
       .userExit()
       .then(res => {
+        setLoggedIn(false);
         console.log(res);
       })
       .catch((err) => {
@@ -74,24 +94,45 @@ function App() {
       })
   }
 
+  function tokenCheck() {
+
+    return MainAPI
+      .getUser()
+      .then((data) => {
+        setLoggedIn(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
 
   return (
     <div className="app">
       <Switch>
+        <ProtectedRoute
+          component={Movies}
+          path={"/movies"}
+          isLoggedIn={loggedIn}
+        />
+
+        <ProtectedRoute
+          component={SavedMovies}
+          path={"/saved-movies"}
+          isLoggedIn={loggedIn}
+        />
+
+        <ProtectedRoute
+          component={Profile}
+          path={"/profile"}
+          isLoggedIn={loggedIn}
+
+          onLogout={onExitUser}
+          onUpdateUser={onUpdateUser}
+        />
+
         <Route exact path='/'>
           <Main/>
-        </Route>
-
-        <Route path='/movies'>
-          <Movies/>
-        </Route>
-
-        <Route path='/saved-movies'>
-          <SavedMovies/>
-        </Route>
-
-        <Route path='/profile'>
-          <Profile onLogout={onExitUser} onUpdateUser={onUpdateUser} />
         </Route>
 
         <Route path='/signin'>
