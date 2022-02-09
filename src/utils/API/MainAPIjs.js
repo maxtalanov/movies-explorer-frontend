@@ -14,8 +14,6 @@ export const getUser = () => {
 
 // РЕГИСТРАЦИЯ USER
 export const register = ({email, password, userName}) => {
-  console.log(`API MAIN register | key: ${password}, user: ${email}, name: ${userName}`);
-  console.log(`${BASE_URL}/signup`);
 
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
@@ -31,7 +29,6 @@ export const register = ({email, password, userName}) => {
 
 // АВТОРИЗАЦИЯ USER
 export const login = ({email, password}) => {
-  console.log(`API MAIN login | key: ${password}, user: ${email}`);
 
   return fetch(`${BASE_URL}/signin`, {
     method: "POST",
@@ -43,7 +40,6 @@ export const login = ({email, password}) => {
 
 // ОБНОВИТЬ ИНФОРМАЦИЮ USER
 export const updateUser = ({email, userName}) => {
-  // console.log(`API MAIN updateUser | name: ${userName}, user: ${email}`);
 
   return fetch(`${BASE_URL}/users/me`, {
     method: "PATCH",
@@ -57,7 +53,7 @@ export const updateUser = ({email, userName}) => {
 export const userExit = () => {
 
   return fetch(`${BASE_URL}/signout`, {
-    method: "GET",
+    method: "POST",
     credentials: 'include',
     headers: BASE_HEADERS_MAIN,
   }).then(checkResponse)
