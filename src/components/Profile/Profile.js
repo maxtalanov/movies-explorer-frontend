@@ -1,17 +1,28 @@
 //Компоннт "Редактирования пользователя"
 import React from "react";
 import './Profile.css';
+
+import { CurrentUserContext } from  "../../contexts/CurrentUserContext";
+
 import Header from "../Header/Header";
 import NavMenuHeader from "../NavMenuHeader/NavMenuHeader";
 
 function Profile({ onLogout, onUpdateUser}) {
 
+  const currentUser = React.useContext(CurrentUserContext);
   const [userData, setUserData] = React.useState({
     email: '',
     userName: '',
   })
 
-  console.log('редактор юсера', userData);
+  React.useEffect(() => {
+    if (currentUser) {
+      setUserData({
+        userName: currentUser.name,
+        email: currentUser.email,
+      });
+    }
+  },[currentUser]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,7 +36,6 @@ function Profile({ onLogout, onUpdateUser}) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log('Логин',userData )
     onUpdateUser(userData);
   }
 
@@ -37,9 +47,8 @@ function Profile({ onLogout, onUpdateUser}) {
 
       <section className="profile">
         <form className="profile__form" onSubmit={handleSubmit}>
-          <h2 className="profile__form-title">Привет, {userData.userName}!</h2>
+          <h2 className="profile__form-title">Привет, {currentUser.name}!</h2>
           <fieldset className="profile__form-set">
-
             <div className="profile__form-container container-top">
               <label className="profile__form-label" htmlFor="userName">Имя</label>
               <input
@@ -78,13 +87,11 @@ function Profile({ onLogout, onUpdateUser}) {
               />
 
             </div>
-
           </fieldset>
 
           <button type="submit" className="profile__form-btn-submit button__reset hover-opacity">Редактировать</button>
           <button type="button" className="profile__form-btn-exit button__reset hover-opacity" onClick={onLogout}>Выйти из аккаунта</button>
         </form>
-
 
       </section>
     </>

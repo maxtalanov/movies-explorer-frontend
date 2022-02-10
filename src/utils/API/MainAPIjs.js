@@ -45,7 +45,7 @@ export const updateUser = ({email, userName}) => {
     method: "PATCH",
     credentials: 'include',
     headers: BASE_HEADERS_MAIN,
-    body: JSON.stringify({email, userName})
+    body: JSON.stringify({email, name: userName })
   }).then(checkResponse)
 }
 
