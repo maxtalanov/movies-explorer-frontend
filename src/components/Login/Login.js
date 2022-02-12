@@ -1,12 +1,31 @@
-// Компонент "Авторезации пользователя"
+import React from "react";
+import './Login.css';
 
-import React from "react"; //Инициализация библиотеки
-import './Login.css'; // Ф-ил стилей
+import WithForm from "../WithForm/WithForm";
+import InputEmail from "../Input/InputEmail";
+import InputPassword from "../Input/InputPassword";
 
-import Input from "../Input/Input";
-import WithForm from "../WithForm/WithForm"; //Инициализация стилей
+function Login({ onLogin }) {
+  const [loginData, setLoginData] = React.useState({
+    email: '',
+    password: '',
+  });
+console.log(loginData);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
 
-function Login() {
+    setLoginData({
+      ...loginData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log('Логин', loginData)
+    onLogin(loginData);
+  }
 
   return (
     <section className="login">
@@ -17,10 +36,30 @@ function Login() {
         btnLink="Регистрация"
         modMargin="form__btn-submit_type_login"
         link="/signup"
+        handleSubmit={handleSubmit}
       >
         <fieldset className={`form__fieldset`}>
-          <Input label="E-mail" type="email"  placeholder="Ваш e-mail" required={true}/>
-          <Input label="Пароль" type="password" placeholder="Ваш пароль" required={true} />
+          <InputEmail
+            label="E-mail"
+
+            placeholder="Укажите Ваш email"
+            id="login-email"
+            name="email"
+            value={loginData.email}
+
+            onChange={handleChange}
+          />
+
+          <InputPassword
+            label="Пароль"
+            placeholder="Укажите Ваш пароль"
+
+            id="login-password"
+            name="password"
+            value={loginData.password}
+
+            onChange={handleChange}
+          />
         </fieldset>
       </WithForm>
     </section>

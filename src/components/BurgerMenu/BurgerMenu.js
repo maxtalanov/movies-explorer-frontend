@@ -7,8 +7,8 @@ function BurgerMenu({items, active, setActive}) {
 
   const renderItemsList = items.map((item) => {
     return (
-      <li className="menu__li">
-        <Link className="link" to={item.link}>{item.text}</Link>
+      <li className="menu__li" key={item.link}>
+        <Link className="link" to={item.link}> {item.text} </Link>
       </li>
     )
   })

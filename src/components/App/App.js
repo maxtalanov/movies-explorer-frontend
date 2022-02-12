@@ -1,8 +1,11 @@
 //Корневой компонент приложения, его создаёт CRA.
-
 import React from "react";
-import {Route, Switch} from "react-router-dom";
 import './App.css';
+
+import { Redirect, Switch, Route, useHistory } from "react-router-dom";
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
@@ -11,42 +14,148 @@ import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import NotFound from "../NotFound/NotFound";
 
+import * as MainAPI from "../../utils/API/MainAPIjs";
+
 // ф-ый компонент
 function App() {
+  // СТАЕЙТЫ И ПЕРЕМЕННЫЕ
+  const history =  useHistory();
+  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [currentUser, setCurrentUser] = React.useState({});
+
+  React.useEffect(() => {
+    tokenCheck();
+  }, []);
+
+  React.useEffect(() => {
+    if (loggedIn) {
+      history.push('/movies');
+    } else {
+      history.push('/');
+    }
+  }, [history, loggedIn]);
+
+  function onRegister(registerData) {
+
+    return MainAPI
+      .register(registerData)
+      .then(res => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  function onLogin(loginData) {
+
+    return MainAPI
+      .login(loginData)
+      .then((res) => {
+        onGetUser();
+        setLoggedIn(true);
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  function onUpdateUser(userData) {
+    return MainAPI
+      .updateUser(userData)
+      .then((newDataUser) => {
+        setCurrentUser(newDataUser)
+        console.log(newDataUser);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  function onExitUser() {
+    console.log('evt exit')
+    return MainAPI
+      .userExit()
+      .then(res => {
+        setLoggedIn(false);
+        setCurrentUser({});
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  const onGetUser = () => {
+
+    return MainAPI
+      .getUser()
+      .then((currentUser) => {
+        setCurrentUser(currentUser);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  function tokenCheck() {
+
+    return MainAPI
+      .getUser()
+      .then((data) => {
+        onGetUser();
+        setLoggedIn(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
 
   return (
-    <div className="app">
-      <Switch>
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className="app">
+        <Switch>
+          <ProtectedRoute
+            component={Movies}
+            path={"/movies"}
+            isLoggedIn={loggedIn}
+          />
 
-        <Route exact path='/'>
-          <Main/>
-        </Route>
+          <ProtectedRoute
+            component={SavedMovies}
+            path={"/saved-movies"}
+            isLoggedIn={loggedIn}
+          />
 
-        <Route path='/movies'>
-          <Movies/>
-        </Route>
+          <ProtectedRoute
+            component={Profile}
+            path={"/profile"}
+            isLoggedIn={loggedIn}
 
-        <Route path='/saved-movies'>
-          <SavedMovies/>
-        </Route>
+            onLogout={onExitUser}
+            onUpdateUser={onUpdateUser}
+          />
 
-        <Route path='/profile'>
-          <Profile/>
-        </Route>
+          <Route exact path='/'>
+            <Main/>
+          </Route>
 
-        <Route path='/signin'>
-          <Login/>
-        </Route>
+          <Route path='/signin'>
+            <Login onLogin={onLogin}/>
+          </Route>
 
-        <Route path='/signup'>
-          <Register/>
-        </Route>
+          <Route path='/signup'>
+            <Register onRegister={onRegister}/>
+          </Route>
 
-        <Route path="*">
-          <NotFound/>
-        </Route>
-      </Switch>
-    </div>
+          <Route path="*">
+            <NotFound/>
+          </Route>
+        </Switch>
+      </div>
+    </CurrentUserContext.Provider>
   );
 }
 
