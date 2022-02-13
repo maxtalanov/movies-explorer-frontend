@@ -15,6 +15,8 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import NotFound from "../NotFound/NotFound";
 
 import * as MainAPI from "../../utils/API/MainAPIjs";
+import * as MoviesAPI from "../../utils/API/MoviesAPI";
+import {removeMovie} from "../../utils/API/MainAPIjs";
 
 // ф-ый компонент
 function App() {
@@ -34,6 +36,17 @@ function App() {
       history.push('/');
     }
   }, [history, loggedIn]);
+
+  function getMovies() {
+
+    return MoviesAPI()
+      .then((movies) => {
+        console.log(movies, "Получен каталог фильмо");
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 
   function onRegister(registerData) {
 
@@ -112,6 +125,41 @@ function App() {
       });
   }
 
+  function onGetMyMovie() {
+
+    return MainAPI
+      .getMyMovies()
+      .then((movies) =>{
+        console.log(movies);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  function onAddMovie(movie) {
+
+    return MainAPI
+      .addMovie(movie)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+
+  }
+
+  function onRemoveMovie(cardMovie) {
+    return MainAPI
+      .removeMovie(cardMovie)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

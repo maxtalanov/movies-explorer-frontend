@@ -59,3 +59,46 @@ export const userExit = () => {
   }).then(checkResponse)
 }
 
+// СОХРАНЕНЫЕ ФИЛЬМЫ
+export const getMyMovies = () => {
+
+  return fetch(`${BASE_URL}/movies`, {
+    method: "GET",
+    credentials: 'include',
+    headers: BASE_HEADERS_MAIN,
+  }).then(checkResponse)
+}
+
+// СОЗДАТЬ ФИЛЬМ
+export const addMovie = (movie) => {
+
+  return fetch(`${BASE_URL}/movies`, {
+    method: "POST",
+    credentials: 'include',
+    headers: BASE_HEADERS_MAIN,
+    body: JSON.stringify({
+      director: null,
+      duration: null,
+      year: null,
+      description: null,
+      image: null,
+      trailer: null,
+      thumbnail: null,
+      movieId: null,
+      nameRU: null,
+      nameEN: null,
+    })
+  }).then(checkResponse)
+}
+
+// СОЗДАТЬ ФИЛЬМ
+export const removeMovie = ({idMovie}) => {
+
+  return fetch(`${BASE_URL}/movies/:movieId'`, {
+    method: "POST",
+    credentials: 'include',
+    headers: BASE_HEADERS_MAIN,
+    body: JSON.stringify({ idMovie })
+  }).then(checkResponse)
+}
+
