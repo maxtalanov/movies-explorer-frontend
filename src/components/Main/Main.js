@@ -10,13 +10,15 @@ import Techs from "../Techs/Techs";
 import AboutMe from "../AboutMe/AboutMe";
 import Portfolio from "../Portfolio/Portfolio";
 import Footer from "../Footer/Footer";
+import NavMenuHeader from "../NavMenuHeader/NavMenuHeader";
 
 
-function Main() {
+function Main({isLoggedIn}) {
+
   return (
     <section className="main">
       <Header theme="dark-blue">
-        <NavButton />
+        {isLoggedIn? <NavMenuHeader /> : <NavButton />}
       </Header>
 
       <section className="main">

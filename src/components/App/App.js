@@ -187,7 +187,7 @@ function App() {
           />
 
           <Route exact path='/'>
-            <Main/>
+            <Main isLoggedIn={loggedIn}/>
           </Route>
 
           <Route path='/signin'>
