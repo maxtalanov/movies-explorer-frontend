@@ -1,4 +1,4 @@
-import {checkResponse, BASE_URL_MAIN, BASE_HEADERS_MAIN} from "../constant";
+import { checkResponse, BASE_URL_MAIN, BASE_HEADERS_MAIN, BASE_URL_MOVIES } from "../constant";
 
 let BASE_URL = BASE_URL_MAIN;
 
