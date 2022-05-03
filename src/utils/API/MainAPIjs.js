@@ -70,7 +70,7 @@ export const getMyMovies = () => {
 }
 
 // СОЗДАТЬ ФИЛЬМ
-export const addMovie = (movie) => {
+export const saveMovie = (movie) => {
 
   return fetch(`${BASE_URL}/movies`, {
     method: "POST",

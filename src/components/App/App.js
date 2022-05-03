@@ -137,10 +137,10 @@ function App() {
       })
   }
 
-  function onAddMovie(movie) {
+  function onSaveMovie(movie) {
 
     return MainAPI
-      .addMovie(movie)
+      .saveMovie(movie)
       .then((res) => {
         console.log(res);
       })
