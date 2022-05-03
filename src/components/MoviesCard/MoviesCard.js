@@ -1,8 +1,10 @@
 import React from "react";
+import { timeFormat } from '../../utils/globalMethod/time';
 import './MoviesCard.css';
 
 function MoviesCard({ titleRu, duration, image }) {
   const [modLike, setModLike] = React.useState(''); //Удалить после написания ф-ла
+  const movieDuration = timeFormat(duration);
   //Удалить после написания ф-ла
   function likeClick() {
     setModLike('card__btn-like_active');
