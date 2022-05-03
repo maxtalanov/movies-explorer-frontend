@@ -77,16 +77,17 @@ export const saveMovie = (movie) => {
     credentials: 'include',
     headers: BASE_HEADERS_MAIN,
     body: JSON.stringify({
-      director: null,
-      duration: null,
-      year: null,
-      description: null,
-      image: null,
-      trailer: null,
-      thumbnail: null,
-      movieId: null,
-      nameRU: null,
-      nameEN: null,
+      country: movie.country,
+      director: movie.director,
+      duration: movie.duration,
+      year: movie.year,
+      description: movie.description,
+      image: `${BASE_URL_MOVIES}${movie.image.url}`,
+      trailer: movie.trailerLink,
+      thumbnail: `${BASE_URL_MOVIES}${movie.image.url}`,
+      movieId: movie.id,
+      nameRU: movie.nameRU,
+      nameEN: movie.nameEN,
     })
   }).then(checkResponse)
 }
