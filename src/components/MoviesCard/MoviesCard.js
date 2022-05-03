@@ -1,13 +1,12 @@
 import React from "react";
 import './MoviesCard.css';
 
-function MoviesCard({ movieData }) {
+function MoviesCard({ titleRu, duration, image }) {
   const [modLike, setModLike] = React.useState(''); //Удалить после написания ф-ла
   //Удалить после написания ф-ла
   function likeClick() {
     setModLike('card__btn-like_active');
   }
-  console.log(modLike);
 
   return(
     <section className={`card`}>
