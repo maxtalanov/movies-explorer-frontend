@@ -16,7 +16,7 @@ function Movies() {
         <NavMenuHeader />
       </Header>
       <SearchForm />
-      <MoviesCardList  data={movies} />
+      <MoviesCardList movies={movies} myMovies={myMovies} />
       <Footer />
     </>
   );
