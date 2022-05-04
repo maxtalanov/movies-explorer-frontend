@@ -2,7 +2,7 @@
 import React from "react";
 import './App.css';
 
-import { Redirect, Switch, Route, useHistory } from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
@@ -16,7 +16,6 @@ import NotFound from "../NotFound/NotFound";
 
 import * as MainAPI from "../../utils/API/MainAPIjs";
 import * as MoviesAPI from "../../utils/API/MoviesAPI";
-import {removeMovie} from "../../utils/API/MainAPIjs";
 
 // ф-ый компонент
 function App() {
