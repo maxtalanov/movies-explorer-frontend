@@ -1,5 +1,5 @@
 //Корневой компонент приложения, его создаёт CRA.
-import React from "react";
+import React, {useState} from "react";
 import './App.css';
 
 import { Switch, Route, useHistory } from "react-router-dom";
@@ -23,6 +23,8 @@ function App() {
   const history =  useHistory();
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
+  const [myMovie, setMyMovie] = useState([]);
+  const [movie, setMovie] = useState([]);
 
   React.useEffect(() => {
     tokenCheck();
