@@ -23,8 +23,8 @@ function App() {
   const history =  useHistory();
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
-  const [myMovie, setMyMovie] = useState([]);
-  const [movie, setMovie] = useState([]);
+  const [myMovies, setMyMovies] = useState([]);
+  const [movies, setMovies] = useState([]);
 
   React.useEffect(() => {
     tokenCheck();
