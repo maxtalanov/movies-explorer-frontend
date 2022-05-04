@@ -92,14 +92,14 @@ export const saveMovie = (movie) => {
   }).then(checkResponse)
 }
 
-// СОЗДАТЬ ФИЛЬМ
-export const removeMovie = ({idMovie}) => {
+// УДАЛИТЬ ФИЛЬМ
+export const removeMovie = (movieId) => {
 
-  return fetch(`${BASE_URL}/movies/:movieId'`, {
-    method: "POST",
+
+  return fetch(`${BASE_URL}/movies/${movieId}`, {
+    method: "DELETE",
     credentials: 'include',
     headers: BASE_HEADERS_MAIN,
-    body: JSON.stringify({ idMovie })
   }).then(checkResponse)
 }
 
