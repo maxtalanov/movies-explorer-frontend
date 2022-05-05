@@ -2,28 +2,30 @@ import { useState } from "react";
 import { timeFormat } from '../../utils/globalMethod/time';
 import './MoviesCard.css';
 
-import { BASE_URL_MOVIES } from '../../utils/constant'
+function MoviesCard({movie, onSaved, onSave, onRemove}) {
 
-function MoviesCard({movie}) {
-  const [isSave, setIsSave] = useState(false)
-
+  const [isSave, setIsSave] = useState(onSaved)
   const { nameRU, duration, image } = movie;
-  const movieDuration = timeFormat(duration);
-  const srcImg = `${BASE_URL_MOVIES}${image.url}`;
+
   const active = isSave ? 'card__btn-like_active' : '';
+  const movieDuration = timeFormat(duration);
 
   function handleSave() {
-
+    onSave(movie);
+    setIsSave(!isSave);
   }
 
   function handleRemove() {
-
+    onRemove(movie);
+    setIsSave(!isSave);
   }
 
   function likeClick() {
-    setIsSave(!isSave);
-
-    return isSave ? handleSave : handleRemove;
+     if (!isSave) {
+       handleSave()
+     } else {
+       handleRemove();
+     }
   }
 
   return(
@@ -35,7 +37,7 @@ function MoviesCard({movie}) {
         </div>
         <button className={`card__btn-like ${active} hover-opacity`} onClick={likeClick}/>
       </div>
-      <img src={srcImg} alt={`Постер к фильму ${nameRU}`} className="card__img"/>
+      <img src={image} alt={`Постер к фильму ${nameRU}`} className="card__img"/>
     </section>
   );
 }
