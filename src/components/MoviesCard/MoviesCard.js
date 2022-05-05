@@ -1,25 +1,41 @@
-import React from "react";
+import { useState } from "react";
 import { timeFormat } from '../../utils/globalMethod/time';
 import './MoviesCard.css';
 
+import { BASE_URL_MOVIES } from '../../utils/constant'
+
 function MoviesCard({movie}) {
-  const [modLike, setModLike] = React.useState(''); //Удалить после написания ф-ла
+  const [isSave, setIsSave] = useState(false)
+
+  const { nameRU, duration, image } = movie;
   const movieDuration = timeFormat(duration);
-  //Удалить после написания ф-ла
+  const srcImg = `${BASE_URL_MOVIES}${image.url}`;
+  const active = isSave ? 'card__btn-like_active' : '';
+
+  function handleSave() {
+
+  }
+
+  function handleRemove() {
+
+  }
+
   function likeClick() {
-    setModLike('card__btn-like_active');
+    setIsSave(!isSave);
+
+    return isSave ? handleSave : handleRemove;
   }
 
   return(
     <section className={`card`}>
       <div className="card__container-info">
         <div className="card__movie-item">
-          {/*<h3 className="card__title">{titleRu}</h3>*/}
-          {/*<p className="card__duration">{`${movieDuration.hours}ч ${movieDuration.minute}м`}</p>*/}
+          <h3 className="card__title">{nameRU}</h3>
+          <p className="card__duration">{`${movieDuration.hours}ч ${movieDuration.minute}м`}</p>
         </div>
-        {/*<button className={`card__btn-like ${modLike} hover-opacity`} onClick={likeClick}/>*/}
+        <button className={`card__btn-like ${active} hover-opacity`} onClick={likeClick}/>
       </div>
-      {/*<img src={image} alt={`Постер к фильму ${titleRu}`} className="card__img"/>*/}
+      <img src={srcImg} alt={`Постер к фильму ${nameRU}`} className="card__img"/>
     </section>
   );
 }
