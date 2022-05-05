@@ -1,5 +1,5 @@
 //Корневой компонент приложения, его создаёт CRA.
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './App.css';
 
 import { Switch, Route, useHistory } from "react-router-dom";
@@ -16,6 +16,7 @@ import NotFound from "../NotFound/NotFound";
 
 import * as MainAPI from "../../utils/API/MainAPIjs";
 import * as MoviesAPI from "../../utils/API/MoviesAPI";
+import {getMovies} from "../../utils/API/MoviesAPI";
 
 // ф-ый компонент
 function App() {
@@ -25,6 +26,12 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
   const [myMovies, setMyMovies] = useState([]);
   const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    onGetMovies();
+    onGetMyMovie();
+
+  }, [myMovies, movies])
 
   React.useEffect(() => {
     tokenCheck();
@@ -38,11 +45,11 @@ function App() {
     }
   }, [history, loggedIn]);
 
-  function getMovies() {
+  function onGetMovies() {
 
-    return MoviesAPI()
+    return getMovies()
       .then((movies) => {
-        console.log(movies, "Получен каталог фильмо");
+        setMovies(movies)
       })
       .catch((err) => {
         console.log(err)
@@ -131,7 +138,7 @@ function App() {
     return MainAPI
       .getMyMovies()
       .then((movies) =>{
-        console.log(movies);
+        setMyMovies(movies)
       })
       .catch((err) => {
         console.log(err);
