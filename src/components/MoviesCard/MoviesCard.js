@@ -5,7 +5,7 @@ import './MoviesCard.css';
 function MoviesCard({movie, type, onSaved, onSave, onRemove}) {
 
   const [isSave, setIsSave] = useState(onSaved)
-  const { nameRU, duration, image } = movie;
+  const { nameRU, duration, image, trailer } = movie;
 
   const active = isSave ? 'card__btn-like_active' : '';
   const movieDuration = timeFormat(duration);
@@ -54,7 +54,10 @@ function MoviesCard({movie, type, onSaved, onSave, onRemove}) {
         {movieBtn()}
         {myMovieBtn()}
       </div>
-      <img src={image} alt={`Постер к фильму ${nameRU}`} className="card__img"/>
+      <a className={`card__link-trailer`} href={trailer} target="_blank" rel="noreferrer">
+        <img src={image} alt={`Постер к фильму ${nameRU}`} className="card__img"/>
+      </a>
+
     </section>
   );
 }
