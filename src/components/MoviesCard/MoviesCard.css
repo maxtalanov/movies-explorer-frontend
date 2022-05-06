@@ -45,7 +45,7 @@
   color: #A0A0A0;
 }
 
-.card__btn-like {
+.card__btn-save {
   padding: 0;
   margin: 0;
   border: 0;
@@ -53,6 +53,14 @@
 
   width: 14px;
   height: 12px;
+  background: transparent url(../../images/like.svg) no-repeat;
+}
+
+.card__btn-remove {
+  background: transparent url(../../images/btn-close.svg) no-repeat;
+}
+
+.card__btn-like {
   background: transparent url(../../images/like.svg) no-repeat;
 }
 
@@ -68,6 +76,8 @@
   padding: 0;
   margin: 6px 6px 6px 0;
 }
+
+.hover
 
 /* Planshet */
 @media screen and (max-width: 959px) {
