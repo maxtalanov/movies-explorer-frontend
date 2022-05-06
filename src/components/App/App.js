@@ -149,8 +149,8 @@ function App() {
 
     return MainAPI
       .saveMovie(movie)
-      .then((res) => {
-        console.log(res);
+      .then((movieSave) => {
+        setMyMovies([movieSave, ...myMovies]);
       })
       .catch((err) => {
         console.log(err);
