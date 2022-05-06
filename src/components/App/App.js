@@ -31,7 +31,7 @@ function App() {
     onGetMovies();
     onGetMyMovie();
 
-  }, [myMovies, movies])
+  }, [])
 
   React.useEffect(() => {
     tokenCheck();
