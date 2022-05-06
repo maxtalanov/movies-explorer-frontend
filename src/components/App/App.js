@@ -1,4 +1,3 @@
-//Корневой компонент приложения, его создаёт CRA.
 import React, {useEffect, useState} from "react";
 import './App.css';
 
@@ -15,7 +14,6 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import NotFound from "../NotFound/NotFound";
 
 import * as MainAPI from "../../utils/API/MainAPIjs";
-import * as MoviesAPI from "../../utils/API/MoviesAPI";
 import {getMovies} from "../../utils/API/MoviesAPI";
 
 // ф-ый компонент
