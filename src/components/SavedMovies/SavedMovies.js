@@ -6,7 +6,6 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import MoviesCard from "../MoviesCard/MoviesCard";
-import * as MainAPI from "../../utils/API/MainAPIjs";
 
 function SavedMovies ({ myMovies, onRemoveMovie }) {
 
