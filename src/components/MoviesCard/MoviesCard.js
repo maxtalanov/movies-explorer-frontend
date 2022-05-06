@@ -20,7 +20,7 @@ function MoviesCard({movie, type, onSaved, onSave, onRemove}) {
     setIsSave(!isSave);
   }
 
-  function likeClick() {
+  function movieBtnClick() {
      if (!isSave) {
        handleSave()
      } else {
@@ -28,15 +28,19 @@ function MoviesCard({movie, type, onSaved, onSave, onRemove}) {
      }
   }
 
+  function myMovieBtnClick() {
+    handleRemove()
+  }
+
   function movieBtn() {
     if (type === 'myMovie') {
-      return <button className={`card__btn-save card__btn-remove hover-opacity`} onClick={likeClick}/>
+      return <button className={`card__btn-save card__btn-remove hover-opacity`} onClick={movieBtnClick}/>
     }
   }
 
   function myMovieBtn() {
     if (type === 'movie') {
-      return <button className={`card__btn-save card__btn-like ${active} hover-opacity`} onClick={likeClick}/>
+      return <button className={`card__btn-save card__btn-like ${active} hover-opacity`} onClick={myMovieBtnClick}/>
     }
   }
 
