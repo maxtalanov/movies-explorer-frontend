@@ -186,6 +186,7 @@ function App() {
           <ProtectedRoute
             component={SavedMovies}
             path={"/saved-movies"}
+            onRemoveMovie={onRemoveMovie}
             myMovies={myMovies}
             isLoggedIn={loggedIn}
           />
