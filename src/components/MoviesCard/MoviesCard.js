@@ -2,7 +2,7 @@ import { useState } from "react";
 import { timeFormat } from '../../utils/globalMethod/time';
 import './MoviesCard.css';
 
-function MoviesCard({movie, onSaved, onSave, onRemove}) {
+function MoviesCard({movie, type, onSaved, onSave, onRemove}) {
 
   const [isSave, setIsSave] = useState(onSaved)
   const { nameRU, duration, image } = movie;
@@ -28,6 +28,18 @@ function MoviesCard({movie, onSaved, onSave, onRemove}) {
      }
   }
 
+  function movieBtn() {
+    if (type === 'myMovie') {
+      return <button className={`card__btn-save card__btn-remove hover-opacity`} onClick={likeClick}/>
+    }
+  }
+
+  function myMovieBtn() {
+    if (type === 'movie') {
+      return <button className={`card__btn-save card__btn-like ${active} hover-opacity`} onClick={likeClick}/>
+    }
+  }
+
   return(
     <section className={`card`}>
       <div className="card__container-info">
@@ -35,7 +47,8 @@ function MoviesCard({movie, onSaved, onSave, onRemove}) {
           <h3 className="card__title">{nameRU}</h3>
           <p className="card__duration">{`${movieDuration.hours}ч ${movieDuration.minute}м`}</p>
         </div>
-        <button className={`card__btn-like ${active} hover-opacity`} onClick={likeClick}/>
+        {movieBtn()}
+        {myMovieBtn()}
       </div>
       <img src={image} alt={`Постер к фильму ${nameRU}`} className="card__img"/>
     </section>
