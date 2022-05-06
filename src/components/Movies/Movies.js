@@ -6,7 +6,6 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import {BASE_URL_MOVIES} from "../../utils/constant";
-import * as MainAPI from "../../utils/API/MainAPIjs";
 
 function Movies({movies, myMovies, onSaveMovie, onRemoveMovie}) {
   function onSaved(id) {
