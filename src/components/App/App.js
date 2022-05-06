@@ -158,11 +158,12 @@ function App() {
 
   }
 
-  function onRemoveMovie(cardMovie) {
+  function onRemoveMovie(movie) {
+    const id = myMovies.find(myMovie => myMovie.movieId === movie.movieId)
     return MainAPI
-      .removeMovie(cardMovie)
-      .then((res) => {
-        console.log(res);
+      .removeMovie(id._id)
+      .then((removeMovie) => {
+        setMyMovies(myMovies.filter(myMovie => myMovie._id === removeMovie._id))
       })
       .catch((err) => {
         console.log(err);
