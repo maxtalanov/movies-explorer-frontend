@@ -21,7 +21,7 @@
 }
 
 .search-form__input {
-  width: 100%;
+  width: calc(100% - 26px);
 
   background: #F9F9F9;
   border: none;
@@ -29,13 +29,12 @@
 
   min-height: 45px;
 
-  padding: 0;
+  padding: 0 0 0 26px;
   margin: 0 0 42px 0;
 }
 
 .search-form__input::placeholder {
   margin: 0;
-  padding: 14px 0 14px 26px;
 
   font-family: Inter, sans-serif;
   font-style: normal;
