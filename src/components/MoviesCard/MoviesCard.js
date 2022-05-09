@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { timeFormat } from '../../utils/globalMethod/time';
 import './MoviesCard.css';
 
@@ -17,7 +16,7 @@ function MoviesCard({movie, type, onSaved, onSave, onRemove}) {
   }
 
   function movieBtnClick() {
-     if (!isSave) {
+     if (!onSaved) {
        handleSave()
      } else {
        handleRemove();
