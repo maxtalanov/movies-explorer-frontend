@@ -4,7 +4,6 @@ import './MoviesCard.css';
 
 function MoviesCard({movie, type, onSaved, onSave, onRemove}) {
 
-  const [isSave, setIsSave] = useState(onSaved)
   const { nameRU, duration, image, trailer } = movie;
 
   const active = isSave ? 'card__btn-like_active' : '';
