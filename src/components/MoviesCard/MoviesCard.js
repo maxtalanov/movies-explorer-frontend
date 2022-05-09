@@ -5,8 +5,7 @@ import './MoviesCard.css';
 function MoviesCard({movie, type, onSaved, onSave, onRemove}) {
 
   const { nameRU, duration, image, trailer } = movie;
-
-  const active = isSave ? 'card__btn-like_active' : '';
+  const active = onSaved ? 'card__btn-like_active' : '';
   const movieDuration = timeFormat(duration);
 
   function handleSave() {
