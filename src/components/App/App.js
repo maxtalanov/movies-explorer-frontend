@@ -160,8 +160,8 @@ function App() {
     const id = myMovies.find(myMovie => myMovie.movieId === movie.movieId)
     return MainAPI
       .removeMovie(id._id)
-      .then((removeMovie) => {
-        setMyMovies(myMovies.filter(myMovie => myMovie._id === removeMovie._id))
+      .then(() => {
+        setMyMovies(state => state.filter(el => el._id !== id._id));
       })
       .catch((err) => {
         console.log(err);
