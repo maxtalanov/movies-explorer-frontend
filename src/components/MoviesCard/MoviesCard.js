@@ -11,12 +11,10 @@ function MoviesCard({movie, type, onSaved, onSave, onRemove}) {
 
   function handleSave() {
     onSave(movie);
-    setIsSave(!isSave);
   }
 
   function handleRemove() {
     onRemove(movie);
-    setIsSave(!isSave);
   }
 
   function movieBtnClick() {
