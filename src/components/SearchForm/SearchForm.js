@@ -1,9 +1,30 @@
-import React from "react";
+import React,  {useState}from "react";
 import "./SearchForm.css";
 import Checkbox from "../Checkbox/Checkbox";
 
 
-function SearchForm() {
+function SearchForm({ setMovies, searchMovie }) {
+  const [searchForm, setSearchForm] = useState({
+    search: '',
+    shortFilm: false,
+  })
+
+  const handleChange = (e) => {
+    const target = e.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    setSearchForm({
+      ...searchForm,
+      [name]: value,
+    })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    searchMovie(searchForm.search, setMovies);
+  }
 
   return (
     <section className="search-form">
