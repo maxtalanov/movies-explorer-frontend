@@ -1,9 +1,5 @@
 /* Laptop PC */
 .search-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
   margin: 60px auto 0 auto;
   padding: 0 70px;
 
@@ -11,8 +7,6 @@
 }
 
 .search-form__container {
-  position: relative;
-  display: inline-block;
   width: 100%;
   height: 46px;
 
@@ -20,8 +14,24 @@
   padding: 0;
 }
 
+.search-form__form {
+  width: 100%;
+}
+
+.search-form__fieldset {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
+
+  padding: 0;
+  margin: 0;
+}
+
 .search-form__input {
-  width: calc(100% - 26px);
+  display: block;
+  width: 100%;
 
   background: #F9F9F9;
   border: none;
@@ -51,16 +61,19 @@
   cursor: pointer;
 }
 
-.search-for__span {
+.search-form__submit-btn {
   position: absolute;
   top: 6px;
   bottom: 6px;
   right: 6px;
-  content: "";
+
   width: 80px;
   height: 34px;
-  background: #3456F3 url(../../images/search_icon.svg) no-repeat center center;
+  border: none;
   border-radius: 48px;
+  background: #3456F3 url(../../images/search_icon.svg) no-repeat center center;
+  background-size: contain;
+  cursor: pointer;
 }
 
 .search-form__line {
