@@ -54,6 +54,12 @@ function App() {
       })
   }
 
+  function searchMovie(value, setArr) {
+    setArr( state => {
+      return state.filter(el => el.nameRU.toLowerCase().includes(value.toLowerCase()))
+    })
+  }
+
   function onRegister(registerData) {
 
     return MainAPI
