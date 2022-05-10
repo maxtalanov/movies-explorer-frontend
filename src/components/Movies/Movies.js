@@ -7,7 +7,7 @@ import Footer from "../Footer/Footer";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import {BASE_URL_MOVIES} from "../../utils/constant";
 
-function Movies({movies, myMovies, onSaveMovie, onRemoveMovie}) {
+function Movies({movies, myMovies, onSaveMovie, onRemoveMovie, searchMovie}) {
   function onSaved(id) {
     return  myMovies.some(myMovie => myMovie.movieId === id);
   }
@@ -17,10 +17,10 @@ function Movies({movies, myMovies, onSaveMovie, onRemoveMovie}) {
       <Header theme="white">
         <NavMenuHeader/>
       </Header>
-      <SearchForm/>
+      <SearchForm  setMovies={movies[1]} searchMovie={searchMovie}/>
       <MoviesCardList>
         {
-          movies && movies.map(movie => <MoviesCard
+          movies[0] && movies[0].map(movie => <MoviesCard
               key={movie.id}
               movie={{
                 country: movie.country,

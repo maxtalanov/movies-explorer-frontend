@@ -183,8 +183,9 @@ function App() {
             path={"/movies"}
             onSaveMovie={onSaveMovie}
             onRemoveMovie={onRemoveMovie}
-            movies={movies}
+            movies={[movies, setMovies]}
             myMovies={myMovies}
+            searchMovie={searchMovie}
             isLoggedIn={loggedIn}
           />
 
@@ -192,7 +193,8 @@ function App() {
             component={SavedMovies}
             path={"/saved-movies"}
             onRemoveMovie={onRemoveMovie}
-            myMovies={myMovies}
+            myMovies={[myMovies, setMyMovies]}
+            searchMovie={searchMovie}
             isLoggedIn={loggedIn}
           />
 

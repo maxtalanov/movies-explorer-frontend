@@ -7,16 +7,17 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-function SavedMovies ({ myMovies, onRemoveMovie }) {
+function SavedMovies ({ myMovies, onRemoveMovie, searchMovie }) {
+  console.log(myMovies)
 
   return(
     <>
       <Header theme="white">
         <NavMenuHeader />
       </Header>
-      <SearchForm />
+      <SearchForm setMovies={myMovies[1]} searchMovie={searchMovie} />
       <MoviesCardList>
-        {myMovies && myMovies.map(movie => <MoviesCard
+        {myMovies[0] && myMovies[0].map(movie => <MoviesCard
           key={movie._id}
           movie={{
             country: movie.country,
