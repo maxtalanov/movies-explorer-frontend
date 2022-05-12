@@ -9,9 +9,6 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  /*justify-content: space-between;*/
-  /*flex-wrap: wrap;*/
-  /*gap: 10px 0;*/
 }
 
 .card-list__btn-add {
