@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 import './App.css';
 
 import { Switch, Route, useHistory } from "react-router-dom";
@@ -25,11 +25,11 @@ function App() {
   const [myMovies, setMyMovies] = useState([]);
   const [movies, setMovies] = useState([]);
 
-  useEffect(() => {
-    onGetMovies();
-    onGetMyMovie();
-
-  }, [])
+  // useEffect(() => {
+  //   onGetMovies();
+  //   onGetMyMovie();
+  //
+  // }, [])
 
   React.useEffect(() => {
     tokenCheck();
@@ -37,6 +37,8 @@ function App() {
 
   React.useEffect(() => {
     if (loggedIn) {
+      onGetMovies();
+      onGetMyMovie();
       history.push('/movies');
     } else {
       history.push('/');
@@ -47,16 +49,28 @@ function App() {
 
     return getMovies()
       .then((movies) => {
-        setMovies(movies)
+       const m = movies.map(movie => {
+          const isHortFilm = (duration) => {
+            if (duration <= 40) {
+              return true;
+            } else{
+              return false
+            }
+          }
+          return {...movie, isHortFilm: isHortFilm(movie.duration)}
+        })
+        setMovies(m)
       })
       .catch((err) => {
         console.log(err)
       })
   }
 
-  function searchMovie(value, setArr) {
-    setArr( state => {
-      return state.filter(el => el.nameRU.toLowerCase().includes(value.toLowerCase()))
+  function searchMovie(search, setArr) {
+    setArr(state => {
+      return state
+        .filter(el => el.nameRU.toLowerCase().includes(search.search.toLowerCase()))
+        .filter(el => el.isHortFilm === search.shortFilm);
     })
   }
 

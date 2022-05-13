@@ -3,7 +3,7 @@ import "./SearchForm.css";
 import Checkbox from "../Checkbox/Checkbox";
 
 
-function SearchForm({ setMovies, searchMovie }) {
+function SearchForm({ setMovies, searchMovie, action }) {
   const [searchForm, setSearchForm] = useState({
     search: '',
     shortFilm: false,
@@ -23,7 +23,7 @@ function SearchForm({ setMovies, searchMovie }) {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    searchMovie(searchForm.search, setMovies);
+    searchMovie(searchForm, setMovies, action);
   }
 
   return (

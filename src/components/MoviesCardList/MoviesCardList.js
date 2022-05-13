@@ -1,14 +1,7 @@
 import React from "react";
 import './MoviesCardList.css';
 
-import MoviesCard from "../MoviesCard/MoviesCard";
-
-function MoviesCardList({ children }) {
-
-  const handleClickMore = () => {
-    console.log('Добавить еще')
-  }
-
+function MoviesCardList({ children, handleClickMore }) {
   return(
     <section className="card-list">
       <div className="card-list__container">
