@@ -1,24 +1,58 @@
-import React from "react";
+import { timeFormat } from '../../utils/globalMethod/time';
 import './MoviesCard.css';
 
-function MoviesCard({ movieData }) {
-  const [modLike, setModLike] = React.useState(''); //Удалить после написания ф-ла
-  //Удалить после написания ф-ла
-  function likeClick() {
-    setModLike('card__btn-like_active');
+function MoviesCard({movie, type, onSaved, onSave, onRemove}) {
+
+  const { nameRU, duration, image, trailer } = movie;
+  const active = onSaved ? 'card__btn-like_active' : '';
+  const movieDuration = timeFormat(duration);
+
+  function handleSave() {
+    onSave(movie);
   }
-  console.log(modLike);
+
+  function handleRemove() {
+    onRemove(movie);
+  }
+
+  function movieBtnClick() {
+     if (!onSaved) {
+       handleSave()
+     } else {
+       handleRemove();
+     }
+  }
+
+  function myMovieBtnClick() {
+    handleRemove()
+  }
+
+  function movieBtn() {
+    if (type === 'movie') {
+      return <button className={`card__btn-save card__btn-like ${active} hover-opacity`} onClick={movieBtnClick}/>
+    }
+  }
+
+  function myMovieBtn() {
+    if (type === 'myMovie') {
+      return <button className={`card__btn-save card__btn-remove hover-opacity`} onClick={myMovieBtnClick}/>
+    }
+  }
 
   return(
     <section className={`card`}>
       <div className="card__container-info">
         <div className="card__movie-item">
-          <h3 className="card__title">{movieData.nameRU}</h3>
-          <p className="card__duration">{movieData.duration}</p>
+          <h3 className="card__title">{nameRU}</h3>
+          <p className="card__duration">{`${movieDuration.hours}ч ${movieDuration.minute}м`}</p>
         </div>
-        <button className={`card__btn-like ${modLike} hover-opacity`} onClick={likeClick}/>
+        {movieBtn()}
+        {myMovieBtn()}
       </div>
-      <img src={movieData.image} alt={`Постер к фильму ${movieData.nameRU}`} className="card__img"/>
+      <a className={`card__link-trailer`} href={trailer} target="_blank" rel="noreferrer">
+        <img src={image} alt={`Постер к фильму ${nameRU}`} className="card__img"/>
+      </a>
+
     </section>
   );
 }

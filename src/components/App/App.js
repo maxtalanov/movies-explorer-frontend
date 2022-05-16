@@ -1,8 +1,7 @@
-//Корневой компонент приложения, его создаёт CRA.
-import React from "react";
+import React, { useState} from "react";
 import './App.css';
 
-import { Redirect, Switch, Route, useHistory } from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
@@ -15,6 +14,7 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import NotFound from "../NotFound/NotFound";
 
 import * as MainAPI from "../../utils/API/MainAPIjs";
+import {getMovies} from "../../utils/API/MoviesAPI";
 
 // ф-ый компонент
 function App() {
@@ -22,6 +22,14 @@ function App() {
   const history =  useHistory();
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
+  const [myMovies, setMyMovies] = useState([]);
+  const [movies, setMovies] = useState([]);
+
+  // useEffect(() => {
+  //   onGetMovies();
+  //   onGetMyMovie();
+  //
+  // }, [])
 
   React.useEffect(() => {
     tokenCheck();
@@ -29,11 +37,42 @@ function App() {
 
   React.useEffect(() => {
     if (loggedIn) {
+      onGetMovies();
+      onGetMyMovie();
       history.push('/movies');
     } else {
       history.push('/');
     }
   }, [history, loggedIn]);
+
+  function onGetMovies() {
+
+    return getMovies()
+      .then((movies) => {
+       const m = movies.map(movie => {
+          const isHortFilm = (duration) => {
+            if (duration <= 40) {
+              return true;
+            } else{
+              return false
+            }
+          }
+          return {...movie, isHortFilm: isHortFilm(movie.duration)}
+        })
+        setMovies(m)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  function searchMovie(search, setArr) {
+    setArr(state => {
+      return state
+        .filter(el => el.nameRU.toLowerCase().includes(search.search.toLowerCase()))
+        .filter(el => el.isHortFilm === search.shortFilm);
+    })
+  }
 
   function onRegister(registerData) {
 
@@ -112,6 +151,42 @@ function App() {
       });
   }
 
+  function onGetMyMovie() {
+
+    return MainAPI
+      .getMyMovies()
+      .then((movies) =>{
+        setMyMovies(movies)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  function onSaveMovie(movie) {
+
+    return MainAPI
+      .saveMovie(movie)
+      .then((movieSave) => {
+        setMyMovies([movieSave, ...myMovies]);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+
+  }
+
+  function onRemoveMovie(movie) {
+    const id = myMovies.find(myMovie => myMovie.movieId === movie.movieId)
+    return MainAPI
+      .removeMovie(id._id)
+      .then(() => {
+        setMyMovies(state => state.filter(el => el._id !== id._id));
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -120,12 +195,20 @@ function App() {
           <ProtectedRoute
             component={Movies}
             path={"/movies"}
+            onSaveMovie={onSaveMovie}
+            onRemoveMovie={onRemoveMovie}
+            movies={[movies, setMovies]}
+            myMovies={myMovies}
+            searchMovie={searchMovie}
             isLoggedIn={loggedIn}
           />
 
           <ProtectedRoute
             component={SavedMovies}
             path={"/saved-movies"}
+            onRemoveMovie={onRemoveMovie}
+            myMovies={[myMovies, setMyMovies]}
+            searchMovie={searchMovie}
             isLoggedIn={loggedIn}
           />
 
@@ -139,7 +222,7 @@ function App() {
           />
 
           <Route exact path='/'>
-            <Main/>
+            <Main isLoggedIn={loggedIn}/>
           </Route>
 
           <Route path='/signin'>

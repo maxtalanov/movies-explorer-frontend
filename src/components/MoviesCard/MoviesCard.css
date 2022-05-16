@@ -45,7 +45,7 @@
   color: #A0A0A0;
 }
 
-.card__btn-like {
+.card__btn-save {
   padding: 0;
   margin: 0;
   border: 0;
@@ -53,6 +53,13 @@
 
   width: 14px;
   height: 12px;
+}
+
+.card__btn-remove {
+  background: transparent url(../../images/btn-close.svg) no-repeat;
+}
+
+.card__btn-like {
   background: transparent url(../../images/like.svg) no-repeat;
 }
 
@@ -69,6 +76,8 @@
   margin: 6px 6px 6px 0;
 }
 
+.hover
+
 /* Planshet */
 @media screen and (max-width: 959px) {
   .card:last-of-type {
@@ -79,8 +88,6 @@
 /* Mobile */
 @media screen and (max-width: 767px) {
   .card {
-    width: 48%;
-
     margin-top: 20px;
     flex-direction:column-reverse;
   }
