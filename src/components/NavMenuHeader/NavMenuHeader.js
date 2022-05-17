@@ -1,8 +1,8 @@
 import React, {useState} from "react";
-import './NavMenuHeader.css';
 import { Link } from "react-router-dom";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import Account from "../Account/Account";
+import './NavMenuHeader.css';
 
 function NavMenuHeader({theme}) {
   const [menuActive, setMenuActive] = useState(false);
