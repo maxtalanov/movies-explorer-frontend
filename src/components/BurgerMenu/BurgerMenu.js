@@ -3,7 +3,7 @@ import './BurgerMenu.css'
 import { Link } from "react-router-dom";
 import Account from "../Account/Account";
 
-function BurgerMenu({items, active, setActive}) {
+function BurgerMenu({items, theme, active, setActive}) {
 
   const renderItemsList = items.map((item) => {
     return (
@@ -21,7 +21,7 @@ function BurgerMenu({items, active, setActive}) {
           {renderItemsList}
         </ul>
         <div className="menu__account-container">
-          <Account/>
+          <Account theme={`dark`}/>
         </div>
       </menu>
     </section>

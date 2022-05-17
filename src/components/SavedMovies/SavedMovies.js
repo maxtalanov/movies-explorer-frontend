@@ -36,7 +36,7 @@ function SavedMovies ({ myMovies, onRemoveMovie, searchMovie }) {
       {renderCard()}
       <p>width: {width}</p>
       <Header theme="white">
-        <NavMenuHeader />
+        <NavMenuHeader theme={'dark'}/>
       </Header>
       <SearchForm setMovies={myMovies[1]} searchMovie={searchMovie} action='myMovies'/>
       <MoviesCardList>

@@ -3,17 +3,35 @@
   padding: 0;
 }
 
+.account__btn {}
+
+.account__btn_theme_light {
+  color: #ffffff;
+}
+
+.account__btn_theme_dark {
+  color: #000000;
+}
+
 .account__btn-icon {
   width: 26px;
   height: 30px;
-  background-image: url("../../images/account__icon.svg");
   background-repeat: no-repeat;
-  /*background-position: right;*/
   padding-left : 32px;
   padding-top : 10px;
   padding-bottom : 10px;
   margin: 0 0 0 18px;
 }
+
+.account__btn-icon_theme_light {
+  background-position: center;
+  background-image: url("../../images/account__icon-light.svg");
+}
+
+.account__btn-icon_theme_dark {
+  background-image: url("../../images/account__icon-dark.svg");
+}
+
 /* Planshet */
 @media screen and (max-width: 959px) {
 

@@ -66,7 +66,7 @@ console.log(renderLength)
     <>
       <p>width: {width}</p>
       <Header theme="white">
-        <NavMenuHeader/>
+        <NavMenuHeader theme={'dark'}/>
       </Header>
       <SearchForm  setMovies={movies[1]} searchMovie={searchMovie} action='movies'/>
       <MoviesCardList handleClickMore={handleClickMore}>

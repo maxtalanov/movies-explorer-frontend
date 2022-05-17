@@ -18,7 +18,7 @@ function Main({isLoggedIn}) {
   return (
     <section className="main">
       <Header theme="dark-blue">
-        {isLoggedIn? <NavMenuHeader /> : <NavButton />}
+        {isLoggedIn? <NavMenuHeader theme={'light'}/> : <NavButton />}
       </Header>
 
       <section className="main">
