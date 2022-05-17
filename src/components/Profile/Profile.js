@@ -1,11 +1,8 @@
-//Компоннт "Редактирования пользователя"
 import React from "react";
-import './Profile.css';
-
 import { CurrentUserContext } from  "../../contexts/CurrentUserContext";
-
 import Header from "../Header/Header";
 import NavMenuHeader from "../NavMenuHeader/NavMenuHeader";
+import './Profile.css';
 
 function Profile({ onLogout, onUpdateUser}) {
 

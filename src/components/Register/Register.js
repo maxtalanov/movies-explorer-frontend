@@ -1,14 +1,10 @@
-//Компоннт "Регистрации пользователя"
 import React from "react";
-import './Register.css';
-
 import WithForm from "../WithForm/WithForm";
 import InputName from "../Input/InputName";
 import InputPassword from "../Input/InputPassword";
 import InputEmail from "../Input/InputEmail";
+import './Register.css';
 
-
-// ф-ый компонент
 function Register({ onRegister}) {
 
   const [registerData, setRegisterData] = React.useState({

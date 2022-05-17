@@ -1,6 +1,6 @@
-import React from "react"; //Инициализация библиотеки (не обязательное действие)
-import './Navigation.css';
+import React from "react";
 import { socialLinks } from "../../utils/constant";
+import './Navigation.css';
 
 function Navigation({ mod }) {
 

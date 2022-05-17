@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import './SavedMovies.css';
 import NavMenuHeader from "../NavMenuHeader/NavMenuHeader";
 import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
@@ -7,6 +6,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import useWindowDimensions from "../../utils/globalMethod/windowDimensions";
+import './SavedMovies.css';
 
 function SavedMovies ({ myMovies, onRemoveMovie, searchMovie }) {
   const [renderLength, setRenderLength] = useState(null)

@@ -1,6 +1,7 @@
 import React from "react";
-import "./Portfolio.css";
 import { porfolioConfig } from "../../utils/constant";
+import "./Portfolio.css";
+
 function Portfolio() {
 
   const renderListPortfolio = porfolioConfig.map((promo) => {

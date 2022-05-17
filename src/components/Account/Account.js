@@ -1,6 +1,6 @@
 import React from "react";
-import './Account.css';
 import {useHistory} from "react-router-dom";
+import './Account.css';
 
 function Account({theme}) {
   const history = useHistory();

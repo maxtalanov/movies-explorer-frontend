@@ -1,7 +1,6 @@
 import React,  {useState}from "react";
-import "./SearchForm.css";
 import Checkbox from "../Checkbox/Checkbox";
-
+import "./SearchForm.css";
 
 function SearchForm({ setMovies, searchMovie, action }) {
   const [searchForm, setSearchForm] = useState({

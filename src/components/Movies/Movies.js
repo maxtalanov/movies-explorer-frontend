@@ -1,4 +1,4 @@
-import './Movies.css';
+import React, {useEffect, useState} from "react";
 import Header from "../Header/Header";
 import NavMenuHeader from "../NavMenuHeader/NavMenuHeader";
 import SearchForm from "../SearchForm/SearchForm";
@@ -7,7 +7,7 @@ import Footer from "../Footer/Footer";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import {BASE_URL_MOVIES} from "../../utils/constant";
 import useWindowDimensions from "../../utils/globalMethod/windowDimensions";
-import React, {useEffect, useState} from "react";
+import './Movies.css';
 
 function Movies({movies, myMovies, onSaveMovie, onRemoveMovie, searchMovie}) {
   const [renderLength, setRenderLength] = useState({
