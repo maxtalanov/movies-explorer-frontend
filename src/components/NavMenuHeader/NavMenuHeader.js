@@ -1,5 +1,5 @@
-import React, {useState} from "react"; //Инициализация библиотеки (не обязательное действие)
-import './NavMenuHeader.css'; //Инициализация стилей
+import React, {useState} from "react";
+import './NavMenuHeader.css';
 import { Link } from "react-router-dom";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import Account from "../Account/Account";
