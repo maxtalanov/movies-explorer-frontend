@@ -3,7 +3,7 @@ import './BurgerMenu.css'
 import { Link } from "react-router-dom";
 import Account from "../Account/Account";
 
-function BurgerMenu({items, theme, active, setActive}) {
+function BurgerMenu({items, active, setActive}) {
 
   const renderItemsList = items.map((item) => {
     return (
