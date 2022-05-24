@@ -2,7 +2,7 @@ import React from "react";
 import WithForm from "../WithForm/WithForm";
 import InputEmail from "../Input/InputEmail";
 import InputPassword from "../Input/InputPassword";
-import {useForm, useFormWithValidation} from "../../utils/globalMethod/useForm";
+import { useFormWithValidation } from "../../utils/globalMethod/useForm";
 import './Login.css';
 
 function Login({ onLogin }) {
