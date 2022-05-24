@@ -2,13 +2,14 @@ import React from "react";
 import "./Input.css";
 
 // ф-ый компонент
-function InputName({ label, placeholder, id, name, value, onChange, errMassage, err,}) {
+function InputName({ label, placeholder, id, name, value, onChange, errMassage}) {
+  const errorActive = (errMassage  === '') ? null : 'form__input-err';
 
   return(
     <>
       <label className={`form__label`}>{label}</label>
       <input
-        className={`form__input form__input-err`}
+        className={`form__input ${errorActive}`}
         placeholder={placeholder}
         type="text"
 
@@ -23,7 +24,7 @@ function InputName({ label, placeholder, id, name, value, onChange, errMassage, 
         autoComplete="off"
         required
       />
-      <span className={`form__span ${err}`}>{errMassage}</span>
+      {errMassage ? <span className={`form__span form__span-err`}>{errMassage}</span> : null}
     </>
 
   );
