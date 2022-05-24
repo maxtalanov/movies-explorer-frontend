@@ -10,7 +10,6 @@ function Login({ onLogin }) {
     email: '',
     password: '',
   });
-  console.log(loginData)
 
   const handleSubmit = (e) => {
     e.preventDefault();
