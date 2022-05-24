@@ -2,16 +2,17 @@ import React from "react";
 import "./Input.css";
 
 // ф-ый компонент
-function InputEmail ({ label, placeholder, id, name, value, onChange, errMassage, err,}) {
+function InputEmail ({ label, placeholder, id, name, value, onChange, errMassage}) {
+  const errorActive = (errMassage  === '') ? null : 'form__input-err';
 
+  console.log()
   return(
     <>
       <label className={`form__label`}>{label}</label>
       <input
-        className={`form__input form__input-err`}
+        className={`form__input ${errorActive}`}
         placeholder={placeholder}
         type="email"
-
         id={id}
         name={name}
         value={value}
@@ -21,7 +22,7 @@ function InputEmail ({ label, placeholder, id, name, value, onChange, errMassage
         autoComplete="off"
         required
       />
-      <span className={`form__span ${err}`}>{errMassage}</span>
+      {errMassage ? <span className={`form__span form__span-err`}>{errMassage}</span> : null}
     </>
 
   );

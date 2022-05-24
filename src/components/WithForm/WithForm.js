@@ -1,10 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import Logotype from "../Logotype/Logotype";
 import "./WithForm.css"
 
-function WithForm({ children, titleForm, titleBtnSubmit, subTitle, btnLink, modMargin, link, handleSubmit }) {
-
+function WithForm({ children, titleForm, titleBtnSubmit, subTitle, btnLink, modMargin, link, handleSubmit, isValid }) {
   return(
     <section className="with-form">
       <form className={`form`} onSubmit={handleSubmit}>
@@ -14,6 +13,7 @@ function WithForm({ children, titleForm, titleBtnSubmit, subTitle, btnLink, modM
         <button
           className={`form__btn-submit ${modMargin} hover-opacity`}
           type="submit"
+          disabled={isValid}
         >
           {titleBtnSubmit}
         </button>

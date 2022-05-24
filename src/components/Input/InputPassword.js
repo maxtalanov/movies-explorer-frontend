@@ -2,13 +2,14 @@ import React from "react";
 import "./Input.css";
 
 // ф-ый компонент
-function InputPassword ({ label, placeholder, id, name, value, onChange, errMassage, err,}) {
+function InputPassword ({ label, placeholder, id, name, value, onChange, errMassage}) {
+  const errorActive = (errMassage === '') ? null : 'form__input-err';
 
   return(
     <>
       <label className={`form__label`}>{label}</label>
       <input
-        className={`form__input form__input-err`}
+        className={`form__input ${errorActive}`}
         placeholder={placeholder}
         type="password"
 
@@ -19,10 +20,11 @@ function InputPassword ({ label, placeholder, id, name, value, onChange, errMass
 
         pattern="[A-Za-z0-9]{8,30}"
         minLength={8}
+        maxLength={30}
         autoComplete="off"
         required
       />
-      <span className={`form__span ${err}`}>{errMassage}</span>
+      {errMassage ? <span className={`form__span form__span-err`}>{errMassage}</span> : null}
     </>
 
   );

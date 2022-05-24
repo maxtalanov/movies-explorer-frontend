@@ -2,28 +2,21 @@ import React from "react";
 import WithForm from "../WithForm/WithForm";
 import InputEmail from "../Input/InputEmail";
 import InputPassword from "../Input/InputPassword";
+import {useForm, useFormWithValidation} from "../../utils/globalMethod/useForm";
 import './Login.css';
 
 function Login({ onLogin }) {
-  const [loginData, setLoginData] = React.useState({
+  const loginData = useFormWithValidation({
     email: '',
     password: '',
   });
-console.log(loginData);
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setLoginData({
-      ...loginData,
-      [name]: value,
-    });
-  };
+  console.log(loginData)
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log('Логин', loginData)
-    onLogin(loginData);
+    onLogin(loginData.values);
+    loginData.resetForm();
   }
 
   return (
@@ -36,28 +29,27 @@ console.log(loginData);
         modMargin="form__btn-submit_type_login"
         link="/signup"
         handleSubmit={handleSubmit}
+        isVelid={loginData.isValid}
       >
         <fieldset className={`form__fieldset`}>
           <InputEmail
             label="E-mail"
-
             placeholder="Укажите Ваш email"
             id="login-email"
             name="email"
-            value={loginData.email}
-
-            onChange={handleChange}
+            value={loginData.values.email}
+            onChange={loginData.handleChange}
+            errMassage={loginData.errors.email}
           />
 
           <InputPassword
             label="Пароль"
             placeholder="Укажите Ваш пароль"
-
             id="login-password"
             name="password"
-            value={loginData.password}
-
-            onChange={handleChange}
+            value={loginData.values.password}
+            onChange={loginData.handleChange}
+            errMassage={loginData.errors.password}
           />
         </fieldset>
       </WithForm>
