@@ -28,7 +28,7 @@ function Login({ onLogin }) {
         modMargin="form__btn-submit_type_login"
         link="/signup"
         handleSubmit={handleSubmit}
-        isVelid={loginData.isValid}
+        isValid={loginData.isValid}
       >
         <fieldset className={`form__fieldset`}>
           <InputEmail
