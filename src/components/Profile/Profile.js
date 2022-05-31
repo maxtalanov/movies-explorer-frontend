@@ -7,14 +7,14 @@ import {useFormWithValidation} from "../../utils/globalMethod/useForm";
 
 function Profile({ onLogout, onUpdateUser}) {
   const currentUser = React.useContext(CurrentUserContext);
-  const userData = useFormWithValidation({
-    email: '',
-    userName: '',
-  })
-  // const [userData, setUserData] = React.useState({
+  // const userData = useFormWithValidation({
   //   email: '',
   //   userName: '',
   // })
+  const [userData, setUserData] = React.useState({
+    email: '',
+    userName: '',
+  })
 
   React.useEffect(() => {
     if (currentUser) {
