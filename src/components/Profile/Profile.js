@@ -3,14 +3,18 @@ import { CurrentUserContext } from  "../../contexts/CurrentUserContext";
 import Header from "../Header/Header";
 import NavMenuHeader from "../NavMenuHeader/NavMenuHeader";
 import './Profile.css';
+import {useFormWithValidation} from "../../utils/globalMethod/useForm";
 
 function Profile({ onLogout, onUpdateUser}) {
-
   const currentUser = React.useContext(CurrentUserContext);
-  const [userData, setUserData] = React.useState({
+  const userData = useFormWithValidation({
     email: '',
     userName: '',
   })
+  // const [userData, setUserData] = React.useState({
+  //   email: '',
+  //   userName: '',
+  // })
 
   React.useEffect(() => {
     if (currentUser) {
@@ -52,12 +56,10 @@ function Profile({ onLogout, onUpdateUser}) {
                 className="profile__form-input"
                 placeholder="Ваше имя"
                 type="text"
-
                 id="userName"
                 name="userName"
                 value={userData.userName}
                 onChange={handleChange}
-
                 pattern="[А-Яа-яЁё]{2,30}"
                 minLength={2}
                 maxLength={30}
@@ -72,12 +74,10 @@ function Profile({ onLogout, onUpdateUser}) {
                 className="profile__form-input"
                 placeholder="Ваш e-mail"
                 type="email"
-
                 id="email"
                 name="email"
                 value={userData.email}
                 onChange={handleChange}
-
                 pattern="([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})"
                 autoComplete="off"
                 required

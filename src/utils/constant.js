@@ -74,7 +74,9 @@ export const socialLinks = {
 
 export const checkResponse = res => res.ok  ? res.json() : Promise.reject(`Ошибка: ${res.status} - ${res.statusText}.`);
 
-export const BASE_URL_MAIN = 'http://localhost:3000';
+// export const BASE_URL_MAIN = 'http://localhost:3000';
+export const BASE_URL_MAIN = 'https://api.maxtalanov.ru';
+
 
 export const BASE_HEADERS_MAIN = {
   'Accept': 'application/json',
