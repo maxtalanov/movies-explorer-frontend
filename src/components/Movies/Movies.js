@@ -63,7 +63,6 @@ function Movies({movies, myMovies, onSaveMovie, onRemoveMovie, searchMovie}) {
 
   return (
     <>
-      <p>width: {width}</p>
       <Header theme="white">
         <NavMenuHeader theme={'dark'}/>
       </Header>
