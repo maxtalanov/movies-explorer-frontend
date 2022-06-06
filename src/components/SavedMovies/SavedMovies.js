@@ -33,7 +33,6 @@ function SavedMovies ({ myMovies, onRemoveMovie, searchMovie }) {
 
   return(
     <>
-      <p>width: {width}</p>
       <Header theme="white">
         <NavMenuHeader theme={'dark'}/>
       </Header>
