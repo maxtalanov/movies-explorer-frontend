@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import NavMenuHeader from "../NavMenuHeader/NavMenuHeader";
 import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
@@ -9,26 +9,56 @@ import useWindowDimensions from "../../utils/globalMethod/windowDimensions";
 import './SavedMovies.css';
 
 function SavedMovies ({ myMovies, onRemoveMovie, searchMovie }) {
-  const [renderLength, setRenderLength] = useState(null)
-  const { width } = useWindowDimensions();
 
+  const [renderLength, setRenderLength] = useState({
+    valueAdd: null,
+    valueLength: 1,
+  });
+  const { width } = useWindowDimensions();
   const renderConfig = {
-    mobile: 769 <= width,
+    desktop: 769 <= width,
     tablet:  481 <= width && width >= 768,
-    desktop: 320 <= width && width >= 480,
+    mobile: 320 <= width && width >= 480,
   }
+
+  useEffect(() => {
+    renderCard()
+  }, [width]);
+
+  function onSaved(id) {
+    return  myMovies.some(myMovie => myMovie.movieId === id);
+  }
+
   const renderCard = () => {
-    if(renderConfig.desktop) {
-      setRenderLength(5)
+    if (renderConfig.desktop) {
+      return setRenderLength({
+        valueLength: 5,
+        valueAdd: 3,
+      })
     }
 
     if (renderConfig.tablet) {
-      setRenderLength(8)
+      return setRenderLength({
+        valueLength: 8,
+        valueAdd: 2,
+      })
     }
 
     if (renderConfig.mobile) {
-      setRenderLength(12)
+      return setRenderLength({
+        valueLength: 12,
+        valueAdd: 2,
+      })
     }
+  }
+
+  const handleClickMore = (e) => {
+    e.preventDefault();
+
+    setRenderLength({
+      valueLength: renderLength.valueLength + renderLength.valueAdd,
+      valueAdd: renderLength.valueAdd,
+    })
   }
 
   return(
@@ -37,28 +67,30 @@ function SavedMovies ({ myMovies, onRemoveMovie, searchMovie }) {
         <NavMenuHeader theme={'dark'}/>
       </Header>
       <SearchForm setMovies={myMovies[1]} searchMovie={searchMovie} action='myMovies'/>
-      <MoviesCardList>
-        {myMovies[0] && myMovies[0]
-          .slice(0, renderLength)
-          .map(movie => <MoviesCard
-          key={movie._id}
-          movie={{
-            country: movie.country,
-            director: movie.director,
-            duration: movie.duration,
-            year: movie.year,
-            description: movie.description,
-            image: movie.image,
-            trailer: movie.trailerLink,
-            thumbnail: movie.image,
-            movieId: movie.movieId,
-            nameRU: movie.nameRU,
-            nameEN: movie.nameEN,
-          }}
-          type={'myMovie'}
-          onSaved={true}
-          onRemove={onRemoveMovie}
-        />)}
+      <MoviesCardList handleClickMore={handleClickMore}>
+        {
+          myMovies[0] && myMovies[0]
+            .slice(0, renderLength.valueLength)
+            .map(movie => <MoviesCard
+              key={movie._id}
+              movie={{
+                country: movie.country,
+                director: movie.director,
+                duration: movie.duration,
+                year: movie.year,
+                description: movie.description,
+                image: movie.image,
+                trailer: movie.trailerLink,
+                thumbnail: movie.image,
+                movieId: movie.movieId,
+                nameRU: movie.nameRU,
+                nameEN: movie.nameEN,
+              }}
+              type={'myMovie'}
+              onSaved={true}
+              onRemove={onRemoveMovie}
+            />)
+        }
       </MoviesCardList>
       <Footer />
     </>
