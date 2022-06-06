@@ -20,7 +20,6 @@ function Movies({movies, myMovies, onSaveMovie, onRemoveMovie, searchMovie}) {
     tablet:  481 <= width && width >= 768,
     mobile: 320 <= width && width >= 480,
   }
-console.log(renderLength)
 
   useEffect(() => {
     renderCard()
