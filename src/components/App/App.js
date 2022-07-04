@@ -1,8 +1,10 @@
-//Корневой компонент приложения, его создаёт CRA.
-
-import React from "react";
-import {Route, Switch} from "react-router-dom";
+import React, { useState} from "react";
 import './App.css';
+
+import { Switch, Route, useHistory } from "react-router-dom";
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
@@ -11,42 +13,232 @@ import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import NotFound from "../NotFound/NotFound";
 
+import * as MainAPI from "../../utils/API/MainAPIjs";
+import {getMovies} from "../../utils/API/MoviesAPI";
+
 // ф-ый компонент
 function App() {
+  // СТАЕЙТЫ И ПЕРЕМЕННЫЕ
+  const history =  useHistory();
+  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [currentUser, setCurrentUser] = React.useState({});
+  const [myMovies, setMyMovies] = useState([]);
+  const [movies, setMovies] = useState([]);
+
+  // useEffect(() => {
+  //   onGetMovies();
+  //   onGetMyMovie();
+  //
+  // }, [])
+
+  React.useEffect(() => {
+    tokenCheck();
+  }, []);
+
+  React.useEffect(() => {
+    if (loggedIn) {
+      onGetMovies();
+      onGetMyMovie();
+      history.push('/movies');
+    } else {
+      history.push('/');
+    }
+  }, [history, loggedIn]);
+
+  function onGetMovies() {
+
+    return getMovies()
+      .then((movies) => {
+       const m = movies.map(movie => {
+          const isHortFilm = (duration) => {
+            if (duration <= 40) {
+              return true;
+            } else{
+              return false
+            }
+          }
+          return {...movie, isHortFilm: isHortFilm(movie.duration)}
+        })
+        setMovies(m)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  function searchMovie(search, setArr) {
+    setArr(state => {
+      return state
+        .filter(el => el.nameRU.toLowerCase().includes(search.search.toLowerCase()))
+        .filter(el => el.isHortFilm === search.shortFilm);
+    })
+  }
+
+  function onRegister(registerData) {
+
+    return MainAPI
+      .register(registerData)
+      .then(res => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  function onLogin(loginData) {
+
+    return MainAPI
+      .login(loginData)
+      .then((res) => {
+        onGetUser();
+        setLoggedIn(true);
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  function onUpdateUser(userData) {
+    return MainAPI
+      .updateUser(userData)
+      .then((newDataUser) => {
+        setCurrentUser(newDataUser)
+        console.log(newDataUser);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  function onExitUser() {
+    console.log('evt exit')
+    return MainAPI
+      .userExit()
+      .then(res => {
+        setLoggedIn(false);
+        setCurrentUser({});
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  const onGetUser = () => {
+
+    return MainAPI
+      .getUser()
+      .then((currentUser) => {
+        setCurrentUser(currentUser);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  function tokenCheck() {
+
+    return MainAPI
+      .getUser()
+      .then((data) => {
+        onGetUser();
+        setLoggedIn(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  function onGetMyMovie() {
+
+    return MainAPI
+      .getMyMovies()
+      .then((movies) =>{
+        setMyMovies(movies)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  function onSaveMovie(movie) {
+
+    return MainAPI
+      .saveMovie(movie)
+      .then((movieSave) => {
+        setMyMovies([movieSave, ...myMovies]);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+
+  }
+
+  function onRemoveMovie(movie) {
+    const id = myMovies.find(myMovie => myMovie.movieId === movie.movieId)
+    return MainAPI
+      .removeMovie(id._id)
+      .then(() => {
+        setMyMovies(state => state.filter(el => el._id !== id._id));
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
 
   return (
-    <div className="app">
-      <Switch>
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className="app">
+        <Switch>
+          <ProtectedRoute
+            component={Movies}
+            path={"/movies"}
+            onSaveMovie={onSaveMovie}
+            onRemoveMovie={onRemoveMovie}
+            movies={[movies, setMovies]}
+            myMovies={myMovies}
+            searchMovie={searchMovie}
+            isLoggedIn={loggedIn}
+          />
 
-        <Route exact path='/'>
-          <Main/>
-        </Route>
+          <ProtectedRoute
+            component={SavedMovies}
+            path={"/saved-movies"}
+            onRemoveMovie={onRemoveMovie}
+            myMovies={[myMovies, setMyMovies]}
+            searchMovie={searchMovie}
+            isLoggedIn={loggedIn}
+          />
 
-        <Route path='/movies'>
-          <Movies/>
-        </Route>
+          <ProtectedRoute
+            component={Profile}
+            path={"/profile"}
+            isLoggedIn={loggedIn}
 
-        <Route path='/saved-movies'>
-          <SavedMovies/>
-        </Route>
+            onLogout={onExitUser}
+            onUpdateUser={onUpdateUser}
+          />
 
-        <Route path='/profile'>
-          <Profile/>
-        </Route>
+          <Route exact path='/'>
+            <Main isLoggedIn={loggedIn}/>
+          </Route>
 
-        <Route path='/signin'>
-          <Login/>
-        </Route>
+          <Route path='/signin'>
+            <Login onLogin={onLogin}/>
+          </Route>
 
-        <Route path='/signup'>
-          <Register/>
-        </Route>
+          <Route path='/signup'>
+            <Register onRegister={onRegister}/>
+          </Route>
 
-        <Route path="*">
-          <NotFound/>
-        </Route>
-      </Switch>
-    </div>
+          <Route path="*">
+            <NotFound/>
+          </Route>
+        </Switch>
+      </div>
+    </CurrentUserContext.Provider>
   );
 }
 

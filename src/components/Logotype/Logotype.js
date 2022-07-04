@@ -1,7 +1,6 @@
-import React from "react"; //Инициализация библиотеки (не обязательное действие)
+import React from "react";
 import { Link } from "react-router-dom";
-
-import './Logotype.css'; //Инициализация стилей
+import './Logotype.css';
 
 import logo from "../../images/Logotype.svg";
 function Logotype({ link, modStyle }) {

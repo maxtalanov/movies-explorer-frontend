@@ -1,10 +1,10 @@
-import React, {useState} from "react"; //Инициализация библиотеки (не обязательное действие)
-import './NavMenuHeader.css'; //Инициализация стилей
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import Account from "../Account/Account";
+import './NavMenuHeader.css';
 
-function NavMenuHeader() {
+function NavMenuHeader({theme}) {
   const [menuActive, setMenuActive] = useState(false);
   const items = [
     {
@@ -24,16 +24,18 @@ function NavMenuHeader() {
   return(
     <section className="menu-header">
       <div className="menu-header__container-nav">
-        <Link to="/movies" className="menu-header__item action hover-opacity">Фильмы</Link>
-        <Link to="/saved-movies" className="menu-header__item hover-opacity">Сохранённые фильмы</Link>
+        <Link to="/movies" className={`menu-header__item menu-header__item_theme_${theme} action hover-opacity`}>Фильмы</Link>
+        <Link to="/saved-movies" className={`menu-header__item menu-header__item_theme_${theme} hover-opacity`}>Сохранённые фильмы</Link>
       </div>
 
       <div className="menu-header__account-container">
-        <Account />
+        <Account theme={theme} />
       </div>
 
-      <button className="menu-header__btn-burger button__reset hover-opacity" onClick={() => setMenuActive(!menuActive)} />
-      <BurgerMenu active={menuActive} setActive={setMenuActive}  items={items} />
+      <button
+        className={`menu-header__btn-burger menu-header__btn-burger_theme_${theme} button__reset hover-opacity`}
+        onClick={() => setMenuActive(!menuActive)} />
+      <BurgerMenu active={menuActive} setActive={setMenuActive}  theme={theme} items={items} />
     </section>
     );
 }

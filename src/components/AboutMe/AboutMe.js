@@ -1,9 +1,8 @@
 import React from "react";
-import "./AboutMe.css";
 import { socialLinks } from "../../utils/constant";
 import Heading from "../Heading/Heading";
 import avatar from '../../images/img.jpg';
-
+import "./AboutMe.css";
 
 function AboutMe() {
 
