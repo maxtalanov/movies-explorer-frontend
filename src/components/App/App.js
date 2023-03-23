@@ -1,4 +1,5 @@
 import React, { useState} from "react";
+
 import './App.css';
 
 import { Switch, Route, useHistory } from "react-router-dom";
@@ -12,7 +13,7 @@ import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import NotFound from "../NotFound/NotFound";
-
+import ROUTERS from "./../../routers/index";
 import * as MainAPI from "../../utils/API/MainAPIjs";
 import {getMovies} from "../../utils/API/MoviesAPI";
 
@@ -194,7 +195,7 @@ function App() {
         <Switch>
           <ProtectedRoute
             component={Movies}
-            path={"/movies"}
+            path={ROUTERS.MOVIES}
             onSaveMovie={onSaveMovie}
             onRemoveMovie={onRemoveMovie}
             movies={[movies, setMovies]}
@@ -205,7 +206,7 @@ function App() {
 
           <ProtectedRoute
             component={SavedMovies}
-            path={"/saved-movies"}
+            path={ROUTERS.SAVED_MOVIES}
             onRemoveMovie={onRemoveMovie}
             myMovies={[myMovies, setMyMovies]}
             searchMovie={searchMovie}
@@ -214,26 +215,26 @@ function App() {
 
           <ProtectedRoute
             component={Profile}
-            path={"/profile"}
+            path={"ROUTERS.PROFILE"}
             isLoggedIn={loggedIn}
 
             onLogout={onExitUser}
             onUpdateUser={onUpdateUser}
           />
 
-          <Route exact path='/'>
+          <Route exact path={ROUTERS.DEFAULT}>
             <Main isLoggedIn={loggedIn}/>
           </Route>
 
-          <Route path='/signin'>
+          <Route path={ROUTERS.LOGIN}>
             <Login onLogin={onLogin}/>
           </Route>
 
-          <Route path='/signup'>
+          <Route path={ROUTERS.REGISTRATION}>
             <Register onRegister={onRegister}/>
           </Route>
 
-          <Route path="*">
+          <Route path={ROUTERS.FAKE}>
             <NotFound/>
           </Route>
         </Switch>
