@@ -215,14 +215,18 @@ function App() {
 
           <ProtectedRoute
             component={Profile}
-            path={"ROUTERS.PROFILE"}
+            path={ROUTERS.PROFILE}
             isLoggedIn={loggedIn}
 
             onLogout={onExitUser}
             onUpdateUser={onUpdateUser}
           />
 
-          <Route exact path={ROUTERS.DEFAULT}>
+          <Route path={ROUTERS.DEFAULT}>
+            <Main isLoggedIn={loggedIn}/>
+          </Route>
+
+          <Route path={ROUTERS.HOME}>
             <Main isLoggedIn={loggedIn}/>
           </Route>
 
