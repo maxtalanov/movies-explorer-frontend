@@ -1,4 +1,5 @@
-export const ROUTERS = {
+const ROUTERS = {
+    FAKE: '*',
     DEFAULT: '/',
     MOVIES: '/movies',
     SAVED_MOVIES: '/saved-movies',
