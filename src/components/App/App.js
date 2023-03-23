@@ -40,9 +40,9 @@ function App() {
     if (loggedIn) {
       onGetMovies();
       onGetMyMovie();
-      history.push('/movies');
+      history.push(ROUTERS.MOVIES);
     } else {
-      history.push('/');
+      history.push(ROUTERS.DEFAULT);
     }
   }, [history, loggedIn]);
 
