@@ -7,3 +7,5 @@ const ROUTERS = {
     LOGIN: '/signin',
     REGISTRATION: '/signup',
 }
+
+export default ROUTERS;
