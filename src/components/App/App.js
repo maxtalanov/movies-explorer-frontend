@@ -205,6 +205,7 @@ function App() {
           />
 
           <ProtectedRoute
+            exact
             component={SavedMovies}
             path={ROUTERS.SAVED_MOVIES}
             onRemoveMovie={onRemoveMovie}
@@ -214,6 +215,7 @@ function App() {
           />
 
           <ProtectedRoute
+            exact
             component={Profile}
             path={ROUTERS.PROFILE}
             isLoggedIn={loggedIn}
@@ -222,11 +224,11 @@ function App() {
             onUpdateUser={onUpdateUser}
           />
 
-          <Route path={ROUTERS.DEFAULT}>
+          <Route exact path={ROUTERS.DEFAULT}>
             <Main isLoggedIn={loggedIn}/>
           </Route>
 
-          <Route path={ROUTERS.HOME}>
+          <Route exact path={ROUTERS.HOME}>
             <Main isLoggedIn={loggedIn}/>
           </Route>
 
