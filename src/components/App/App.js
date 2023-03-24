@@ -240,7 +240,7 @@ function App() {
             <Register onRegister={onRegister}/>
           </Route>
 
-          <Route path={ROUTERS.FAKE}>
+          <Route exact path={ROUTERS.FAKE}>
             <NotFound/>
           </Route>
         </Switch>
