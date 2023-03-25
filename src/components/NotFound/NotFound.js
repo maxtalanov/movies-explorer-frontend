@@ -8,7 +8,7 @@ import "../NotFound/NotFound.css";
 function NotFound() {
   const history = useHistory();
   const back = () => {
-    history.push("/");
+    history.goBack();
   }
 
   return(

@@ -1,7 +1,8 @@
 import React, { useState} from "react";
+
 import './App.css';
 
-import { Switch, Route, useHistory } from "react-router-dom";
+import { Switch, Route, useHistory, Redirect, } from "react-router-dom";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
@@ -12,7 +13,7 @@ import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import NotFound from "../NotFound/NotFound";
-
+import ROUTERS from "./../../routers/index";
 import * as MainAPI from "../../utils/API/MainAPIjs";
 import {getMovies} from "../../utils/API/MoviesAPI";
 
@@ -39,9 +40,9 @@ function App() {
     if (loggedIn) {
       onGetMovies();
       onGetMyMovie();
-      history.push('/movies');
+      // history.push(ROUTERS.MOVIES);
     } else {
-      history.push('/');
+      // history.push(ROUTERS.DEFAULT);
     }
   }, [history, loggedIn]);
 
@@ -193,8 +194,9 @@ function App() {
       <div className="app">
         <Switch>
           <ProtectedRoute
+            exact
             component={Movies}
-            path={"/movies"}
+            path={ROUTERS.MOVIES}
             onSaveMovie={onSaveMovie}
             onRemoveMovie={onRemoveMovie}
             movies={[movies, setMovies]}
@@ -204,8 +206,9 @@ function App() {
           />
 
           <ProtectedRoute
+            exact
             component={SavedMovies}
-            path={"/saved-movies"}
+            path={ROUTERS.SAVED_MOVIES}
             onRemoveMovie={onRemoveMovie}
             myMovies={[myMovies, setMyMovies]}
             searchMovie={searchMovie}
@@ -213,27 +216,35 @@ function App() {
           />
 
           <ProtectedRoute
+            exact
             component={Profile}
-            path={"/profile"}
+            path={ROUTERS.PROFILE}
             isLoggedIn={loggedIn}
 
             onLogout={onExitUser}
             onUpdateUser={onUpdateUser}
           />
 
-          <Route exact path='/'>
+          <Route exact path={ROUTERS.DEFAULT}>
             <Main isLoggedIn={loggedIn}/>
           </Route>
 
-          <Route path='/signin'>
-            <Login onLogin={onLogin}/>
+          <Route exact path={ROUTERS.HOME}>
+            <Main isLoggedIn={loggedIn}/>
           </Route>
 
-          <Route path='/signup'>
+          <Route exact path={ROUTERS.LOGIN}>
+            { loggedIn 
+              ? <Redirect to={ROUTERS.DEFAULT} />
+              : <Login onLogin={onLogin}/>
+            }
+          </Route>
+
+          <Route path={ROUTERS.REGISTRATION}>
             <Register onRegister={onRegister}/>
           </Route>
 
-          <Route path="*">
+          <Route exact path={ROUTERS.FAKE}>
             <NotFound/>
           </Route>
         </Switch>
