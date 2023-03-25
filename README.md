@@ -13,6 +13,27 @@
 | Чек лист | PDF | [Открыть документ](https://code.s3.yandex.net/web-developer/static/new-program/web-diploma-criteria-2.0/checklist_react_diplom.pdf) |
 
 
+## Установка
+
+1. Клонировать репозиторий: 
+```bash
+  git clone git@github.com:maxtalanov/movies-explorer-frontend.git
+  cd movies-explorer-frontend
+
+  //или загрузить пакет из моего профиля гит-хаб
+```
+2. Установить зависимости: 
+
+```bash
+  npm i
+  // или
+  npm install
+```
+
+*после выполнения этих команд, проект можно будет запистить локально
+** для локальной сборки используйте команы из раздела сценариев 
+
+
 ## Доступные сценарии
 В каталоге проекта вы можете запустить:
 
