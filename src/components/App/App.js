@@ -2,7 +2,7 @@ import React, { useState} from "react";
 
 import './App.css';
 
-import { Switch, Route, useHistory } from "react-router-dom";
+import { Switch, Route, useHistory, Redirect, } from "react-router-dom";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
@@ -40,9 +40,9 @@ function App() {
     if (loggedIn) {
       onGetMovies();
       onGetMyMovie();
-      history.push(ROUTERS.MOVIES);
+      // history.push(ROUTERS.MOVIES);
     } else {
-      history.push(ROUTERS.DEFAULT);
+      // history.push(ROUTERS.DEFAULT);
     }
   }, [history, loggedIn]);
 
@@ -194,6 +194,7 @@ function App() {
       <div className="app">
         <Switch>
           <ProtectedRoute
+            exact
             component={Movies}
             path={ROUTERS.MOVIES}
             onSaveMovie={onSaveMovie}
@@ -232,8 +233,11 @@ function App() {
             <Main isLoggedIn={loggedIn}/>
           </Route>
 
-          <Route path={ROUTERS.LOGIN}>
-            <Login onLogin={onLogin}/>
+          <Route exact path={ROUTERS.LOGIN}>
+            { loggedIn 
+              ? <Redirect to={ROUTERS.DEFAULT} />
+              : <Login onLogin={onLogin}/>
+            }
           </Route>
 
           <Route path={ROUTERS.REGISTRATION}>
