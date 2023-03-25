@@ -1,10 +1,23 @@
 import React from "react";
-import { socialLinks } from "../../utils/constant";
+import { socialLinks, USER_MANIFEST } from "../../utils/constant";
 import Heading from "../Heading/Heading";
 import avatar from '../../images/img.jpg';
 import "./AboutMe.css";
 
 function AboutMe() {
+  const DATA_OBJ = {
+    day: USER_MANIFEST.BIRTH_DATE.DAY, 
+    month: USER_MANIFEST.BIRTH_DATE.MONTH, 
+    year: USER_MANIFEST.BIRTH_DATE.YEAR,
+  }
+
+  const calculytorAge = (birthDate) => { 
+    return Math.floor((new Date() - new Date(birthDate).getTime()) / 3.15576e+10)
+  }
+
+  const dateFormat = ({day, month, year}) => {
+    return `${year}-${month}-${day}`
+  };
 
    return(
      <section id={'студент'}  className={`about-me`}>
@@ -12,16 +25,13 @@ function AboutMe() {
        <div className="about-me__container">
          <div className="about-me__item item__left">
            <h2 className={`about-me__title`}>Максим</h2>
-           <h3 className="about-me__sub-title">Фронтенд-разработчик, 26 лет</h3>
-           {/*Дополнить ф-ию для авто расчета возроста в реальном времени на 12 стр.*/}
+           <h3 className="about-me__sub-title">
+            {USER_MANIFEST.SPECIALTY}, {calculytorAge(dateFormat(DATA_OBJ))} лет
+           </h3>
            <p className="about-me__bio">
-             Я родился и живу в Москве, закончил факультет экономики СГУ.
-             У меня есть жена и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом.
-             Недавно начал кодить. С 2015 года работал в компании «СКБ Контур».
-             После того, как прошёл курс по веб-разработке,
-             начал заниматься фриланс-заказами и ушёл с постоянной работы.
+             {USER_MANIFEST.BIO}
            </p>
-           {/*Написать своё БИО на 15 стр.*/}
+           
            <ul className="about-me__contact">
              <li className="about-me__list hover-opacity">
                <a href={socialLinks.instagram} target="_blank" className="about__link" rel="noreferrer">Instagram</a>
