@@ -1,6 +1,18 @@
 # Дипломный проект "Movies"
 Проект выполнен с целью закрепления изученных материалов по курсу Frontend-разработки в Яндекс  практикум.
 
+## Информация о проекте
+В данной таблице описано все самое необходимое, что может помочь в построении цепей реализации диплома.
+
+| Тип | Источник | Ссылка |
+| :---- | :----: | :----: |
+| Макет | Figma | [Открыть макет](https://www.figma.com/file/nhwmLa8SW05vL3yE8XHGj0/Diploma-(macet)?node-id=891%3A3857&t=ffSWREYQPUTJHNIY-1) |
+| API | URL-адрес | https://api.maxtalanov.ru/ |
+| IP-адрес | IPv4 | `51.250.2.78` (Для входа нужен SSH)|
+| Deploy | WEB | [maxtalanov.ru](https://maxtalanov.ru/) |
+| Чек лист | PDF | [Открыть документ](https://code.s3.yandex.net/web-developer/static/new-program/web-diploma-criteria-2.0/checklist_react_diplom.pdf) |
+
+
 ## Доступные сценарии
 В каталоге проекта вы можете запустить:
 
