@@ -17,9 +17,8 @@ import ROUTERS from "./../../routers/index";
 import * as MainAPI from "../../utils/API/MainAPIjs";
 import {getMovies} from "../../utils/API/MoviesAPI";
 
-// ф-ый компонент
 function App() {
-  // СТАЕЙТЫ И ПЕРЕМЕННЫЕ
+  // TODO: Удалить все комментарии и привести в единобразный стиль
   const history =  useHistory();
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
