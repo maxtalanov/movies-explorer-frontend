@@ -5,8 +5,13 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import MoviesCard from "../MoviesCard/MoviesCard";
-import {BASE_URL_MOVIES} from "../../utils/constant";
-import useWindowDimensions from "../../utils/globalMethod/windowDimensions";
+import { BASE_URL_MOVIES } from "../../utils/constant";
+import { 
+  useWindowDimensions,
+  useRenderCard,
+  useStateCash,
+} from "hooks";
+
 import './Movies.css';
 
 function Movies({movies, myMovies, onSaveMovie, onRemoveMovie, searchMovie}) {
