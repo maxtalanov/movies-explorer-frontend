@@ -1,23 +1,66 @@
 import React from "react";
-import './Movies.css';
 import Header from "../Header/Header";
 import NavMenuHeader from "../NavMenuHeader/NavMenuHeader";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
+import MoviesCard from "../MoviesCard/MoviesCard";
+import { BASE_URL_MOVIES } from "../../utils/constant";
+import { 
+  useWindowDimensions,
+  useRenderCard,
+  useStateCash,
+} from "hooks";
 
-import { movies } from '../../utils/constant';
+import './Movies.css';
 
-function Movies() {
+function Movies({movies, myMovies, onSaveMovie, onRemoveMovie}) {
+  const { width } = useWindowDimensions();
+  const { renderLength, handleClickBtn} = useRenderCard(width);
+  const [newMovies, setNewMovies, cashNewMovies] = useStateCash(movies[0])
 
+  const onSaved = (id) => {
+    return  myMovies.some(myMovie => myMovie.movieId === id);
+  }
+  
   return (
     <>
       <Header theme="white">
-        <NavMenuHeader />
+        <NavMenuHeader theme={'dark'}/>
       </Header>
-      <SearchForm />
-      <MoviesCardList  data={movies} />
-      <Footer />
+      <SearchForm  
+        defaultMovies={cashNewMovies}
+        movies={newMovies}
+        setMovies={setNewMovies} 
+      />
+      <MoviesCardList handleClickMore={handleClickBtn}>
+        {
+          newMovies && newMovies
+            .slice(0, renderLength.valueLength)
+            .map(movie => <MoviesCard
+              key={movie.id}
+              movie={{
+                country: movie.country,
+                director: movie.director,
+                duration: movie.duration,
+                year: movie.year,
+                description: movie.description,
+                image: `${BASE_URL_MOVIES}${movie.image.url}`,
+                trailer: movie.trailerLink,
+                thumbnail: `${BASE_URL_MOVIES}${movie.image.url}`,
+                movieId: movie.id,
+                nameRU: movie.nameRU,
+                nameEN: movie.nameEN,
+              }}
+              type={'movie'}
+              onSaved={onSaved(movie.id)}
+              onSave={onSaveMovie}
+              onRemove={onRemoveMovie}
+          />)
+        }
+
+      </MoviesCardList>
+      <Footer/>
     </>
   );
 }

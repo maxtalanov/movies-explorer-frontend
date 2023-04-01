@@ -1,14 +1,14 @@
 import React from "react";
-import './BurgerMenu.css'
 import { Link } from "react-router-dom";
 import Account from "../Account/Account";
+import './BurgerMenu.css'
 
 function BurgerMenu({items, active, setActive}) {
 
   const renderItemsList = items.map((item) => {
     return (
-      <li className="menu__li">
-        <Link className="link" to={item.link}>{item.text}</Link>
+      <li className="menu__li" key={item.link}>
+        <Link className="link" to={item.link}> {item.text} </Link>
       </li>
     )
   })
@@ -21,7 +21,7 @@ function BurgerMenu({items, active, setActive}) {
           {renderItemsList}
         </ul>
         <div className="menu__account-container">
-          <Account/>
+          <Account theme={`dark`}/>
         </div>
       </menu>
     </section>

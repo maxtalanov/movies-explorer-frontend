@@ -1,20 +1,62 @@
 import React from "react";
-import './SavedMovies.css';
 import NavMenuHeader from "../NavMenuHeader/NavMenuHeader";
 import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import {movies} from "../../utils/constant";
 import Footer from "../Footer/Footer";
+import MoviesCard from "../MoviesCard/MoviesCard";
+import { 
+  useRenderCard, 
+  useWindowDimensions,
+  useStateCash,
+ } from "hooks";
 
-function SavedMovies () {
+import './SavedMovies.css';
+
+function SavedMovies ({ myMovies, onRemoveMovie }) {
+  const { width } = useWindowDimensions();
+  const { renderLength, handleClickBtn } = useRenderCard(width);
+  const [newMyMovies, setNewMyMovies, cashNewMyMovies] = useStateCash(myMovies[0])
+
+  function onSaved(id) {
+    return  myMovies.some(myMovie => myMovie.movieId === id);
+  }
+
   return(
     <>
       <Header theme="white">
-        <NavMenuHeader />
+        <NavMenuHeader theme={'dark'}/>
       </Header>
-      <SearchForm />
-      <MoviesCardList  data={movies} />
+      <SearchForm  
+        defaultMovies={cashNewMyMovies}
+        movies={newMyMovies}
+        setMovies={setNewMyMovies} 
+      />
+      <MoviesCardList handleClickMore={handleClickBtn}>
+        {
+          newMyMovies && newMyMovies
+            .slice(0, renderLength.valueLength)
+            .map(movie => <MoviesCard
+              key={movie._id}
+              movie={{
+                country: movie.country,
+                director: movie.director,
+                duration: movie.duration,
+                year: movie.year,
+                description: movie.description,
+                image: movie.image,
+                trailer: movie.trailerLink,
+                thumbnail: movie.image,
+                movieId: movie.movieId,
+                nameRU: movie.nameRU,
+                nameEN: movie.nameEN,
+              }}
+              type={'myMovie'}
+              onSaved={true}
+              onRemove={onRemoveMovie}
+            />)
+        }
+      </MoviesCardList>
       <Footer />
     </>
   );

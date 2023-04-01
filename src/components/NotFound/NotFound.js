@@ -1,15 +1,14 @@
 // Компонент "Not Found" - Страница не найдена (404)
 
-import React from "react"; //Инициализация библиотеки (не обязательное действие)
-import "../NotFound/NotFound.css"; //Инициализация стилей
-
+import React from "react";
 import { useHistory } from 'react-router-dom'
+import "../NotFound/NotFound.css";
 
 //Ф-ый компонент
 function NotFound() {
   const history = useHistory();
   const back = () => {
-    history.push("/");
+    history.goBack();
   }
 
   return(
