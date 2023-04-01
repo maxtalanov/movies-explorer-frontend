@@ -66,14 +66,6 @@ function App() {
       })
   }
 
-  function searchMovie(search, setArr) {
-    setArr(state => {
-      return state
-        .filter(el => el.nameRU.toLowerCase().includes(search.search.toLowerCase()))
-        .filter(el => el.isHortFilm === search.shortFilm);
-    })
-  }
-
   function onRegister(registerData) {
 
     return MainAPI
