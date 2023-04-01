@@ -14,67 +14,28 @@ import {
 
 import './Movies.css';
 
-function Movies({movies, myMovies, onSaveMovie, onRemoveMovie, searchMovie}) {
-  const [renderLength, setRenderLength] = useState({
-    valueAdd: null,
-    valueLength: 1,
-  });
+function Movies({movies, myMovies, onSaveMovie, onRemoveMovie}) {
   const { width } = useWindowDimensions();
-  const renderConfig = {
-    desktop: 769 <= width,
-    tablet:  481 <= width && width >= 768,
-    mobile: 320 <= width && width >= 480,
-  }
+  const { renderLength, handleClickBtn} = useRenderCard(width);
+  const [newMovies, setNewMovies, cashNewMovies] = useStateCash(movies[0])
 
-  useEffect(() => {
-    renderCard()
-  }, [width]);
-
-  function onSaved(id) {
+  const onSaved = (id) => {
     return  myMovies.some(myMovie => myMovie.movieId === id);
   }
-
-  const renderCard = () => {
-    if (renderConfig.desktop) {
-      return setRenderLength({
-        valueLength: 5,
-        valueAdd: 3,
-      })
-    }
-
-    if (renderConfig.tablet) {
-      return setRenderLength({
-        valueLength: 8,
-        valueAdd: 2,
-      })
-    }
-
-    if (renderConfig.mobile) {
-      return setRenderLength({
-        valueLength: 12,
-        valueAdd: 2,
-      })
-    }
-  }
-
-  const handleClickMore = (e) => {
-    e.preventDefault();
-
-    setRenderLength({
-      valueLength: renderLength.valueLength + renderLength.valueAdd,
-      valueAdd: renderLength.valueAdd,
-    })
-  }
-
+  
   return (
     <>
       <Header theme="white">
         <NavMenuHeader theme={'dark'}/>
       </Header>
-      <SearchForm  setMovies={movies[1]} searchMovie={searchMovie} action='movies'/>
-      <MoviesCardList handleClickMore={handleClickMore}>
+      <SearchForm  
+        defaultMovies={cashNewMovies}
+        movies={newMovies}
+        setMovies={setNewMovies} 
+      />
+      <MoviesCardList handleClickMore={handleClickBtn}>
         {
-          movies[0] && movies[0]
+          newMovies && newMovies
             .slice(0, renderLength.valueLength)
             .map(movie => <MoviesCard
               key={movie.id}
