@@ -1,7 +1,5 @@
 import React, { useState} from "react";
 
-import './App.css';
-
 import { Switch, Route, useHistory, Redirect, } from "react-router-dom";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
@@ -16,6 +14,8 @@ import NotFound from "../NotFound/NotFound";
 import ROUTERS from "./../../routers/index";
 import * as MainAPI from "../../utils/API/MainAPIjs";
 import {getMovies} from "../../utils/API/MoviesAPI";
+
+import './App.css';
 
 function App() {
   // TODO: Удалить все комментарии и привести в единобразный стиль
