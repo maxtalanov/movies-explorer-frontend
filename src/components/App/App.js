@@ -3,14 +3,16 @@ import React, { useState} from "react";
 import { Switch, Route, useHistory, Redirect, } from "react-router-dom";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import Register from "../Register/Register";
-import Login from "../Login/Login";
-import Profile from "../Profile/Profile";
-import Main from "../Main/Main";
-import Movies from "../Movies/Movies";
-import SavedMovies from "../SavedMovies/SavedMovies";
-import NotFound from "../NotFound/NotFound";
+import {
+  Login,
+  Main,
+  Movies,
+  NotFound,
+  ProtectedRoute,
+  Profile,
+  Register,
+  SavedMovies
+} from 'components'
 import { ROUTERS } from "routers";
 import * as MainAPI from "../../utils/API/MainAPIjs";
 import {getMovies} from "../../utils/API/MoviesAPI";
