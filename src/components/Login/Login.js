@@ -1,22 +1,12 @@
-import React from "react";
-import WithForm from "../WithForm/WithForm";
-import InputEmail from "../Input/InputEmail";
-import InputPassword from "../Input/InputPassword";
-import { useFormWithValidation } from "../../utils/globalMethod/useForm";
-import './Login.css';
+// Компонент "Авторезации пользователя"
 
-function Login({ onLogin }) {
-  const loginData = useFormWithValidation({
-    email: '',
-    password: '',
-  });
+import React from "react"; //Инициализация библиотеки
+import './Login.css'; // Ф-ил стилей
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+import Input from "../Input/Input";
+import WithForm from "../WithForm/WithForm"; //Инициализация стилей
 
-    onLogin(loginData.values);
-    loginData.resetForm();
-  }
+function Login() {
 
   return (
     <section className="login">
@@ -27,29 +17,10 @@ function Login({ onLogin }) {
         btnLink="Регистрация"
         modMargin="form__btn-submit_type_login"
         link="/signup"
-        handleSubmit={handleSubmit}
-        isValid={loginData.isValid}
       >
         <fieldset className={`form__fieldset`}>
-          <InputEmail
-            label="E-mail"
-            placeholder="Укажите Ваш email"
-            id="login-email"
-            name="email"
-            value={loginData.values.email}
-            onChange={loginData.handleChange}
-            errMassage={loginData.errors.email}
-          />
-
-          <InputPassword
-            label="Пароль"
-            placeholder="Укажите Ваш пароль"
-            id="login-password"
-            name="password"
-            value={loginData.values.password}
-            onChange={loginData.handleChange}
-            errMassage={loginData.errors.password}
-          />
+          <Input label="E-mail" type="email"  placeholder="Ваш e-mail" required={true}/>
+          <Input label="Пароль" type="password" placeholder="Ваш пароль" required={true} />
         </fieldset>
       </WithForm>
     </section>

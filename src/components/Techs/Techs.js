@@ -1,7 +1,7 @@
 import React from "react";
+import "./Techs.css";
 import { technologies } from "../../utils/constant";
 import Heading from "../Heading/Heading";
-import "./Techs.css";
 
 function Techs() {
   const techsList = technologies.map((m) => {

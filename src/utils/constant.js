@@ -29,6 +29,87 @@ export const technologies = [
   },
 ];
 
+export const movies = [
+  {
+    country: "США",
+    director: "Антуан Фукуа",
+    duration: "2ч 0м",
+    year: "2013",
+    description: "Когда на Белый Дом нападают террористы, а президента берут в заложники, дискредитированный бывший охранник главы государства Майк Бэннинг оказывается внутри захваченного здания. И теперь он единственный, кто сможет спасти президента…",
+    image: "https://avatars.mds.yandex.net/get-kinopoisk-image/1600647/647c4b08-6e64-402c-bda2-5d45251608b9/1920x",
+    trailer: "https://www.kinopoisk.ru/film/673427/video/75230/",
+    thumbnail: "https://www.kinopoisk.ru/film/673427/video/75230/",
+    movieId: 1,
+    nameRU: "Падение Олимпа",
+    nameEN: "Olympus Has Falle",
+  },
+  {
+    country: "США",
+    director: "Антуан Фукуа",
+    duration: "2ч 0м",
+    year: "2013",
+    description: "Когда на Белый Дом нападают террористы, а президента берут в заложники, дискредитированный бывший охранник главы государства Майк Бэннинг оказывается внутри захваченного здания. И теперь он единственный, кто сможет спасти президента…",
+    image: "https://avatars.mds.yandex.net/get-kinopoisk-image/1600647/647c4b08-6e64-402c-bda2-5d45251608b9/1920x",
+    trailer: "https://www.kinopoisk.ru/film/673427/video/75230/",
+    thumbnail: "https://www.kinopoisk.ru/film/673427/video/75230/",
+    movieId: 2,
+    nameRU: "Падение Олимпа",
+    nameEN: "Olympus Has Falle",
+  },
+  {
+    country: "США",
+    director: "Антуан Фукуа",
+    duration: "2ч 0м",
+    year: "2013",
+    description: "Когда на Белый Дом нападают террористы, а президента берут в заложники, дискредитированный бывший охранник главы государства Майк Бэннинг оказывается внутри захваченного здания. И теперь он единственный, кто сможет спасти президента…",
+    image: "https://avatars.mds.yandex.net/get-kinopoisk-image/1600647/647c4b08-6e64-402c-bda2-5d45251608b9/1920x",
+    trailer: "https://www.kinopoisk.ru/film/673427/video/75230/",
+    thumbnail: "https://www.kinopoisk.ru/film/673427/video/75230/",
+    movieId: 3,
+    nameRU: "Падение Олимпа",
+    nameEN: "Olympus Has Falle",
+  },
+  {
+    country: "США",
+    director: "Антуан Фукуа",
+    duration: "2ч 0м",
+    year: "2013",
+    description: "Когда на Белый Дом нападают террористы, а президента берут в заложники, дискредитированный бывший охранник главы государства Майк Бэннинг оказывается внутри захваченного здания. И теперь он единственный, кто сможет спасти президента…",
+    image: "https://avatars.mds.yandex.net/get-kinopoisk-image/1600647/647c4b08-6e64-402c-bda2-5d45251608b9/1920x",
+    trailer: "https://www.kinopoisk.ru/film/673427/video/75230/",
+    thumbnail: "https://www.kinopoisk.ru/film/673427/video/75230/",
+    movieId: 4,
+    nameRU: "Падение Олимпа",
+    nameEN: "Olympus Has Falle",
+  },
+  {
+    country: "США",
+    director: "Антуан Фукуа",
+    duration: "2ч 0м",
+    year: "2013",
+    description: "Когда на Белый Дом нападают террористы, а президента берут в заложники, дискредитированный бывший охранник главы государства Майк Бэннинг оказывается внутри захваченного здания. И теперь он единственный, кто сможет спасти президента…",
+    image: "https://avatars.mds.yandex.net/get-kinopoisk-image/1600647/647c4b08-6e64-402c-bda2-5d45251608b9/1920x",
+    trailer: "https://www.kinopoisk.ru/film/673427/video/75230/",
+    thumbnail: "https://www.kinopoisk.ru/film/673427/video/75230/",
+    movieId: 5,
+    nameRU: "Падение Олимпа",
+    nameEN: "Olympus Has Falle",
+  },
+  {
+    country: "США",
+    director: "Антуан Фукуа",
+    duration: "2ч 0м",
+    year: "2013",
+    description: "Когда на Белый Дом нападают террористы, а президента берут в заложники, дискредитированный бывший охранник главы государства Майк Бэннинг оказывается внутри захваченного здания. И теперь он единственный, кто сможет спасти президента…",
+    image: "https://avatars.mds.yandex.net/get-kinopoisk-image/1600647/647c4b08-6e64-402c-bda2-5d45251608b9/1920x",
+    trailer: "https://www.kinopoisk.ru/film/673427/video/75230/",
+    thumbnail: "https://www.kinopoisk.ru/film/673427/video/75230/",
+    movieId: 6,
+    nameRU: "Падение Олимпа",
+    nameEN: "Olympus Has Falle",
+  },
+];
+
 export const navTabLinksConfig = [
   {
     id: 1,
@@ -70,29 +151,4 @@ export const socialLinks = {
   github: 'https://github.com/maxtalanov',
   fb: 'https://www.facebook.com/talanov.max',
   yp: 'https://practicum.yandex.ru/'
-}
-
-export const checkResponse = res => res.ok  ? res.json() : Promise.reject(`Ошибка: ${res.status} - ${res.statusText}.`);
-
-// export const BASE_URL_MAIN = 'http://localhost:3000';
-export const BASE_URL_MAIN = 'https://api.maxtalanov.ru';
-
-
-export const BASE_HEADERS_MAIN = {
-  'Accept': 'application/json',
-  'Content-Type': 'application/json',
-  'Access-Control-Allow-Credentials': true,
-}
-
-export const BASE_URL_MOVIES = 'https://api.nomoreparties.co';
-
-export const USER_MANIFEST = {
-  NAME: 'Максим', 
-  BIRTH_DATE: {
-    DAY: 23,
-    MONTH: 10,
-    YEAR: 1995,
-  },
-  SPECIALTY: 'Фронтенд-разработчик',
-  BIO: 'Я родился и живу в Москве, закончил факультет экономики СГУ. У меня есть жена и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.'
 }

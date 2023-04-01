@@ -1,6 +1,7 @@
 import React from "react";
-import Heading from "../Heading/Heading";
 import  "./AboutProject.css";
+
+import Heading from "../Heading/Heading";
 
 function AboutProject() {
 

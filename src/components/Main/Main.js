@@ -1,4 +1,5 @@
 import React from "react";
+import './Main.css';
 import { socialLinks } from "../../utils/constant";
 import Header from "../Header/Header";
 import NavButton from "../NavButton/NavButton";
@@ -9,15 +10,13 @@ import Techs from "../Techs/Techs";
 import AboutMe from "../AboutMe/AboutMe";
 import Portfolio from "../Portfolio/Portfolio";
 import Footer from "../Footer/Footer";
-import NavMenuHeader from "../NavMenuHeader/NavMenuHeader";
-import './Main.css';
 
-function Main({isLoggedIn}) {
 
+function Main() {
   return (
     <section className="main">
       <Header theme="dark-blue">
-        {isLoggedIn? <NavMenuHeader theme={'light'}/> : <NavButton />}
+        <NavButton />
       </Header>
 
       <section className="main">

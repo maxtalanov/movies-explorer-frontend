@@ -1,6 +1,7 @@
-import React from "react";
-import Logotype from "../Logotype/Logotype";
+import React from "react"; //Инициализация библиотеки (не обязательное действие)
+
 import './Header.css';
+import Logotype from "../Logotype/Logotype"; //Инициализация стилей
 
 function Header({ theme, children }) {
 

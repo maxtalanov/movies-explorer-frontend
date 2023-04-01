@@ -1,11 +1,7 @@
 # dependencies
 /node_modules
-/.idea
 /.pnp
 .pnp.js
-
-# idea
-.idea
 
 # testing
 /coverage
