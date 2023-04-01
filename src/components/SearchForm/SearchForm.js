@@ -2,10 +2,10 @@ import React,  {useState}from "react";
 import Checkbox from "../Checkbox/Checkbox";
 import "./SearchForm.css";
 
-function SearchForm({ setMovies, searchMovie, action }) {
-  const [searchForm, setSearchForm] = useState({
-    search: '',
-    shortFilm: false,
+function SearchForm({ defaultMovies, movies, setMovies }) {
+  const [form, setForm] = useState({
+    input: '',
+    switch: false,
   })
 
   const handleChange = (e) => {
@@ -13,16 +13,38 @@ function SearchForm({ setMovies, searchMovie, action }) {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
 
-    setSearchForm({
-      ...searchForm,
+    setForm({
+      ...form,
       [name]: value,
     })
+
+    if (target.type === 'checkbox') {
+      handeleSwitch(form.switch, movies, defaultMovies)
+    } 
+
+    if (value === '') {
+      setMovies(defaultMovies)
+    }
+  }
+  
+  const handeleSwitch = (switchState, arr, defaultArr) => {
+      return !switchState
+        ? setMovies(arr.filter((movie) => movie.isHortFilm === true))
+        : setMovies(defaultArr)
+  }
+
+  const handleSearch = (value, arr, defaultArr ) => {
+    return value === ''
+      ? defaultArr
+      : arr.filter((movie) => {
+        return movie.nameRU.toLowerCase().includes(value.toLowerCase())
+       })    
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    searchMovie(searchForm, setMovies, action);
+    setMovies(handleSearch(form.input, movies, defaultMovies))
   }
 
   return (
@@ -34,8 +56,8 @@ function SearchForm({ setMovies, searchMovie, action }) {
               className="search-form__input"
               type="search"
               placeholder="Фильмы"
-              name="search"
-              value={searchForm.search}
+              name="input"
+              value={form.input}
               onChange={handleChange}
             />
             <button className="search-form__submit-btn hover-opacity" type="submit"/>
@@ -44,9 +66,10 @@ function SearchForm({ setMovies, searchMovie, action }) {
           <fieldset className="search-form__fieldset">
             <Checkbox
               label="Короткометражки"
-              name="shortFilm"
-              checked={searchForm.shortFilm}
+              name="switch"
+              checked={form.switch}
               handleChange={handleChange}
+              onSubmit={handleSubmit}
             />
           </fieldset>
         </form>
