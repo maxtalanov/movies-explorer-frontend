@@ -5,7 +5,12 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import MoviesCard from "../MoviesCard/MoviesCard";
-import useWindowDimensions from "../../utils/globalMethod/windowDimensions";
+import { 
+  useRenderCard, 
+  useWindowDimensions,
+  useStateCash,
+ } from "hooks";
+
 import './SavedMovies.css';
 
 function SavedMovies ({ myMovies, onRemoveMovie, searchMovie }) {
