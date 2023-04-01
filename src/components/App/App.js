@@ -192,7 +192,6 @@ function App() {
             onRemoveMovie={onRemoveMovie}
             movies={[movies, setMovies]}
             myMovies={myMovies}
-            searchMovie={searchMovie}
             isLoggedIn={loggedIn}
           />
 
@@ -202,7 +201,6 @@ function App() {
             path={ROUTERS.SAVED_MOVIES}
             onRemoveMovie={onRemoveMovie}
             myMovies={[myMovies, setMyMovies]}
-            searchMovie={searchMovie}
             isLoggedIn={loggedIn}
           />
 
