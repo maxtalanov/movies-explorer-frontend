@@ -1,12 +1,5 @@
-const ROUTERS = {
-    FAKE: '*',
-    DEFAULT: '/',
-    HOME: '/home',
-    MOVIES: '/movies',
-    SAVED_MOVIES: '/saved-movies',
-    PROFILE: '/profile', 
-    LOGIN: '/signin',
-    REGISTRATION: '/signup',
-}
+import ROUTERS from "./Route/Route";
 
-export default ROUTERS;
+export {
+    ROUTERS,
+};
