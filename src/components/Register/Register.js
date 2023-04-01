@@ -1,23 +1,13 @@
+//Компоннт "Регистрации пользователя"
 import React from "react";
-import WithForm from "../WithForm/WithForm";
-import InputName from "../Input/InputName";
-import InputPassword from "../Input/InputPassword";
-import InputEmail from "../Input/InputEmail";
 import './Register.css';
-import {useFormWithValidation} from "../../utils/globalMethod/useForm";
 
-function Register({onRegister}) {
-  const registerData = useFormWithValidation({
-    email: '',
-    password: '',
-    userName: '',
-  });
+import WithForm from "../WithForm/WithForm";
+import Input from "../Input/Input";
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
 
-    onRegister(registerData.values);
-  }
+// ф-ый компонент
+function Register() {
 
   return (
     <section className="register">
@@ -28,42 +18,17 @@ function Register({onRegister}) {
         btnLink="Войти"
         modMargin="form__btn-submit_type_register"
         link="/signin"
-        handleSubmit={handleSubmit}
-        isValid={registerData.isValid}
       >
         <fieldset className={`form__fieldset`}>
-          <InputName
-            label='Имя'
-            placeholder="Укажите Ваше имя"
-
-            id='register-name'
-            name='userName'
-            value={registerData.userName}
-            onChange={registerData.handleChange}
-            errMassage={registerData.errors.userName}
-          />
-
-          <InputEmail
-            label="E-mail"
-            placeholder="Укажите Ваш email"
-
-            id='register-email'
-            name='email'
-            value={registerData.email}
-            onChange={registerData.handleChange}
-            errMassage={registerData.errors.email}
-          />
-
-          <InputPassword
+          <Input label="Имя" type="text" placeholder="Ваше имя" required={true}/>
+          <Input label="E-mail" type="email" placeholder="Ваш e-mail" required={true} />
+          <Input
             label="Пароль"
-            placeholder="Придумайте пароль"
-
-            id='register-password'
-            name='password'
-            value={registerData.password}
-            onChange={registerData.handleChange}
-            errMassage={registerData.errors.password}
-          />
+            type="password"
+            placeholder="Ваш пароль"
+            required={true}
+            errMassage='Пароль должен бытьь...'
+            err='form__span-err'/>
         </fieldset>
       </WithForm>
     </section>

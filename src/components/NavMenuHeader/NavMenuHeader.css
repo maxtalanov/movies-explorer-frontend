@@ -21,13 +21,7 @@
   line-height: 18px;
 
   text-align: right;
-}
 
-.menu-header__item_theme_light {
-  color: #FFFFFF;
-}
-
-.menu-header__item_theme_dark {
   color: #000000;
 }
 
@@ -61,13 +55,8 @@
     align-items: end;
     width: 44px;
     height: 44px;
-  }
 
-  .menu-header__btn-burger_theme_dark {
-    background: url(../../images/BurgerMenu-dark.svg) no-repeat center;
-  }
-  .menu-header__btn-burger_theme_light {
-    background: url(../../images/BurgerMenu-light.svg) no-repeat center;
+    background: url(../../images/BurgerMenu.svg) no-repeat center center;
   }
 }
 

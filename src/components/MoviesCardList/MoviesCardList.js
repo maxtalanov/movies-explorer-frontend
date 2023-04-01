@@ -1,13 +1,23 @@
 import React from "react";
 import './MoviesCardList.css';
 
-function MoviesCardList({ children, handleClickMore }) {
+import MoviesCard from "../MoviesCard/MoviesCard";
+
+function MoviesCardList({ data }) {
+
+  const renderMoviesCard = data.map((m) => {
+    return (<MoviesCard
+      key={m.movieId}
+      movieData={m}
+    />);
+  });
+
   return(
     <section className="card-list">
       <div className="card-list__container">
-        { children }
+        {renderMoviesCard}
       </div>
-      <button className="card-list__btn-add hover-opacity" onClick={handleClickMore}>Ещё</button>
+      <button className="card-list__btn-add hover-opacity">Ещё</button>
     </section>
   );
 }
