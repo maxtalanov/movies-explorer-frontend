@@ -13,57 +13,13 @@ import {
 
 import './SavedMovies.css';
 
-function SavedMovies ({ myMovies, onRemoveMovie, searchMovie }) {
-
-  const [renderLength, setRenderLength] = useState({
-    valueAdd: null,
-    valueLength: 1,
-  });
+function SavedMovies ({ myMovies, onRemoveMovie }) {
   const { width } = useWindowDimensions();
-  const renderConfig = {
-    desktop: 769 <= width,
-    tablet:  481 <= width && width >= 768,
-    mobile: 320 <= width && width >= 480,
-  }
-
-  useEffect(() => {
-    renderCard()
-  }, [width]);
+  const { renderLength, handleClickBtn } = useRenderCard(width);
+  const [newMyMovies, setNewMyMovies, cashNewMyMovies] = useStateCash(myMovies[0])
 
   function onSaved(id) {
     return  myMovies.some(myMovie => myMovie.movieId === id);
-  }
-
-  const renderCard = () => {
-    if (renderConfig.desktop) {
-      return setRenderLength({
-        valueLength: 5,
-        valueAdd: 3,
-      })
-    }
-
-    if (renderConfig.tablet) {
-      return setRenderLength({
-        valueLength: 8,
-        valueAdd: 2,
-      })
-    }
-
-    if (renderConfig.mobile) {
-      return setRenderLength({
-        valueLength: 12,
-        valueAdd: 2,
-      })
-    }
-  }
-
-  const handleClickMore = (e) => {
-    e.preventDefault();
-
-    setRenderLength({
-      valueLength: renderLength.valueLength + renderLength.valueAdd,
-      valueAdd: renderLength.valueAdd,
-    })
   }
 
   return(
@@ -71,10 +27,14 @@ function SavedMovies ({ myMovies, onRemoveMovie, searchMovie }) {
       <Header theme="white">
         <NavMenuHeader theme={'dark'}/>
       </Header>
-      <SearchForm setMovies={myMovies[1]} searchMovie={searchMovie} action='myMovies'/>
-      <MoviesCardList handleClickMore={handleClickMore}>
+      <SearchForm  
+        defaultMovies={cashNewMyMovies}
+        movies={newMyMovies}
+        setMovies={setNewMyMovies} 
+      />
+      <MoviesCardList handleClickMore={handleClickBtn}>
         {
-          myMovies[0] && myMovies[0]
+          newMyMovies && newMyMovies
             .slice(0, renderLength.valueLength)
             .map(movie => <MoviesCard
               key={movie._id}
