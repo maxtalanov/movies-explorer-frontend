@@ -21,10 +21,6 @@ function SavedMovies ({ myMovies, onRemoveMovie }) {
   const { renderLength, handleClickBtn } = useRenderCard(width);
   const [newMyMovies, setNewMyMovies, cashNewMyMovies] = useStateCash(myMovies[0])
 
-  function onSaved(id) {
-    return  myMovies.some(myMovie => myMovie.movieId === id);
-  }
-
   return(
     <>
       <Header theme="white">
