@@ -1,10 +1,15 @@
 import React from "react";
-import WithForm from "../WithForm/WithForm";
-import InputName from "../Input/InputName";
-import InputPassword from "../Input/InputPassword";
-import InputEmail from "../Input/InputEmail";
-import './Register.css';
+import {
+  WithForm,
+  InputName,
+  InputEmail,
+  InputPassword,
+} from "components";
+
+// TODO: Вынести в отдельный hook
 import {useFormWithValidation} from "../../utils/globalMethod/useForm";
+
+import './Register.css';
 
 function Register({onRegister}) {
   const registerData = useFormWithValidation({

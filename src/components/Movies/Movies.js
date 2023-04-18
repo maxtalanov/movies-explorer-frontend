@@ -1,10 +1,13 @@
 import React from "react";
-import Header from "../Header/Header";
-import NavMenuHeader from "../NavMenuHeader/NavMenuHeader";
-import SearchForm from "../SearchForm/SearchForm";
-import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import Footer from "../Footer/Footer";
-import MoviesCard from "../MoviesCard/MoviesCard";
+import { 
+  Header, 
+  NavMenuHeader,
+  SearchForm,
+  MoviesCard,
+  MoviesCardList, 
+  Footer,
+} from "components"
+
 import { BASE_URL_MOVIES } from "../../utils/constant";
 import { 
   useWindowDimensions,

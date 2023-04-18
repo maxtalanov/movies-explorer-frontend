@@ -1,10 +1,13 @@
 import React from "react";
-import NavMenuHeader from "../NavMenuHeader/NavMenuHeader";
-import Header from "../Header/Header";
-import SearchForm from "../SearchForm/SearchForm";
-import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import Footer from "../Footer/Footer";
-import MoviesCard from "../MoviesCard/MoviesCard";
+import { 
+  NavMenuHeader,
+  Header,
+  SearchForm,
+  MoviesCard,
+  MoviesCardList,
+  Footer,
+ } from "components";
+
 import { 
   useRenderCard, 
   useWindowDimensions,

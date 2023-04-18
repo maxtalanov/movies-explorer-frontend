@@ -1,10 +1,11 @@
 import React from "react";
 import { porfolioConfig } from "../../utils/constant";
+
 import "./Portfolio.css";
 
 function Portfolio() {
-
   const renderListPortfolio = porfolioConfig.map((promo) => {
+    
     return (
       <li key={promo.id} className="portfolio__list hover-opacity">
         <a className="portfolio__link" href={promo.link} target="_blank" rel="noreferrer">

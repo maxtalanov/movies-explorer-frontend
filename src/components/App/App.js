@@ -13,6 +13,7 @@ import {
   Register,
   SavedMovies
 } from 'components'
+
 import { ROUTERS } from "routers";
 import * as MainAPI from "../../utils/API/MainAPIjs";
 import {getMovies} from "../../utils/API/MoviesAPI";
@@ -211,7 +212,6 @@ function App() {
             component={Profile}
             path={ROUTERS.PROFILE}
             isLoggedIn={loggedIn}
-
             onLogout={onExitUser}
             onUpdateUser={onUpdateUser}
           />

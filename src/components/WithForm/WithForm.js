@@ -1,6 +1,7 @@
-import React, {useState} from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import Logotype from "../Logotype/Logotype";
+import { Logotype } from "components";
+
 import "./WithForm.css"
 
 function WithForm({ children, titleForm, titleBtnSubmit, subTitle, btnLink, modMargin, link, handleSubmit, isValid }) {

@@ -1,5 +1,6 @@
 import React from "react";
 import { socialLinks } from "../../utils/constant";
+
 import './Navigation.css';
 
 function Navigation({ mod }) {

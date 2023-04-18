@@ -1,16 +1,14 @@
 import React from "react";
 import { CurrentUserContext } from  "../../contexts/CurrentUserContext";
-import Header from "../Header/Header";
-import NavMenuHeader from "../NavMenuHeader/NavMenuHeader";
+import { 
+  Header, 
+  NavMenuHeader
+} from "components";
+
 import './Profile.css';
-import {useFormWithValidation} from "../../utils/globalMethod/useForm";
 
 function Profile({ onLogout, onUpdateUser}) {
   const currentUser = React.useContext(CurrentUserContext);
-  // const userData = useFormWithValidation({
-  //   email: '',
-  //   userName: '',
-  // })
   const [userData, setUserData] = React.useState({
     email: '',
     userName: '',

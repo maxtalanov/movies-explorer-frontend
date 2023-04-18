@@ -1,5 +1,6 @@
 import React,  {useState}from "react";
-import Checkbox from "../Checkbox/Checkbox";
+import { Checkbox } from "components";
+
 import "./SearchForm.css";
 
 function SearchForm({ defaultMovies, movies, setMovies }) {

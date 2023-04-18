@@ -1,6 +1,7 @@
 import React from "react";
 import { technologies } from "../../utils/constant";
-import Heading from "../Heading/Heading";
+import { Heading } from "components";
+
 import "./Techs.css";
 
 function Techs() {

@@ -1,7 +1,10 @@
 import React, {useState} from "react";
+import { 
+  BurgerMenu,
+  Account,
+} from "components";
 import { Link } from "react-router-dom";
-import BurgerMenu from "../BurgerMenu/BurgerMenu";
-import Account from "../Account/Account";
+
 import './NavMenuHeader.css';
 
 function NavMenuHeader({theme}) {

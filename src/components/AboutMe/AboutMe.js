@@ -1,6 +1,6 @@
 import React from "react";
+import { Heading } from "components";
 import { socialLinks, USER_MANIFEST } from "../../utils/constant";
-import Heading from "../Heading/Heading";
 import avatar from '../../images/img.jpg';
 import "./AboutMe.css";
 

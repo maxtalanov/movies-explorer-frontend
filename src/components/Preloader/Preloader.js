@@ -1,6 +1,7 @@
-import React from 'react'
-import './Preloader.css'
-import preloader from '../../images/preloader.svg'
+import React from 'react';
+import preloader from '../../images/preloader.svg';
+
+import './Preloader.css';
 
 const Preloader = ({ massage }) => {
 
