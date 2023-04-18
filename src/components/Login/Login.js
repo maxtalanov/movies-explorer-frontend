@@ -5,8 +5,8 @@ import {
   InputPassword,
 } from "components";
 
-// TODO: Перенести в hook
-import { useFormWithValidation } from "../../utils/globalMethod/useForm";
+import { useFormWithValidation } from "hooks";
+
 import './Login.css';
 
 function Login({ onLogin }) {

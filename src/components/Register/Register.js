@@ -6,8 +6,7 @@ import {
   InputPassword,
 } from "components";
 
-// TODO: Вынести в отдельный hook
-import {useFormWithValidation} from "../../utils/globalMethod/useForm";
+import { useFormWithValidation } from "hooks";
 
 import './Register.css';
 
