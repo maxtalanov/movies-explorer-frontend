@@ -1,4 +1,3 @@
-//Компоннт "Регистрации пользователя"
 import React from "react";
 import {
   WithForm,
@@ -11,7 +10,18 @@ import { useFormWithValidation } from "hooks";
 
 import './Register.css';
 
-function Register() {
+function Register({onRegister}) {
+  const registerData = useFormWithValidation({
+    email: '',
+    password: '',
+    userName: '',
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    onRegister(registerData.values);
+  }
 
   return (
     <section className="register">
@@ -22,17 +32,42 @@ function Register() {
         btnLink="Войти"
         modMargin="form__btn-submit_type_register"
         link="/signin"
+        handleSubmit={handleSubmit}
+        isValid={registerData.isValid}
       >
         <fieldset className={`form__fieldset`}>
-          <Input label="Имя" type="text" placeholder="Ваше имя" required={true}/>
-          <Input label="E-mail" type="email" placeholder="Ваш e-mail" required={true} />
-          <Input
+          <InputName
+            label='Имя'
+            placeholder="Укажите Ваше имя"
+
+            id='register-name'
+            name='userName'
+            value={registerData.userName}
+            onChange={registerData.handleChange}
+            errMassage={registerData.errors.userName}
+          />
+
+          <InputEmail
+            label="E-mail"
+            placeholder="Укажите Ваш email"
+
+            id='register-email'
+            name='email'
+            value={registerData.email}
+            onChange={registerData.handleChange}
+            errMassage={registerData.errors.email}
+          />
+
+          <InputPassword
             label="Пароль"
-            type="password"
-            placeholder="Ваш пароль"
-            required={true}
-            errMassage='Пароль должен бытьь...'
-            err='form__span-err'/>
+            placeholder="Придумайте пароль"
+
+            id='register-password'
+            name='password'
+            value={registerData.password}
+            onChange={registerData.handleChange}
+            errMassage={registerData.errors.password}
+          />
         </fieldset>
       </WithForm>
     </section>

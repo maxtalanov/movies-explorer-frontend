@@ -1,6 +1,5 @@
 import React from "react";
 import { Heading } from "components";
-
 import  "./AboutProject.css";
 
 function AboutProject() {

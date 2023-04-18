@@ -40,18 +40,21 @@ function MoviesCard({movie, type, onSaved, onSave, onRemove}) {
       return <button className={`card__btn-save card__btn-remove hover-opacity`} onClick={myMovieBtnClick}/>
     }
   }
-  console.log(modLike);
 
   return(
     <section className={`card`}>
       <div className="card__container-info">
         <div className="card__movie-item">
-          <h3 className="card__title">{movieData.nameRU}</h3>
-          <p className="card__duration">{movieData.duration}</p>
+          <h3 className="card__title">{nameRU}</h3>
+          <p className="card__duration">{`${movieDuration.hours}ч ${movieDuration.minute}м`}</p>
         </div>
-        <button className={`card__btn-like ${modLike} hover-opacity`} onClick={likeClick}/>
+        {movieBtn()}
+        {myMovieBtn()}
       </div>
-      <img src={movieData.image} alt={`Постер к фильму ${movieData.nameRU}`} className="card__img"/>
+      <a className={`card__link-trailer`} href={trailer} target="_blank" rel="noreferrer">
+        <img src={image} alt={`Постер к фильму ${nameRU}`} className="card__img"/>
+      </a>
+
     </section>
   );
 }

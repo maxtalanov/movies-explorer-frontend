@@ -14,12 +14,12 @@ import {
 
 import './Main.css';
 
+function Main({isLoggedIn}) {
 
-function Main() {
   return (
     <section className="main">
       <Header theme="dark-blue">
-        <NavButton />
+        {isLoggedIn? <NavMenuHeader theme={'light'}/> : <NavButton />}
       </Header>
 
       <section className="main">

@@ -1,9 +1,8 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-
 import './Account.css';
 
-function Account() {
+function Account({theme}) {
   const history = useHistory();
 
   function handleClickAccount() {
@@ -13,10 +12,10 @@ function Account() {
   return(
     <div className={`account`}>
       <button
-        className="account__btn button__reset hover-opacity"
+        className={`account__btn account__btn_theme_${theme} button__reset hover-opacity`}
         onClick={handleClickAccount}>
         аккаунт
-        <i className="account__btn-icon" />
+        <i className={`account__btn-icon account__btn-icon_theme_${theme}`}/>
       </button>
     </div>
   );

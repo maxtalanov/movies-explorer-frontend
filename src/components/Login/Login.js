@@ -7,7 +7,20 @@ import {
 
 import { useFormWithValidation } from "hooks";
 
-function Login() {
+import './Login.css';
+
+function Login({ onLogin }) {
+  const loginData = useFormWithValidation({
+    email: '',
+    password: '',
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    onLogin(loginData.values);
+    loginData.resetForm();
+  }
 
   return (
     <section className="login">
@@ -18,10 +31,29 @@ function Login() {
         btnLink="Регистрация"
         modMargin="form__btn-submit_type_login"
         link="/signup"
+        handleSubmit={handleSubmit}
+        isValid={loginData.isValid}
       >
         <fieldset className={`form__fieldset`}>
-          <Input label="E-mail" type="email"  placeholder="Ваш e-mail" required={true}/>
-          <Input label="Пароль" type="password" placeholder="Ваш пароль" required={true} />
+          <InputEmail
+            label="E-mail"
+            placeholder="Укажите Ваш email"
+            id="login-email"
+            name="email"
+            value={loginData.values.email}
+            onChange={loginData.handleChange}
+            errMassage={loginData.errors.email}
+          />
+
+          <InputPassword
+            label="Пароль"
+            placeholder="Укажите Ваш пароль"
+            id="login-password"
+            name="password"
+            value={loginData.values.password}
+            onChange={loginData.handleChange}
+            errMassage={loginData.errors.password}
+          />
         </fieldset>
       </WithForm>
     </section>
