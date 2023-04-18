@@ -1,6 +1,7 @@
 import React from "react";
+import { Checkbox } from "components";
+
 import "./SearchForm.css";
-import Checkbox from "../Checkbox/Checkbox";
 
 
 function SearchForm() {

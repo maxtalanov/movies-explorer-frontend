@@ -1,10 +1,11 @@
-// Компонент "Авторезации пользователя"
+import React from "react";
+import {
+  WithForm,
+  InputEmail,
+  InputPassword,
+} from "components";
 
-import React from "react"; //Инициализация библиотеки
-import './Login.css'; // Ф-ил стилей
-
-import Input from "../Input/Input";
-import WithForm from "../WithForm/WithForm"; //Инициализация стилей
+import { useFormWithValidation } from "hooks";
 
 function Login() {
 

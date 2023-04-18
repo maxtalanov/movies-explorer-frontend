@@ -1,17 +1,25 @@
 //Корневой компонент приложения, его создаёт CRA.
 
-import React from "react";
-import {Route, Switch} from "react-router-dom";
-import './App.css';
-import Register from "../Register/Register";
-import Login from "../Login/Login";
-import Profile from "../Profile/Profile";
-import Main from "../Main/Main";
-import Movies from "../Movies/Movies";
-import SavedMovies from "../SavedMovies/SavedMovies";
-import NotFound from "../NotFound/NotFound";
+import { Switch, Route, useHistory, Redirect, } from "react-router-dom";
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-// ф-ый компонент
+import {
+  Login,
+  Main,
+  Movies,
+  NotFound,
+  ProtectedRoute,
+  Profile,
+  Register,
+  SavedMovies
+} from 'components'
+
+import { ROUTERS } from "routers";
+import * as MainAPI from "../../utils/API/MainAPIjs";
+import {getMovies} from "../../utils/API/MoviesAPI";
+
+import './App.css';
+
 function App() {
 
   return (
@@ -22,13 +30,14 @@ function App() {
           <Main/>
         </Route>
 
-        <Route path='/movies'>
-          <Movies/>
-        </Route>
-
-        <Route path='/saved-movies'>
-          <SavedMovies/>
-        </Route>
+          <ProtectedRoute
+            exact
+            component={Profile}
+            path={ROUTERS.PROFILE}
+            isLoggedIn={loggedIn}
+            onLogout={onExitUser}
+            onUpdateUser={onUpdateUser}
+          />
 
         <Route path='/profile'>
           <Profile/>

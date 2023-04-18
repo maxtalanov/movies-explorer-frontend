@@ -1,13 +1,26 @@
 import React from "react";
-import './SavedMovies.css';
-import NavMenuHeader from "../NavMenuHeader/NavMenuHeader";
-import Header from "../Header/Header";
-import SearchForm from "../SearchForm/SearchForm";
-import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import {movies} from "../../utils/constant";
-import Footer from "../Footer/Footer";
+import { 
+  NavMenuHeader,
+  Header,
+  SearchForm,
+  MoviesCard,
+  MoviesCardList,
+  Footer,
+ } from "components";
 
-function SavedMovies () {
+import { 
+  useRenderCard, 
+  useWindowDimensions,
+  useStateCash,
+ } from "hooks";
+
+import './SavedMovies.css';
+
+function SavedMovies ({ myMovies, onRemoveMovie }) {
+  const { width } = useWindowDimensions();
+  const { renderLength, handleClickBtn } = useRenderCard(width);
+  const [newMyMovies, setNewMyMovies, cashNewMyMovies] = useStateCash(myMovies[0])
+
   return(
     <>
       <Header theme="white">

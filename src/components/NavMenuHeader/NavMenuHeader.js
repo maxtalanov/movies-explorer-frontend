@@ -1,8 +1,11 @@
-import React, {useState} from "react"; //Инициализация библиотеки (не обязательное действие)
-import './NavMenuHeader.css'; //Инициализация стилей
+import React, {useState} from "react";
+import { 
+  BurgerMenu,
+  Account,
+} from "components";
 import { Link } from "react-router-dom";
-import BurgerMenu from "../BurgerMenu/BurgerMenu";
-import Account from "../Account/Account";
+
+import './NavMenuHeader.css';
 
 function NavMenuHeader() {
   const [menuActive, setMenuActive] = useState(false);

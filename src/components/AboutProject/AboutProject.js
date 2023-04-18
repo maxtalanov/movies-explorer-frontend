@@ -1,7 +1,7 @@
 import React from "react";
-import  "./AboutProject.css";
+import { Heading } from "components";
 
-import Heading from "../Heading/Heading";
+import  "./AboutProject.css";
 
 function AboutProject() {
 

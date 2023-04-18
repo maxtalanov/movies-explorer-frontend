@@ -1,15 +1,11 @@
-// Прототип для форм аунтификаций;
-import React from "react"; //Инициализация библиотеки
-import "./WithForm.css"; // Ф-ил стилей
-
+import React from "react";
 import { Link } from "react-router-dom";
+import { Logotype } from "components";
 
-import Logotype from "../Logotype/Logotype";
+import "./WithForm.css"
 
-// ф-ый компонент
 function WithForm({ children, titleForm, titleBtnSubmit, subTitle, btnLink, modMargin,link }) {
 
-  // рендер
   return(
     <section className="with-form">
       <form className={`form`}>

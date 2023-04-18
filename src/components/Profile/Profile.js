@@ -1,11 +1,43 @@
 //Компоннт "Редактирования пользователя"
 import React from "react";
-import './Profile.css';
-import Header from "../Header/Header";
-import NavMenuHeader from "../NavMenuHeader/NavMenuHeader";
+import { CurrentUserContext } from  "../../contexts/CurrentUserContext";
+import { 
+  Header, 
+  NavMenuHeader
+} from "components";
 
-function Profile() {
-  const nameUsers = 'Максим';
+import './Profile.css';
+
+function Profile({ onLogout, onUpdateUser}) {
+  const currentUser = React.useContext(CurrentUserContext);
+  const [userData, setUserData] = React.useState({
+    email: '',
+    userName: '',
+  })
+
+  React.useEffect(() => {
+    if (currentUser) {
+      setUserData({
+        userName: currentUser.name,
+        email: currentUser.email,
+      });
+    }
+  },[currentUser]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setUserData({
+      ...userData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    onUpdateUser(userData);
+  }
 
   return (
     <>

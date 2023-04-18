@@ -1,7 +1,6 @@
-import React from "react"; //Инициализация библиотеки (не обязательное действие)
-import './Footer.css'; //Инициализация стилей
-
-import Navigation from "../Navigation/Navigation";
+import React from "react";
+import { Navigation } from "components";
+import './Footer.css';
 
 function Footer() {
 

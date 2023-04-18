@@ -1,12 +1,16 @@
 //Компоннт "Регистрации пользователя"
 import React from "react";
+import {
+  WithForm,
+  InputName,
+  InputEmail,
+  InputPassword,
+} from "components";
+
+import { useFormWithValidation } from "hooks";
+
 import './Register.css';
 
-import WithForm from "../WithForm/WithForm";
-import Input from "../Input/Input";
-
-
-// ф-ый компонент
 function Register() {
 
   return (

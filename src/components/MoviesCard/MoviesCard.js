@@ -1,11 +1,44 @@
-import React from "react";
+import React from 'react';
+import { useTimeFormat } from 'hooks';
+
 import './MoviesCard.css';
 
-function MoviesCard({ movieData }) {
-  const [modLike, setModLike] = React.useState(''); //Удалить после написания ф-ла
-  //Удалить после написания ф-ла
-  function likeClick() {
-    setModLike('card__btn-like_active');
+function MoviesCard({movie, type, onSaved, onSave, onRemove}) {
+
+  const { nameRU, duration, image, trailer } = movie;
+  const active = onSaved ? 'card__btn-like_active' : '';
+  const movieDuration = useTimeFormat(duration);
+
+  function handleSave() {
+    onSave(movie);
+  }
+
+  function handleRemove() {
+    onRemove(movie);
+  }
+
+  function movieBtnClick() {
+     if (!onSaved) {
+       handleSave()
+     } else {
+       handleRemove();
+     }
+  }
+
+  function myMovieBtnClick() {
+    handleRemove()
+  }
+
+  function movieBtn() {
+    if (type === 'movie') {
+      return <button className={`card__btn-save card__btn-like ${active} hover-opacity`} onClick={movieBtnClick}/>
+    }
+  }
+
+  function myMovieBtn() {
+    if (type === 'myMovie') {
+      return <button className={`card__btn-save card__btn-remove hover-opacity`} onClick={myMovieBtnClick}/>
+    }
   }
   console.log(modLike);
 
