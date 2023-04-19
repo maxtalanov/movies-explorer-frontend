@@ -13,6 +13,7 @@
 | Чек лист (3) | PDF | [Открыть документ](https://code.s3.yandex.net/web-developer/static/new-program/web-diploma-criteria-2.0/checklist_react_diplom.pdf) |
 | Pull-request | level-2 | [Посмотреть Pull](https://github.com/maxtalanov/movies-explorer-frontend/pull/1)|
 | Pull-request | level-3 | [Посмотреть Pull](https://github.com/maxtalanov/movies-explorer-frontend/pull/2)|
+| Pull-request | level-3(v.2) | [Посмотреть Pull](https://github.com/maxtalanov/movies-explorer-frontend/pull/10)|
 
 
 
