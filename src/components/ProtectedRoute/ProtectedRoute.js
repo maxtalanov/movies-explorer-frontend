@@ -9,7 +9,7 @@ const ProtectedRoute = ({ component: Component, ...props }) => {
   return (
     <Route>
       {() =>
-        props.isLoggedIn ? <Component {...props} /> : <Redirect to={ROUTERS.LOGIN} />
+        props.isLoggedIn ? <Component {...props} /> : <Redirect to={ROUTERS.DEFAULT} />
       }
     </Route>
   );
