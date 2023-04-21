@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useContext, useEffect } from "react";
 import { CurrentUserContext } from  "../../contexts/CurrentUserContext";
 import { 
   Header, 
@@ -8,20 +8,36 @@ import {
 import './Profile.css';
 
 function Profile({ onLogout, onUpdateUser}) {
-  const currentUser = React.useContext(CurrentUserContext);
-  const [userData, setUserData] = React.useState({
+  const currentUser = useContext(CurrentUserContext);
+  const [formChanged, setFormChanged] = useState(false);
+  const [originalUserData, setOriginalUserData] = useState({});
+  const [userData, setUserData] = useState({
     email: '',
     userName: '',
   })
 
-  React.useEffect(() => {
+
+  useEffect(() => {
     if (currentUser) {
       setUserData({
         userName: currentUser.name,
         email: currentUser.email,
       });
+      setOriginalUserData({
+        userName: currentUser.name,
+        email: currentUser.email,
+      });
     }
   },[currentUser]);
+
+  useEffect(() => {
+    const { userName: newUserName, email: newEmail } = userData;
+    const { userName: originalUserName, email: originalEmail } = originalUserData || {};
+  
+    const isFormChanged = newUserName !== originalUserName || newEmail !== originalEmail;
+  
+    setFormChanged(isFormChanged);
+  }, [userData, originalUserData]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -84,8 +100,16 @@ function Profile({ onLogout, onUpdateUser}) {
             </div>
           </fieldset>
 
-          <button type="submit" className="profile__form-btn-submit button__reset hover-opacity">Редактировать</button>
-          <button type="button" className="profile__form-btn-exit button__reset hover-opacity" onClick={onLogout}>Выйти из аккаунта</button>
+          <button 
+            type="submit" 
+            className="profile__form-btn-submit button__reset hover-opacity"
+            disabled={!formChanged}
+          >
+            Редактировать
+          </button>
+          <button type="button" className="profile__form-btn-exit button__reset hover-opacity" onClick={onLogout}>
+            Выйти из аккаунта
+          </button>
         </form>
 
       </section>
