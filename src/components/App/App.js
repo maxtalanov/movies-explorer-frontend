@@ -73,8 +73,8 @@ function App() {
 
     return MainAPI
       .register(registerData)
-      .then(res => {
-        console.log(res);
+      .then(() => {
+        onLogin(registerData);
       })
       .catch((err) => {
         console.log(err);
@@ -88,7 +88,7 @@ function App() {
       .then((res) => {
         onGetUser();
         setLoggedIn(true);
-        console.log(res);
+        history.push(ROUTERS.MOVIES)
       })
       .catch((err) => {
         console.log(err);
