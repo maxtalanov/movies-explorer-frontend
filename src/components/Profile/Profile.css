@@ -95,6 +95,15 @@
   color: #000000;
 }
 
+.profile__form-btn-submit:disabled {
+  color: #C2C2C2;
+}
+
+.profile__form-btn-submit:disabled:hover {
+  cursor: not-allowed;
+  opacity: 1;
+}
+
 .profile__form-btn-exit {
   margin: 0;
   padding: 0;
