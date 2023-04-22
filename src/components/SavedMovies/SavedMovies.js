@@ -19,21 +19,25 @@ import './SavedMovies.css';
 function SavedMovies ({ myMovies, onRemoveMovie }) {
   const { width } = useWindowDimensions();
   const { renderLength, handleClickBtn } = useRenderCard(width);
-  const [newMyMovies, setNewMyMovies, cashNewMyMovies] = useStateCash(myMovies[0])
+  // TODO: отношение к ниже описанной проблеме
+  // const [newMyMovies, setNewMyMovies, cashNewMyMovies] = useStateCash(myMovies)
 
   return(
     <>
       <Header theme="white">
         <NavMenuHeader theme={'dark'}/>
       </Header>
+
+      {/* TODO: Временно закоментирован, до устранения проблем с поиском
       <SearchForm  
         defaultMovies={cashNewMyMovies}
         movies={newMyMovies}
         setMovies={setNewMyMovies} 
-      />
-      <MoviesCardList handleClickMore={handleClickBtn} maxElLength={newMyMovies.length}>
+      /> */}
+
+      <MoviesCardList handleClickMore={handleClickBtn} maxElLength={myMovies[0].length}>
         {
-          newMyMovies && newMyMovies
+          myMovies[0] && myMovies[0]
             .slice(0, renderLength.valueLength)
             .map(movie => <MoviesCard
               key={movie._id}
@@ -51,7 +55,6 @@ function SavedMovies ({ myMovies, onRemoveMovie }) {
                 nameEN: movie.nameEN,
               }}
               type={'myMovie'}
-              onSaved={true}
               onRemove={onRemoveMovie}
             />)
         }
