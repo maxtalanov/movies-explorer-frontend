@@ -31,7 +31,7 @@ function SavedMovies ({ myMovies, onRemoveMovie }) {
         movies={newMyMovies}
         setMovies={setNewMyMovies} 
       />
-      <MoviesCardList handleClickMore={handleClickBtn}>
+      <MoviesCardList handleClickMore={handleClickBtn} maxElLength={newMyMovies.length}>
         {
           newMyMovies && newMyMovies
             .slice(0, renderLength.valueLength)
