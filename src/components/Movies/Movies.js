@@ -35,9 +35,9 @@ function Movies({movies, myMovies, onSaveMovie, onRemoveMovie}) {
         // movies={newMovies}
         // setMovies={setNewMovies} 
       />
-      <MoviesCardList handleClickMore={handleClickBtn} maxElLength={movies.length}>
+      <MoviesCardList handleClickMore={handleClickBtn} maxElLength={movies[0].length}>
         {
-          movies && movies
+          movies[0] && movies[0]
             .slice(0, renderLength.valueLength)
             .map(movie => <MoviesCard
               key={movie.id}
