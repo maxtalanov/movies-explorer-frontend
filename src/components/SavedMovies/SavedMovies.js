@@ -11,7 +11,6 @@ import {
 import { 
   useRenderCard, 
   useWindowDimensions,
-  useStateCash,
  } from "hooks";
 
 import './SavedMovies.css';
@@ -19,8 +18,6 @@ import './SavedMovies.css';
 function SavedMovies ({ myMovies, onRemoveMovie }) {
   const { width } = useWindowDimensions();
   const { renderLength, handleClickBtn } = useRenderCard(width);
-  // TODO: отношение к ниже описанной проблеме
-  // const [newMyMovies, setNewMyMovies, cashNewMyMovies] = useStateCash(myMovies)
 
   return(
     <>
@@ -28,12 +25,11 @@ function SavedMovies ({ myMovies, onRemoveMovie }) {
         <NavMenuHeader theme={'dark'}/>
       </Header>
 
-      {/* TODO: Временно закоментирован, до устранения проблем с поиском
       <SearchForm  
-        defaultMovies={cashNewMyMovies}
-        movies={newMyMovies}
-        setMovies={setNewMyMovies} 
-      /> */}
+        // defaultMovies={cashNewMyMovies}
+        // movies={newMyMovies}
+        // setMovies={setNewMyMovies} 
+      />
 
       <MoviesCardList handleClickMore={handleClickBtn} maxElLength={myMovies[0].length}>
         {

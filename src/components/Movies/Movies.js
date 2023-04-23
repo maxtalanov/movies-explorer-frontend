@@ -12,7 +12,6 @@ import { BASE_URL_MOVIES } from "../../utils/constant";
 import { 
   useWindowDimensions,
   useRenderCard,
-  useStateCash,
 } from "hooks";
 
 import './Movies.css';
@@ -20,7 +19,6 @@ import './Movies.css';
 function Movies({movies, myMovies, onSaveMovie, onRemoveMovie}) {
   const { width } = useWindowDimensions();
   const { renderLength, handleClickBtn} = useRenderCard(width);
-  const [newMovies, setNewMovies, cashNewMovies] = useStateCash(movies[0])
 
   const onSaved = (id) => {
     return  myMovies.some(myMovie => myMovie.movieId === id);
@@ -31,14 +29,15 @@ function Movies({movies, myMovies, onSaveMovie, onRemoveMovie}) {
       <Header theme="white">
         <NavMenuHeader theme={'dark'}/>
       </Header>
+
       <SearchForm  
-        defaultMovies={cashNewMovies}
-        movies={newMovies}
-        setMovies={setNewMovies} 
+        // defaultMovies={cashNewMovies}
+        // movies={newMovies}
+        // setMovies={setNewMovies} 
       />
-      <MoviesCardList handleClickMore={handleClickBtn} maxElLength={newMovies.length}>
+      <MoviesCardList handleClickMore={handleClickBtn} maxElLength={movies.length}>
         {
-          newMovies && newMovies
+          movies && movies
             .slice(0, renderLength.valueLength)
             .map(movie => <MoviesCard
               key={movie.id}
