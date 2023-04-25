@@ -3,11 +3,8 @@ import { Checkbox } from "components";
 
 import "./SearchForm.css";
 
-function SearchForm({ defaultMovies, movies, setMovies }) {
-  const [form, setForm] = useState({
-    input: '',
-    switch: false,
-  })
+function SearchForm({ searchMovies, initialForm }) {
+  const [form, setForm] = useState(initialForm)
 
   const handleChange = (e) => {
     const target = e.target;
