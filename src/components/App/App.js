@@ -24,23 +24,22 @@ import './App.css';
 
 function App() {
   // TODO: Удалить все комментарии и привести в единобразный стиль
+  const {storedValue, setValue} = useLocalStorage('searchFilter', {
+    switcher: false,
+    input: null
+  })
   const history =  useHistory();
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
   const [myMovies, setMyMovies] = useState([]);
   const [movies, setMovies] = useState([]);
+  const [filterConf, setFilterConf] = useState(storedValue)
 
-  // useEffect(() => {
-  //   onGetMovies();
-  //   onGetMyMovie();
-  //
-  // }, [])
-
-  React.useEffect(() => {
+  useEffect(() => {
     tokenCheck();
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (loggedIn) {
       onGetMovies();
       onGetMyMovie();
@@ -200,6 +199,41 @@ function App() {
       })
   }
 
+  function onSearchMovies(search) {
+    const { switcher, input } = search;
+
+    setValue({
+      switcher: switcher,
+      input: input,
+    });
+
+    setFilterConf({
+      switcher: switcher,
+      input: input,
+    });
+  }
+
+  function onFilterMovies(input, switcher, arr) {    
+      let result = arr;
+
+      if (switcher) {
+        result = result.filter(el => el.isHortFilm);
+      }
+  
+      if (input === '') {
+        return result
+      } else {
+        const trimmedInput = input.trim().toLowerCase();
+        result = result.filter((el) => {
+          const trimmedNameRU = el.nameRU.trim().toLowerCase();
+          const trimmedNameEN = el.nameEN.trim().toLowerCase();
+          return trimmedNameRU.includes(trimmedInput) || trimmedNameEN.includes(trimmedInput);
+        });
+      }
+  
+      return result;
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="app">
@@ -210,8 +244,11 @@ function App() {
             path={ROUTERS.MOVIES}
             onSaveMovie={onSaveMovie}
             onRemoveMovie={onRemoveMovie}
-            movies={[movies, setMovies]}
+            movies={movies}
             myMovies={myMovies}
+            filterConf={filterConf}
+            onFilterMovies={onFilterMovies}
+            searchMovies={onSearchMovies}
             isLoggedIn={loggedIn}
           />
 
@@ -220,7 +257,10 @@ function App() {
             component={SavedMovies}
             path={ROUTERS.SAVED_MOVIES}
             onRemoveMovie={onRemoveMovie}
-            myMovies={[myMovies, setMyMovies]}
+            myMovies={myMovies}
+            filterConf={filterConf}
+            onFilterMovies={onFilterMovies}
+            searchMovies={onSearchMovies}
             isLoggedIn={loggedIn}
           />
 
