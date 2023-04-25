@@ -42,8 +42,8 @@ function SearchForm({ searchMovies, initialForm }) {
           <fieldset className="search-form__fieldset">
             <Checkbox
               label="Короткометражки"
-              name="switch"
-              checked={form.switch}
+              name="switcher"
+              checked={form.switcher}
               handleChange={handleChange}
               onSubmit={handleSubmit}
             />
