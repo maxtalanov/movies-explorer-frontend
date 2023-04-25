@@ -52,6 +52,7 @@ function App() {
 
     return getMovies()
       .then((movies) => {
+      // TODO: Вынести в отдельную ф-ию
        const m = movies.map(movie => {
           const isHortFilm = (duration) => {
             if (duration <= 40) {
@@ -153,8 +154,19 @@ function App() {
 
     return MainAPI
       .getMyMovies()
-      .then((movies) =>{
-        setMyMovies(movies)
+      .then((movies) => {
+        // TODO: Вынести в отдельную ф-ию
+        const m = movies.map(movie => {
+          const isHortFilm = (duration) => {
+            if (duration <= 40) {
+              return true;
+            } else {
+              return false
+            }
+          }
+          return {...movie, isHortFilm: isHortFilm(movie.duration)}    
+        })
+        setMyMovies(m);
       })
       .catch((err) => {
         console.log(err);
