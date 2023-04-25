@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useEffect, useState } from "react";
 
 import { Switch, Route, useHistory, Redirect, } from "react-router-dom";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
@@ -13,6 +13,8 @@ import {
   Register,
   SavedMovies
 } from 'components'
+
+import { useLocalStorage } from "hooks";
 
 import { ROUTERS } from "routers";
 import * as MainAPI from "../../utils/API/MainAPIjs";
