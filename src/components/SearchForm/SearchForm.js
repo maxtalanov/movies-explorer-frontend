@@ -20,7 +20,7 @@ function SearchForm({ searchMovies, initialForm }) {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    setMovies(handleSearch(form.input, movies, defaultMovies))
+    searchMovies(form)
   }
 
   return (
