@@ -15,28 +15,6 @@ function SearchForm({ searchMovies, initialForm }) {
       ...form,
       [name]: value,
     })
-
-    if (target.type === 'checkbox') {
-      handeleSwitch(form.switch, movies, defaultMovies)
-    } 
-
-    if (value === '') {
-      setMovies(defaultMovies)
-    }
-  }
-  
-  const handeleSwitch = (switchState, arr, defaultArr) => {
-      return !switchState
-        ? setMovies(arr.filter((movie) => movie.isHortFilm === true))
-        : setMovies(defaultArr)
-  }
-
-  const handleSearch = (value, arr, defaultArr ) => {
-    return value === ''
-      ? defaultArr
-      : arr.filter((movie) => {
-        return movie.nameRU.toLowerCase().includes(value.toLowerCase())
-       })    
   }
 
   const handleSubmit = (e) => {
