@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { 
   NavMenuHeader,
   Header,
@@ -15,9 +15,55 @@ import {
 
 import './SavedMovies.css';
 
-function SavedMovies ({ myMovies, onRemoveMovie }) {
+function SavedMovies ({ myMovies, onRemoveMovie, searchMovies, filterConf, onFilterMovies }) {
   const { width } = useWindowDimensions();
   const { renderLength, handleClickBtn } = useRenderCard(width);
+  const [filteredMovies, setFilteredMovies] = useState(myMovies)
+  const [noMovies, setNoMovies] = useState({
+    isActive: false,
+    message: null,
+  });
+
+  const styleNoMovies ={
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F9F9F9",
+    maxWidth: '80%',
+    minHeight: '100px',
+    margin: "0 auto",
+    fontFamily: "Inter, sans-serif",
+    fontStyle: "normal",
+    fontWeight: "500",
+    fontSize: "18px",
+    lineLeight: "22px",
+    color: "#000000",
+  }
+  
+  useEffect(() => {
+    if (myMovies.length !== 0) {
+      const filtered = onFilterMovies(filterConf.input, filterConf.switcher, myMovies);
+      setFilteredMovies(filtered);
+  
+      if (filtered.length === 0) {
+        setNoMovies({
+          isActive: true,
+          message: 'Поиск не дал результатов',
+        });
+      } else {
+        setNoMovies({
+          isActive: false,
+          message: null,
+        });
+      }
+    } else {
+      setFilteredMovies([]);
+      setNoMovies({
+        isActive: true,
+        message: 'Сохраненых фильмов нет',
+      });
+    }
+  }, [myMovies, filterConf, onFilterMovies]);
 
   return(
     <>
@@ -26,14 +72,13 @@ function SavedMovies ({ myMovies, onRemoveMovie }) {
       </Header>
 
       <SearchForm  
-        // defaultMovies={cashNewMyMovies}
-        // movies={newMyMovies}
-        // setMovies={setNewMyMovies} 
+        initialForm={filterConf}
+        searchMovies={searchMovies}
       />
 
-      <MoviesCardList handleClickMore={handleClickBtn} maxElLength={myMovies[0].length}>
+      <MoviesCardList handleClickMore={handleClickBtn} maxElLength={filteredMovies.length}>
         {
-          myMovies[0] && myMovies[0]
+          filteredMovies
             .slice(0, renderLength.valueLength)
             .map(movie => <MoviesCard
               key={movie._id}
@@ -55,6 +100,12 @@ function SavedMovies ({ myMovies, onRemoveMovie }) {
             />)
         }
       </MoviesCardList>
+      {
+        noMovies.isActive && <p 
+        style={styleNoMovies}>
+          {noMovies.message}
+        </p>
+      }
       <Footer />
     </>
   );
