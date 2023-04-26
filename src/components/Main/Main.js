@@ -14,12 +14,12 @@ import {
 
 import './Main.css';
 
-function Main({isLoggedIn}) {
+function Main({isLoggedIn, isTokenCheck}) {
 
   return (
     <section className="main">
       <Header theme="dark-blue">
-        {isLoggedIn? <NavMenuHeader theme={'light'}/> : <NavButton />}
+        {isTokenCheck ? null : isLoggedIn ? <NavMenuHeader theme={'light'}/> : <NavButton />}
       </Header>
 
       <section className="main">
