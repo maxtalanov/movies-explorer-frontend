@@ -8,7 +8,9 @@ const ProtectedRoute = ({ component: Component, ...props }) => {
   return (
     <Route>
       {() =>
-        props.isLoggedIn ? <Component {...props} /> : <Redirect to={ROUTERS.DEFAULT} />
+        isTokenCheck ? console.log('Работает прелоадер') : isLoggedIn 
+        ? <Component {...props} /> 
+        : <Redirect to={ROUTERS.DEFAULT} />
       }
     </Route>
   );
