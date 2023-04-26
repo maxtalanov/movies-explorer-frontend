@@ -36,6 +36,7 @@ function App() {
   });
   const history =  useHistory();
   const [loggedIn, setLoggedIn] = React.useState(false);
+  const [isTokenCheck, setIsTokenCheck] = useState(true);
   const [currentUser, setCurrentUser] = React.useState({});
   const [myMovies, setMyMovies] = useState([]);
   const [movies, setMovies] = useState([]);
