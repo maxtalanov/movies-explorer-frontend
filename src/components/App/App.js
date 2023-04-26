@@ -42,9 +42,6 @@ function App() {
   const [filterConfMovie, setFilterConfMovie] = useState(searchFilterMovie);
   const [filterConfMyMovie, setFilterConfMyMovie] = useState(searchFilterMyMovie);
 
-  console.log('store 1', searchFilterMovie)
-  console.log('store 2', searchFilterMyMovie)
-
   useEffect(() => {
     tokenCheck();
   }, []);
