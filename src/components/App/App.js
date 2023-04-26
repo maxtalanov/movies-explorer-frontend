@@ -51,9 +51,6 @@ function App() {
     if (loggedIn) {
       onGetMovies();
       onGetMyMovie();
-      // history.push(ROUTERS.MOVIES);
-    } else {
-      // history.push(ROUTERS.DEFAULT);
     }
   }, [history, loggedIn]);
 
