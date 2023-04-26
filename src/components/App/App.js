@@ -93,8 +93,8 @@ function App() {
     return MainAPI
       .login(loginData)
       .then((res) => {
-        onGetUser();
         setLoggedIn(true);
+        onGetUser();
         history.push(ROUTERS.MOVIES)
       })
       .catch((err) => {
@@ -141,6 +141,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       })
+      .finally(setIsTokenCheck(false))
   }
 
   function tokenCheck() {
@@ -148,12 +149,12 @@ function App() {
     return MainAPI
       .getUser()
       .then((data) => {
-        onGetUser();
         setLoggedIn(true);
+        onGetUser();
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
   }
 
   function onGetMyMovie() {
@@ -271,6 +272,7 @@ function App() {
             onFilterMovies={onFilterMovies}
             searchMovies={onSearchMovies}
             isLoggedIn={loggedIn}
+            isTokenCheck={isTokenCheck}
           />
 
           <ProtectedRoute
@@ -283,6 +285,7 @@ function App() {
             onFilterMovies={onFilterMovies}
             searchMovies={onSearchMovies}
             isLoggedIn={loggedIn}
+            isTokenCheck={isTokenCheck}
           />
 
           <ProtectedRoute
@@ -290,16 +293,17 @@ function App() {
             component={Profile}
             path={ROUTERS.PROFILE}
             isLoggedIn={loggedIn}
+            isTokenCheck={isTokenCheck}
             onLogout={onExitUser}
             onUpdateUser={onUpdateUser}
           />
 
           <Route exact path={ROUTERS.DEFAULT}>
-            <Main isLoggedIn={loggedIn}/>
+            <Main isLoggedIn={loggedIn} isTokenCheck={isTokenCheck}/>
           </Route>
 
           <Route exact path={ROUTERS.HOME}>
-            <Main isLoggedIn={loggedIn}/>
+            <Main isLoggedIn={loggedIn} isTokenCheck={isTokenCheck}/>
           </Route>
 
           <Route exact path={ROUTERS.LOGIN}>
