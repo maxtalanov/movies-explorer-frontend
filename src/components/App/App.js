@@ -24,16 +24,26 @@ import './App.css';
 
 function App() {
   // TODO: Удалить все комментарии и привести в единобразный стиль
-  const {storedValue, setValue} = useLocalStorage('searchFilter', {
+  const {storedValue: searchFilterMovie, setValue: setSearchFilterMovie} = useLocalStorage('searchFilterMovie', {
     switcher: false,
-    input: null
-  })
+    input: '',
+    type: 'movie',
+  });
+  const {storedValue: searchFilterMyMovie, setValue: setSearchFilterMyMovie} = useLocalStorage('searchFilterMyMovie', {
+    switcher: false,
+    input: '',
+    type: 'myMovie',
+  });
   const history =  useHistory();
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
   const [myMovies, setMyMovies] = useState([]);
   const [movies, setMovies] = useState([]);
-  const [filterConf, setFilterConf] = useState(storedValue)
+  const [filterConfMovie, setFilterConfMovie] = useState(searchFilterMovie);
+  const [filterConfMyMovie, setFilterConfMyMovie] = useState(searchFilterMyMovie);
+
+  console.log('store 1', searchFilterMovie)
+  console.log('store 2', searchFilterMyMovie)
 
   useEffect(() => {
     tokenCheck();
@@ -200,17 +210,33 @@ function App() {
   }
 
   function onSearchMovies(search) {
-    const { switcher, input } = search;
+    const { switcher, input, type } = search;
 
-    setValue({
-      switcher: switcher,
-      input: input,
-    });
-
-    setFilterConf({
-      switcher: switcher,
-      input: input,
-    });
+    if (type === 'movie') {
+      setSearchFilterMovie({
+        switcher: switcher,
+        input: input,
+        type,
+      });
+      setFilterConfMovie({
+        switcher: switcher,
+        input: input,
+        type,
+      });
+    }
+    
+    if (type === 'myMovie') {
+      setSearchFilterMyMovie({
+        switcher: switcher,
+        input: input,
+        type,
+      });
+      setFilterConfMyMovie({
+        switcher: switcher,
+        input: input,
+        type,
+      });
+    }
   }
 
   function onFilterMovies(input, switcher, arr) {    
@@ -246,7 +272,7 @@ function App() {
             onRemoveMovie={onRemoveMovie}
             movies={movies}
             myMovies={myMovies}
-            filterConf={filterConf}
+            filterConf={filterConfMovie}
             onFilterMovies={onFilterMovies}
             searchMovies={onSearchMovies}
             isLoggedIn={loggedIn}
@@ -258,7 +284,7 @@ function App() {
             path={ROUTERS.SAVED_MOVIES}
             onRemoveMovie={onRemoveMovie}
             myMovies={myMovies}
-            filterConf={filterConf}
+            filterConf={filterConfMyMovie}
             onFilterMovies={onFilterMovies}
             searchMovies={onSearchMovies}
             isLoggedIn={loggedIn}
