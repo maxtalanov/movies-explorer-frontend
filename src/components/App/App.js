@@ -8,6 +8,7 @@ import {
   Main,
   Movies,
   NotFound,
+  Notification,
   ProtectedRoute,
   Profile,
   Register,
@@ -24,6 +25,9 @@ import {getMovies} from "../../utils/API/MoviesAPI";
 import './App.css';
 
 function App() {
+  const idRandom = () => {
+    return Math.random().toString(36).substring(2);
+  }
   // TODO: Удалить все комментарии и привести в единобразный стиль
   const {storedValue: searchFilterMovie, setValue: setSearchFilterMovie} = useLocalStorage('searchFilterMovie', {
     switcher: false,
@@ -47,6 +51,12 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [filterConfMovie, setFilterConfMovie] = useState(searchFilterMovie);
   const [filterConfMyMovie, setFilterConfMyMovie] = useState(searchFilterMyMovie);
+  const [notificationList, setNotificationList] = useState([{
+    type: 'error',
+    id: idRandom(),
+    title: 'Карточка удалена',
+    message: 'Фильм ролинг стоун не удален'
+  }]);
 
   useEffect(() => {
     tokenCheck();
@@ -277,10 +287,25 @@ function App() {
       return result;
   }
 
+  function removeElNotification(cardNotification) {
+    const { id } = cardNotification;
+
+    console.log(cardNotification)
+
+    setNotificationList(state => state.filter(state => state.id !== id))
+  }
+
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="app">
         { louding.isActive && <Preloader massage={louding.message}/> }
+        { notificationList.length >= 1 && <Notification 
+            cardList={notificationList} 
+            setCardList={setNotificationList}
+            removeElNotification={removeElNotification}
+          />
+        }
         <Switch>
           <ProtectedRoute
             exact
