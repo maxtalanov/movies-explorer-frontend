@@ -72,7 +72,7 @@ export const socialLinks = {
   yp: 'https://practicum.yandex.ru/'
 }
 
-export const checkResponse = res => res.ok  ? res.json() : Promise.reject(`Ошибка: ${res.status} - ${res.statusText}.`);
+export const checkResponse = res => res.ok  ? res.json() : Promise.reject(res);
 
 // export const BASE_URL_MAIN = 'http://localhost:3000';
 export const BASE_URL_MAIN = 'https://api.maxtalanov.ru';
