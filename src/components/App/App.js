@@ -11,7 +11,8 @@ import {
   ProtectedRoute,
   Profile,
   Register,
-  SavedMovies
+  SavedMovies,
+  Preloader
 } from 'components'
 
 import { useLocalStorage } from "hooks";
@@ -36,6 +37,10 @@ function App() {
   });
   const history =  useHistory();
   const [loggedIn, setLoggedIn] = React.useState(false);
+  const [louding, setLouding] = React.useState({
+    isActive: false,
+    message: null,
+  });
   const [isTokenCheck, setIsTokenCheck] = useState(true);
   const [currentUser, setCurrentUser] = React.useState({});
   const [myMovies, setMyMovies] = useState([]);
@@ -77,7 +82,7 @@ function App() {
   }
 
   function onRegister(registerData) {
-
+    setLouding({isActive: true, message: 'Идет регистрация пользователя'})
     return MainAPI
       .register(registerData)
       .then(() => {
@@ -86,10 +91,13 @@ function App() {
       .catch((err) => {
         console.log(err);
       })
+      .finally(() =>{
+        setLouding({isActive: false, message: null})
+      })
   }
 
   function onLogin(loginData) {
-
+    setLouding({isActive: true, message: 'Идет авторизация'})
     return MainAPI
       .login(loginData)
       .then((res) => {
@@ -100,9 +108,13 @@ function App() {
       .catch((err) => {
         console.log(err);
       })
+      .finally(() =>{
+        setLouding({isActive: false, message: null})
+      })
   }
 
   function onUpdateUser(userData) {
+    setLouding({isActive: true, message: 'Идет обнвление данных пользователя'})
     return MainAPI
       .updateUser(userData)
       .then((newDataUser) => {
@@ -111,6 +123,9 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() =>{
+        setLouding({isActive: false, message: null})
       })
   }
 
@@ -208,6 +223,10 @@ function App() {
   }
 
   function onSearchMovies(search) {
+    setLouding({isActive: true, message: 'Выполняется поиск'})
+    setTimeout(() => {
+      setLouding({isActive: false, message: null})
+    }, 3000);
     const { switcher, input, type } = search;
 
     if (type === 'movie') {
@@ -261,6 +280,7 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="app">
+        { louding.isActive && <Preloader massage={louding.message}/> }
         <Switch>
           <ProtectedRoute
             exact
