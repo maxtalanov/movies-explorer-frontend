@@ -4,9 +4,6 @@ import warningIcon from '../../images/nitification/info.svg';
 import { useEffect } from 'react';
 
 const  NotificationCard = ({ dataCard, onClickClose }) => {
-    useEffect(() => {
-        setTimeout(()=> onClickClose(dataCard), 3000)
-    }, [onClickClose, dataCard])
 
     const CurrentDateTime = () => {
         const date = new Date();
