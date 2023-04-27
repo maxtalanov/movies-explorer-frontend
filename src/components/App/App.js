@@ -79,10 +79,16 @@ function App() {
           }
           return {...movie, isHortFilm: isHortFilm(movie.duration)}
         })
-        setMovies(m)
+        setMovies(m);
       })
       .catch((err) => {
-        console.log(err)
+        const newNotificatin = {
+          type: 'error',
+          id: idRandom(),
+          title: `Произошла ошибка`,
+          message: `При загрузке библиотеки фильмов произошла ошибка. Код ошибки ${err.status}`,
+        };
+        setNotificationList([newNotificatin, ...notificationList]);
       })
   }
 
@@ -93,8 +99,23 @@ function App() {
       .then(() => {
         onLogin(registerData);
       })
+      .then(() => {
+        const newNotificatin = {
+          type: 'success',
+          id: idRandom(),
+          title: `Регистрация`,
+          message: `Регистрация нового пользователя прошла успешно`,
+        };
+        setNotificationList([newNotificatin, ...notificationList]);
+      })
       .catch((err) => {
-        console.log(err);
+        const newNotificatin = {
+          type: 'error',
+          id: idRandom(),
+          title: `Произошла ошибка`,
+          message: `При регистрации произошла ошибка. Код ошибки ${err.status}`,
+        };
+        setNotificationList([newNotificatin, ...notificationList]);
       })
       .finally(() =>{
         setLouding({isActive: false, message: null})
@@ -109,9 +130,25 @@ function App() {
         setLoggedIn(true);
         onGetUser();
         history.push(ROUTERS.MOVIES)
+        return res;
+      })
+      .then((res) => {
+        const newNotificatin = {
+          type: 'success',
+          id: idRandom(),
+          title: `Авторизация`,
+          message: `Вы успешно авторизовались`,
+        };
+        setNotificationList([newNotificatin, ...notificationList]);
       })
       .catch((err) => {
-        console.log(err);
+        const newNotificatin = {
+          type: 'error',
+          id: idRandom(),
+          title: `Произошла ошибка`,
+          message: `При авторизации произошла ошибка. Код ошибки ${err.status}`,
+        };
+        setNotificationList([newNotificatin, ...notificationList]);
       })
       .finally(() =>{
         setLouding({isActive: false, message: null})
@@ -124,10 +161,26 @@ function App() {
       .updateUser(userData)
       .then((newDataUser) => {
         setCurrentUser(newDataUser)
-        console.log(newDataUser);
+
+        return newDataUser;
+      })
+      .then((newDataUser) => {
+        const newNotificatin = {
+          type: 'success',
+          id: idRandom(),
+          title: `Обновление`,
+          message: `Данные пользователя успешно обновлены. Имя: ${newDataUser.name}, e-mail: ${newDataUser.email}`,
+        };
+        setNotificationList([newNotificatin, ...notificationList]);
       })
       .catch((err) => {
-        console.log(err);
+        const newNotificatin = {
+          type: 'error',
+          id: idRandom(),
+          title: `Произошла ошибка`,
+          message: `При обновлении пользовательских данных произошла ошибка. Код ошибки ${err.status}`,
+        };
+        setNotificationList([newNotificatin, ...notificationList]);
       })
       .finally(() =>{
         setLouding({isActive: false, message: null})
@@ -147,7 +200,13 @@ function App() {
         console.log(res);
       })
       .catch((err) => {
-        console.log(err);
+        const newNotificatin = {
+          type: 'error',
+          id: idRandom(),
+          title: `Произошла ошибка`,
+          message: `Код ошибки ${err.status}`,
+        };
+        setNotificationList([newNotificatin, ...notificationList]);
       })
   }
 
@@ -159,7 +218,13 @@ function App() {
         setCurrentUser(currentUser);
       })
       .catch((err) => {
-        console.log(err);
+        const newNotificatin = {
+          type: 'error',
+          id: idRandom(),
+          title: `Произошла ошибка`,
+          message: `При загрузке пользовательских данных произошла ощибка. Код ошибки ${err.status}`,
+        };
+        setNotificationList([newNotificatin, ...notificationList]);
       })
   }
 
@@ -198,7 +263,13 @@ function App() {
         setMyMovies(m);
       })
       .catch((err) => {
-        console.log(err);
+        const newNotificatin = {
+          type: 'error',
+          id: idRandom(),
+          title: `Произошла ошибка`,
+          message: `При загрузке сохраненых фильмов произошла ошибка. Код ошибки ${err.status}`,
+        };
+        setNotificationList([newNotificatin, ...notificationList]);
       })
   }
 
@@ -208,9 +279,26 @@ function App() {
       .saveMovie(movie)
       .then((movieSave) => {
         setMyMovies([movieSave, ...myMovies]);
+        
+        return movieSave
+      })
+      .then((movieSave) =>{
+        const newNotificatin = {
+          type: 'warning',
+          id: idRandom(),
+          title: 'Сохранение',
+          message: `Фильм "${movieSave.nameRU}" добавлен в избраное`,
+        }
+        setNotificationList([newNotificatin, ...notificationList])
       })
       .catch((err) => {
-        console.log(err);
+        const newNotificatin = {
+          type: 'error',
+          id: idRandom(),
+          title: `Произошла ошибка`,
+          message: `Фильм "${movie.nameRU}" не сохранен. Код ошибки ${err.status}`,
+        };
+        setNotificationList([newNotificatin, ...notificationList]);
       })
 
   }
@@ -219,10 +307,28 @@ function App() {
     const id = myMovies.find(myMovie => myMovie.movieId === movie.movieId)
     return MainAPI
       .removeMovie(id._id)
-      .then(() => {
+      .then((removeMovie) => {
         setMyMovies(state => state.filter(el => el._id !== id._id));
+
+        return removeMovie
+      })
+      .then(() => {
+        const newNotificatin = {
+          type: 'warning',
+          id: idRandom(),
+          title: 'Удаление',
+          message: `Фильм "${movie.nameRU}" успешно удален из избранного`,
+        }
+        setNotificationList([newNotificatin, ...notificationList])
       })
       .catch((err) => {
+        const newNotificatin = {
+          type: 'error',
+          id: idRandom(),
+          title: `Произошла ошибка`,
+          message: `Фильм "${movie.nameRU}" не удален. Код ошибки ${err.status}`,
+        };
+        setNotificationList([newNotificatin, ...notificationList]);
         console.log(err);
       })
   }
