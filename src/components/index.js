@@ -37,6 +37,7 @@ import Navigation from './Navigation/Navigation'
 import NavMenuHeader from './NavMenuHeader/NavMenuHeader'
 import NavTab from './NavTab/NavTab'
 import NotFound from './NotFound/NotFound'
+import Notification from './Notification/Notification'
 
 // Компоненты: 'P'
 import Preloader from './Preloader/Preloader'
@@ -82,6 +83,7 @@ export {
     NavMenuHeader,
     NavTab,
     NotFound,
+    Notification,
     Preloader,
     ProtectedRoute,
     Profile,
