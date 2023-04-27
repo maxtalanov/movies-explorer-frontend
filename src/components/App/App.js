@@ -141,7 +141,6 @@ function App() {
       .catch((err) => {
         console.log(err);
       })
-      .finally(setIsTokenCheck(false))
   }
 
   function tokenCheck() {
@@ -155,6 +154,9 @@ function App() {
       .catch((err) => {
         console.log(err);
       })
+      .finally(() => {
+        setIsTokenCheck(false);
+      });
   }
 
   function onGetMyMovie() {
