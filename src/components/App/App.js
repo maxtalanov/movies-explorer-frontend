@@ -51,12 +51,7 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [filterConfMovie, setFilterConfMovie] = useState(searchFilterMovie);
   const [filterConfMyMovie, setFilterConfMyMovie] = useState(searchFilterMyMovie);
-  const [notificationList, setNotificationList] = useState([{
-    type: 'error',
-    id: idRandom(),
-    title: 'Карточка удалена',
-    message: 'Фильм ролинг стоун не удален'
-  }]);
+  const [notificationList, setNotificationList] = useState([]);
 
   useEffect(() => {
     tokenCheck();
@@ -289,8 +284,6 @@ function App() {
 
   function removeElNotification(cardNotification) {
     const { id } = cardNotification;
-
-    console.log(cardNotification)
 
     setNotificationList(state => state.filter(state => state.id !== id))
   }
