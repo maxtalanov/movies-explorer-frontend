@@ -84,7 +84,7 @@ function App() {
       .catch((err) => {
         const newNotificatin = {
           type: 'error',
-          id: idRandom(),
+          id: createIdRandom(),
           title: `Произошла ошибка`,
           message: `При загрузке библиотеки фильмов произошла ошибка. Код ошибки ${err.status}`,
         };
@@ -102,7 +102,7 @@ function App() {
       .then(() => {
         const newNotificatin = {
           type: 'success',
-          id: idRandom(),
+          id: createIdRandom(),
           title: `Регистрация`,
           message: `Регистрация нового пользователя прошла успешно`,
         };
@@ -111,7 +111,7 @@ function App() {
       .catch((err) => {
         const newNotificatin = {
           type: 'error',
-          id: idRandom(),
+          id: createIdRandom(),
           title: `Произошла ошибка`,
           message: `При регистрации произошла ошибка. Код ошибки ${err.status}`,
         };
@@ -135,7 +135,7 @@ function App() {
       .then((res) => {
         const newNotificatin = {
           type: 'success',
-          id: idRandom(),
+          id: createIdRandom(),
           title: `Авторизация`,
           message: `Вы успешно авторизовались`,
         };
@@ -144,7 +144,7 @@ function App() {
       .catch((err) => {
         const newNotificatin = {
           type: 'error',
-          id: idRandom(),
+          id: createIdRandom(),
           title: `Произошла ошибка`,
           message: `При авторизации произошла ошибка. Код ошибки ${err.status}`,
         };
@@ -167,7 +167,7 @@ function App() {
       .then((newDataUser) => {
         const newNotificatin = {
           type: 'success',
-          id: idRandom(),
+          id: createIdRandom(),
           title: `Обновление`,
           message: `Данные пользователя успешно обновлены. Имя: ${newDataUser.name}, e-mail: ${newDataUser.email}`,
         };
@@ -176,7 +176,7 @@ function App() {
       .catch((err) => {
         const newNotificatin = {
           type: 'error',
-          id: idRandom(),
+          id: createIdRandom(),
           title: `Произошла ошибка`,
           message: `При обновлении пользовательских данных произошла ошибка. Код ошибки ${err.status}`,
         };
@@ -202,7 +202,7 @@ function App() {
       .catch((err) => {
         const newNotificatin = {
           type: 'error',
-          id: idRandom(),
+          id: createIdRandom(),
           title: `Произошла ошибка`,
           message: `Код ошибки ${err.status}`,
         };
@@ -220,7 +220,7 @@ function App() {
       .catch((err) => {
         const newNotificatin = {
           type: 'error',
-          id: idRandom(),
+          id: createIdRandom(),
           title: `Произошла ошибка`,
           message: `При загрузке пользовательских данных произошла ощибка. Код ошибки ${err.status}`,
         };
@@ -265,7 +265,7 @@ function App() {
       .catch((err) => {
         const newNotificatin = {
           type: 'error',
-          id: idRandom(),
+          id: createIdRandom(),
           title: `Произошла ошибка`,
           message: `При загрузке сохраненых фильмов произошла ошибка. Код ошибки ${err.status}`,
         };
@@ -285,7 +285,7 @@ function App() {
       .then((movieSave) =>{
         const newNotificatin = {
           type: 'warning',
-          id: idRandom(),
+          id: createIdRandom(),
           title: 'Сохранение',
           message: `Фильм "${movieSave.nameRU}" добавлен в избраное`,
         }
@@ -294,7 +294,7 @@ function App() {
       .catch((err) => {
         const newNotificatin = {
           type: 'error',
-          id: idRandom(),
+          id: createIdRandom(),
           title: `Произошла ошибка`,
           message: `Фильм "${movie.nameRU}" не сохранен. Код ошибки ${err.status}`,
         };
@@ -315,7 +315,7 @@ function App() {
       .then(() => {
         const newNotificatin = {
           type: 'warning',
-          id: idRandom(),
+          id: createIdRandom(),
           title: 'Удаление',
           message: `Фильм "${movie.nameRU}" успешно удален из избранного`,
         }
@@ -324,7 +324,7 @@ function App() {
       .catch((err) => {
         const newNotificatin = {
           type: 'error',
-          id: idRandom(),
+          id: createIdRandom(),
           title: `Произошла ошибка`,
           message: `Фильм "${movie.nameRU}" не удален. Код ошибки ${err.status}`,
         };
