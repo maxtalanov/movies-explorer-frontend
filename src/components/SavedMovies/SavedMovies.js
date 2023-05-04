@@ -16,8 +16,6 @@ import {
 import './SavedMovies.css';
 
 function SavedMovies ({ myMovies, onRemoveMovie, searchMovies, filterConf, onFilterMovies }) {
-  const { width } = useWindowDimensions();
-  const { renderLength, handleClickBtn } = useRenderCard(width);
   const [filteredMovies, setFilteredMovies] = useState(myMovies)
   const [noMovies, setNoMovies] = useState({
     isActive: false,
@@ -76,10 +74,9 @@ function SavedMovies ({ myMovies, onRemoveMovie, searchMovies, filterConf, onFil
         searchMovies={searchMovies}
       />
 
-      <MoviesCardList handleClickMore={handleClickBtn} maxElLength={filteredMovies.length}>
+      <MoviesCardList maxElLength={filteredMovies.length}>
         {
           filteredMovies
-            .slice(0, renderLength.valueLength)
             .map(movie => <MoviesCard
               key={movie._id}
               movie={{
