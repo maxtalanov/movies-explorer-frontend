@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Switch, Route, useHistory, Redirect, } from "react-router-dom";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
@@ -14,39 +14,36 @@ import {
   Register,
   SavedMovies,
   Preloader
-} from 'components'
+} from "components"
 
 import { useLocalStorage } from "hooks";
-
+import {
+  KEY_STORAGE_MOVIES,
+  KEY_STORAGE_MY_MOVIES,
+  INIT_VALAE_STORAGE_MOVIES,
+  INIT_VALAE_STORAGE_MY_MOVIES,
+} from "utils/constant";
 import { ROUTERS } from "routers";
 import * as MainAPI from "../../utils/API/MainAPIjs";
-import {getMovies} from "../../utils/API/MoviesAPI";
+import { getMovies } from "../../utils/API/MoviesAPI";
 
 import './App.css';
 
 function App() {
-  const idRandom = () => {
+  const createIdRandom = () => {
     return Math.random().toString(36).substring(2);
   }
   // TODO: Удалить все комментарии и привести в единобразный стиль
-  const {storedValue: searchFilterMovie, setValue: setSearchFilterMovie} = useLocalStorage('searchFilterMovie', {
-    switcher: false,
-    input: '',
-    type: 'movie',
-  });
-  const {storedValue: searchFilterMyMovie, setValue: setSearchFilterMyMovie} = useLocalStorage('searchFilterMyMovie', {
-    switcher: false,
-    input: '',
-    type: 'myMovie',
-  });
+  const {storedValue: searchFilterMovie, setValue: setSearchFilterMovie} = useLocalStorage(KEY_STORAGE_MOVIES, INIT_VALAE_STORAGE_MOVIES);
+  const {storedValue: searchFilterMyMovie, setValue: setSearchFilterMyMovie} = useLocalStorage(KEY_STORAGE_MY_MOVIES, INIT_VALAE_STORAGE_MY_MOVIES);
   const history =  useHistory();
-  const [loggedIn, setLoggedIn] = React.useState(false);
-  const [louding, setLouding] = React.useState({
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [louding, setLouding] = useState({
     isActive: false,
     message: null,
   });
   const [isTokenCheck, setIsTokenCheck] = useState(true);
-  const [currentUser, setCurrentUser] = React.useState({});
+  const [currentUser, setCurrentUser] = useState({});
   const [myMovies, setMyMovies] = useState([]);
   const [movies, setMovies] = useState([]);
   const [filterConfMovie, setFilterConfMovie] = useState(searchFilterMovie);
