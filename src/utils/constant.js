@@ -96,3 +96,19 @@ export const USER_MANIFEST = {
   SPECIALTY: 'Фронтенд-разработчик',
   BIO: 'Я родился и живу в Москве, закончил факультет экономики СГУ. У меня есть жена и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.'
 }
+
+// localStorage Movies (Ключ, входное значение)
+export const KEY_STORAGE_MOVIES = 'searchFilterMovie';
+export const INIT_VALAE_STORAGE_MOVIES = {
+  switcher: false,
+  input: '',
+  type: 'movie',
+};
+
+// localStorage MyMovies (Ключ, входное значение)
+export const KEY_STORAGE_MY_MOVIES = 'searchFilterMyMovie';
+export const INIT_VALAE_STORAGE_MY_MOVIES = {
+  switcher: false,
+  input: '',
+  type: 'myMovie',
+};
