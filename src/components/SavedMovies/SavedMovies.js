@@ -86,7 +86,7 @@ function SavedMovies ({ myMovies, onRemoveMovie, searchMovies, filterConf, onFil
                 year: movie.year,
                 description: movie.description,
                 image: movie.image,
-                trailer: movie.trailerLink,
+                trailer: movie.trailer,
                 thumbnail: movie.image,
                 movieId: movie.movieId,
                 nameRU: movie.nameRU,
