@@ -191,7 +191,7 @@ function App() {
       .then(res => {
         setLoggedIn(false);
         setCurrentUser({});
-        history.push(ROUTERS.LOGIN)
+        history.push(ROUTERS.DEFAULT);
 
         // TODO: Удалить консоли по зовершению
         console.log(res);
