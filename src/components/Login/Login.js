@@ -19,7 +19,6 @@ function Login({ onLogin }) {
     e.preventDefault();
 
     onLogin(loginData.values);
-    loginData.resetForm();
   }
 
   return (
