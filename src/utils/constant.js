@@ -105,9 +105,8 @@ export const INIT_VALAE_STORAGE_MOVIES = {
   type: 'movie',
 };
 
-// localStorage MyMovies (Ключ, входное значение)
-export const KEY_STORAGE_MY_MOVIES = 'searchFilterMyMovie';
-export const INIT_VALAE_STORAGE_MY_MOVIES = {
+// STATE INNIT MyMovies
+export const INIT_STATE_MY_MOVIES = {
   switcher: false,
   input: '',
   type: 'myMovie',
