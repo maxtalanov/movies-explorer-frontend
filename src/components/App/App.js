@@ -19,9 +19,8 @@ import {
 import { useLocalStorage } from "hooks";
 import {
   KEY_STORAGE_MOVIES,
-  KEY_STORAGE_MY_MOVIES,
   INIT_VALAE_STORAGE_MOVIES,
-  INIT_VALAE_STORAGE_MY_MOVIES,
+  INIT_STATE_MY_MOVIES,
 } from "utils/constant";
 import { ROUTERS } from "routers";
 import * as MainAPI from "../../utils/API/MainAPIjs";
@@ -35,7 +34,6 @@ function App() {
   }
   // TODO: Удалить все комментарии и привести в единобразный стиль
   const {storedValue: searchFilterMovie, setValue: setSearchFilterMovie} = useLocalStorage(KEY_STORAGE_MOVIES, INIT_VALAE_STORAGE_MOVIES);
-  const {storedValue: searchFilterMyMovie, setValue: setSearchFilterMyMovie} = useLocalStorage(KEY_STORAGE_MY_MOVIES, INIT_VALAE_STORAGE_MY_MOVIES);
   const history =  useHistory();
   const [loggedIn, setLoggedIn] = useState(false);
   const [louding, setLouding] = useState({
@@ -47,7 +45,7 @@ function App() {
   const [myMovies, setMyMovies] = useState([]);
   const [movies, setMovies] = useState([]);
   const [filterConfMovie, setFilterConfMovie] = useState(searchFilterMovie);
-  const [filterConfMyMovie, setFilterConfMyMovie] = useState(searchFilterMyMovie);
+  const [filterConfMyMovie, setFilterConfMyMovie] = useState(INIT_STATE_MY_MOVIES);
   const [notificationList, setNotificationList] = useState([]);
 
   useEffect(() => {
@@ -192,13 +190,21 @@ function App() {
     console.log('evt exit')
     return MainAPI
       .userExit()
-      .then(res => {
+      .then(response => {
         setLoggedIn(false);
         setCurrentUser({});
+        setMyMovies([]);
+        setMovies([]);
+        setNotificationList([])
+        setFilterConfMyMovie(INIT_STATE_MY_MOVIES);
+        localStorage.clear()
+
+        return response;
+      })
+      .then(response => {
         history.push(ROUTERS.DEFAULT);
 
-        // TODO: Удалить консоли по зовершению
-        console.log(res);
+        return response;
       })
       .catch((err) => {
         const newNotificatin = {
@@ -355,11 +361,6 @@ function App() {
     }
     
     if (type === 'myMovie') {
-      setSearchFilterMyMovie({
-        switcher: switcher,
-        input: input,
-        type,
-      });
       setFilterConfMyMovie({
         switcher: switcher,
         input: input,
