@@ -175,7 +175,9 @@ function App() {
           type: 'error',
           id: createIdRandom(),
           title: `Произошла ошибка`,
-          message: `При обновлении пользовательских данных произошла ошибка. Код ошибки ${err.status}`,
+          message: err.status === 409 
+            ? "Этот email использовать нельзя! Укажите другой адрес." 
+            : `При обновлении пользовательских данных произошла ошибка. Код ошибки ${err.status}`,
         };
         setNotificationList([newNotificatin, ...notificationList]);
       })
