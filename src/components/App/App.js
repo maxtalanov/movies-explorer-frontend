@@ -29,9 +29,6 @@ import { getMovies } from "../../utils/API/MoviesAPI";
 import './App.css';
 
 function App() {
-  const createIdRandom = () => {
-    return Math.random().toString(36).substring(2);
-  }
   // TODO: Удалить все комментарии и привести в единобразный стиль
   const {storedValue: searchFilterMovie, setValue: setSearchFilterMovie} = useLocalStorage(KEY_STORAGE_MOVIES, INIT_VALAE_STORAGE_MOVIES);
   const history =  useHistory();
