@@ -335,7 +335,6 @@ function App() {
           message: `Фильм "${movie.nameRU}" не удален. Код ошибки ${err.status}`,
         };
         setNotificationList([newNotificatin, ...notificationList]);
-        console.log(err);
       })
   }
 
