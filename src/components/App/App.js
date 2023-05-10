@@ -187,7 +187,6 @@ function App() {
   }
 
   function onExitUser() {
-    console.log('evt exit')
     return MainAPI
       .userExit()
       .then(response => {
