@@ -65,7 +65,6 @@ function App() {
       // TODO: Вынести в отдельную ф-ию
        const m = movies.map(movie => {
           const isHortFilm = (duration) => {
-            if (duration <= 40) {
             if (duration <= HORT_FILM_DURATION) {
               return true;
             } else{
