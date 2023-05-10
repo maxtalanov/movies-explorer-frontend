@@ -111,3 +111,13 @@ export const INIT_STATE_MY_MOVIES = {
   input: '',
   type: 'myMovie',
 };
+
+export const NOTIFICATION_CONFIG = {
+  INIT_STATE: [],
+  TYPE: {
+    ERR: 'error',
+    SUCCESS: 'success',
+    WARNING: 'warning',
+  },
+  ID_RANDOM: Math.random().toString(36).substring(2),
+}
