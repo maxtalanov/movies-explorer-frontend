@@ -124,3 +124,22 @@ export const NOTIFICATION_CONFIG = {
   },
   ID_RANDOM: Math.random().toString(36).substring(2),
 }
+
+// Конфиг отфетственный за отрисовку карточек по размеру экрана
+export const WIDTH_DISPLAY_CARD = {
+    DESCTOP: {
+      WIDTH: 769,
+      VALUE_ADD: 3,
+      VALUE_LENGHT: 5,
+    },
+    TABLET:  {
+      WIDTH: 481,
+      VALUE_ADD: 2,
+      VALUE_LENGHT: 8,
+    },
+    MOBILE: {
+      WIDTH: 320,
+      VALUE_ADD: 2,
+      VALUE_LENGHT: 12,
+    },
+}
