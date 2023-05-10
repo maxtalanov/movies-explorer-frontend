@@ -143,7 +143,9 @@ function App() {
           type: 'error',
           id: createIdRandom(),
           title: `Произошла ошибка`,
-          message: `При авторизации произошла ошибка. Код ошибки ${err.status}`,
+          message: err.status === 401 
+          ? "Указан не верный пароль или email" 
+          : `При обновлении пользовательских данных произошла ошибка. Код ошибки ${err.status}`,
         };
         setNotificationList([newNotificatin, ...notificationList]);
       })
