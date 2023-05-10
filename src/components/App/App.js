@@ -21,6 +21,7 @@ import {
   KEY_STORAGE_MOVIES,
   INIT_VALAE_STORAGE_MOVIES,
   INIT_STATE_MY_MOVIES,
+  NOTIFICATION_CONFIG,
 } from "utils/constant";
 import { ROUTERS } from "routers";
 import * as MainAPI from "../../utils/API/MainAPIjs";
@@ -43,7 +44,7 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [filterConfMovie, setFilterConfMovie] = useState(searchFilterMovie);
   const [filterConfMyMovie, setFilterConfMyMovie] = useState(INIT_STATE_MY_MOVIES);
-  const [notificationList, setNotificationList] = useState([]);
+  const [notificationList, setNotificationList] = useState(NOTIFICATION_CONFIG.INIT_STATE);
 
   useEffect(() => {
     tokenCheck();
@@ -75,8 +76,8 @@ function App() {
       })
       .catch((err) => {
         const newNotificatin = {
-          type: 'error',
-          id: createIdRandom(),
+          type: NOTIFICATION_CONFIG.TYPE.ERR,
+          id: NOTIFICATION_CONFIG.ID_RANDOM,
           title: `Произошла ошибка`,
           message: `При загрузке библиотеки фильмов произошла ошибка. Код ошибки ${err.status}`,
         };
@@ -93,8 +94,8 @@ function App() {
       })
       .then(() => {
         const newNotificatin = {
-          type: 'success',
-          id: createIdRandom(),
+          type: NOTIFICATION_CONFIG.TYPE.SUCCESS,
+          id: NOTIFICATION_CONFIG.ID_RANDOM,
           title: `Регистрация`,
           message: `Регистрация нового пользователя прошла успешно`,
         };
@@ -102,8 +103,8 @@ function App() {
       })
       .catch((err) => {
         const newNotificatin = {
-          type: 'error',
-          id: createIdRandom(),
+          type: NOTIFICATION_CONFIG.TYPE.ERR,
+          id: NOTIFICATION_CONFIG.ID_RANDOM,
           title: `Произошла ошибка`,
           message: `При регистрации произошла ошибка. Код ошибки ${err.status}`,
         };
@@ -126,8 +127,8 @@ function App() {
       })
       .then((res) => {
         const newNotificatin = {
-          type: 'success',
-          id: createIdRandom(),
+          type: NOTIFICATION_CONFIG.TYPE.SUCCESS,
+          id: NOTIFICATION_CONFIG.ID_RANDOM,
           title: `Авторизация`,
           message: `Вы успешно авторизовались`,
         };
@@ -135,8 +136,8 @@ function App() {
       })
       .catch((err) => {
         const newNotificatin = {
-          type: 'error',
-          id: createIdRandom(),
+          type: NOTIFICATION_CONFIG.TYPE.ERR,
+          id: NOTIFICATION_CONFIG.ID_RANDOM,
           title: `Произошла ошибка`,
           message: err.status === 401 
           ? "Указан не верный пароль или email" 
@@ -160,8 +161,8 @@ function App() {
       })
       .then((newDataUser) => {
         const newNotificatin = {
-          type: 'success',
-          id: createIdRandom(),
+          type: NOTIFICATION_CONFIG.TYPE.SUCCESS,
+          id: NOTIFICATION_CONFIG.ID_RANDOM,
           title: `Обновление`,
           message: `Данные пользователя успешно обновлены. Имя: ${newDataUser.name}, e-mail: ${newDataUser.email}`,
         };
@@ -169,8 +170,8 @@ function App() {
       })
       .catch((err) => {
         const newNotificatin = {
-          type: 'error',
-          id: createIdRandom(),
+          type: NOTIFICATION_CONFIG.TYPE.ERR,
+          id: NOTIFICATION_CONFIG.ID_RANDOM,
           title: `Произошла ошибка`,
           message: err.status === 409 
             ? "Этот email использовать нельзя! Укажите другой адрес." 
@@ -204,8 +205,8 @@ function App() {
       })
       .catch((err) => {
         const newNotificatin = {
-          type: 'error',
-          id: createIdRandom(),
+          type: NOTIFICATION_CONFIG.TYPE.ERR,
+          id: NOTIFICATION_CONFIG.ID_RANDOM,
           title: `Произошла ошибка`,
           message: `Код ошибки ${err.status}`,
         };
@@ -222,8 +223,8 @@ function App() {
       })
       .catch((err) => {
         const newNotificatin = {
-          type: 'error',
-          id: createIdRandom(),
+          type: NOTIFICATION_CONFIG.TYPE.ERR,
+          id: NOTIFICATION_CONFIG.ID_RANDOM,
           title: `Произошла ошибка`,
           message: `При загрузке пользовательских данных произошла ощибка. Код ошибки ${err.status}`,
         };
@@ -267,8 +268,8 @@ function App() {
       })
       .catch((err) => {
         const newNotificatin = {
-          type: 'error',
-          id: createIdRandom(),
+          type: NOTIFICATION_CONFIG.TYPE.ERR,
+          id: NOTIFICATION_CONFIG.ID_RANDOM,
           title: `Произошла ошибка`,
           message: `При загрузке сохраненых фильмов произошла ошибка. Код ошибки ${err.status}`,
         };
@@ -287,8 +288,8 @@ function App() {
       })
       .then((movieSave) =>{
         const newNotificatin = {
-          type: 'warning',
-          id: createIdRandom(),
+          type: NOTIFICATION_CONFIG.TYPE.WARNING,
+          id: NOTIFICATION_CONFIG.ID_RANDOM,
           title: 'Сохранение',
           message: `Фильм "${movieSave.nameRU}" добавлен в избраное`,
         }
@@ -296,8 +297,8 @@ function App() {
       })
       .catch((err) => {
         const newNotificatin = {
-          type: 'error',
-          id: createIdRandom(),
+          type: NOTIFICATION_CONFIG.TYPE.ERR,
+          id: NOTIFICATION_CONFIG.ID_RANDOM,
           title: `Произошла ошибка`,
           message: `Фильм "${movie.nameRU}" не сохранен. Код ошибки ${err.status}`,
         };
@@ -317,8 +318,8 @@ function App() {
       })
       .then(() => {
         const newNotificatin = {
-          type: 'warning',
-          id: createIdRandom(),
+          type: NOTIFICATION_CONFIG.TYPE.WARNING,
+          id: NOTIFICATION_CONFIG.ID_RANDOM,
           title: 'Удаление',
           message: `Фильм "${movie.nameRU}" успешно удален из избранного`,
         }
@@ -326,8 +327,8 @@ function App() {
       })
       .catch((err) => {
         const newNotificatin = {
-          type: 'error',
-          id: createIdRandom(),
+          type: NOTIFICATION_CONFIG.TYPE.ERR,
+          id: NOTIFICATION_CONFIG.ID_RANDOM,
           title: `Произошла ошибка`,
           message: `Фильм "${movie.nameRU}" не удален. Код ошибки ${err.status}`,
         };
