@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { WIDTH_DISPLAY_CARD } from 'utils/constant';
 
 const useRenderCard = (width) => {
   const [renderLength, setRenderLength] = useState({
@@ -7,29 +8,29 @@ const useRenderCard = (width) => {
   });
 
   const renderConfig = {
-    desktop: 769 <= width,
-    tablet:  481 <= width && width >= 768,
-    mobile: 320 <= width && width >= 480,
+    desktop: WIDTH_DISPLAY_CARD.DESCTOP.WIDTH <= width,
+    tablet:  WIDTH_DISPLAY_CARD.TABLET.WIDTH <= width && width > WIDTH_DISPLAY_CARD.DESCTOP.WIDTH,
+    mobile: WIDTH_DISPLAY_CARD.MOBILE.WIDTH <= width && width > WIDTH_DISPLAY_CARD.TABLET.WIDTH,
   }
 
   useEffect(() => {
     switch(true) {
       case (renderConfig.desktop):
         setRenderLength({
-          valueLength: 5,
-          valueAdd: 3,
+          valueLength: WIDTH_DISPLAY_CARD.DESCTOP.VALUE_LENGHT,
+          valueAdd: WIDTH_DISPLAY_CARD.DESCTOP.VALUE_ADD,
         });
         break;
       case (renderConfig.tablet):
         setRenderLength({
-          valueLength: 8,
-          valueAdd: 2,
+          valueLength: WIDTH_DISPLAY_CARD.TABLET.VALUE_LENGHT,
+          valueAdd: WIDTH_DISPLAY_CARD.TABLET.VALUE_ADD,
         });
         break;
       case (renderConfig.mobile):
         setRenderLength({
-          valueLength: 12,
-          valueAdd: 2,
+          valueLength: WIDTH_DISPLAY_CARD.MOBILE.VALUE_LENGHT,
+          valueAdd: WIDTH_DISPLAY_CARD.MOBILE.VALUE_ADD,
         });
         break;
       default:

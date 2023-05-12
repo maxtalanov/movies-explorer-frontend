@@ -1,12 +1,10 @@
-import React,  {useState}from "react";
-import Checkbox from "../Checkbox/Checkbox";
+import { useState }from "react";
+import { Checkbox } from "components";
+
 import "./SearchForm.css";
 
-function SearchForm({ defaultMovies, movies, setMovies }) {
-  const [form, setForm] = useState({
-    input: '',
-    switch: false,
-  })
+function SearchForm({ searchMovies, initialForm }) {
+  const [form, setForm] = useState(initialForm)
 
   const handleChange = (e) => {
     const target = e.target;
@@ -17,34 +15,12 @@ function SearchForm({ defaultMovies, movies, setMovies }) {
       ...form,
       [name]: value,
     })
-
-    if (target.type === 'checkbox') {
-      handeleSwitch(form.switch, movies, defaultMovies)
-    } 
-
-    if (value === '') {
-      setMovies(defaultMovies)
-    }
-  }
-  
-  const handeleSwitch = (switchState, arr, defaultArr) => {
-      return !switchState
-        ? setMovies(arr.filter((movie) => movie.isHortFilm === true))
-        : setMovies(defaultArr)
-  }
-
-  const handleSearch = (value, arr, defaultArr ) => {
-    return value === ''
-      ? defaultArr
-      : arr.filter((movie) => {
-        return movie.nameRU.toLowerCase().includes(value.toLowerCase())
-       })    
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    setMovies(handleSearch(form.input, movies, defaultMovies))
+    searchMovies(form)
   }
 
   return (
@@ -66,8 +42,8 @@ function SearchForm({ defaultMovies, movies, setMovies }) {
           <fieldset className="search-form__fieldset">
             <Checkbox
               label="Короткометражки"
-              name="switch"
-              checked={form.switch}
+              name="switcher"
+              checked={form.switcher}
               handleChange={handleChange}
               onSubmit={handleSubmit}
             />

@@ -1,41 +1,82 @@
-import React from "react";
-import NavMenuHeader from "../NavMenuHeader/NavMenuHeader";
-import Header from "../Header/Header";
-import SearchForm from "../SearchForm/SearchForm";
-import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import Footer from "../Footer/Footer";
-import MoviesCard from "../MoviesCard/MoviesCard";
+import { useEffect, useState } from "react";
+import { 
+  NavMenuHeader,
+  Header,
+  SearchForm,
+  MoviesCard,
+  MoviesCardList,
+  Footer,
+ } from "components";
+
 import { 
   useRenderCard, 
   useWindowDimensions,
-  useStateCash,
  } from "hooks";
 
 import './SavedMovies.css';
 
-function SavedMovies ({ myMovies, onRemoveMovie }) {
-  const { width } = useWindowDimensions();
-  const { renderLength, handleClickBtn } = useRenderCard(width);
-  const [newMyMovies, setNewMyMovies, cashNewMyMovies] = useStateCash(myMovies[0])
+function SavedMovies ({ myMovies, onRemoveMovie, searchMovies, filterConf, onFilterMovies }) {
+  const [filteredMovies, setFilteredMovies] = useState(myMovies)
+  const [noMovies, setNoMovies] = useState({
+    isActive: false,
+    message: null,
+  });
 
-  function onSaved(id) {
-    return  myMovies.some(myMovie => myMovie.movieId === id);
+  const styleNoMovies ={
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F9F9F9",
+    maxWidth: '80%',
+    minHeight: '100px',
+    margin: "0 auto",
+    fontFamily: "Inter, sans-serif",
+    fontStyle: "normal",
+    fontWeight: "500",
+    fontSize: "18px",
+    lineLeight: "22px",
+    color: "#000000",
   }
+  
+  useEffect(() => {
+    if (myMovies.length !== 0) {
+      const filtered = onFilterMovies(filterConf.input, filterConf.switcher, myMovies);
+      setFilteredMovies(filtered);
+  
+      if (filtered.length === 0) {
+        setNoMovies({
+          isActive: true,
+          message: 'Поиск не дал результатов',
+        });
+      } else {
+        setNoMovies({
+          isActive: false,
+          message: null,
+        });
+      }
+    } else {
+      setFilteredMovies([]);
+      setNoMovies({
+        isActive: true,
+        message: 'Сохраненых фильмов нет',
+      });
+    }
+  }, [myMovies, filterConf, onFilterMovies]);
 
   return(
     <>
       <Header theme="white">
         <NavMenuHeader theme={'dark'}/>
       </Header>
+
       <SearchForm  
-        defaultMovies={cashNewMyMovies}
-        movies={newMyMovies}
-        setMovies={setNewMyMovies} 
+        initialForm={filterConf}
+        searchMovies={searchMovies}
       />
-      <MoviesCardList handleClickMore={handleClickBtn}>
+
+      <MoviesCardList maxElLength={filteredMovies.length}>
         {
-          newMyMovies && newMyMovies
-            .slice(0, renderLength.valueLength)
+          filteredMovies
             .map(movie => <MoviesCard
               key={movie._id}
               movie={{
@@ -45,18 +86,23 @@ function SavedMovies ({ myMovies, onRemoveMovie }) {
                 year: movie.year,
                 description: movie.description,
                 image: movie.image,
-                trailer: movie.trailerLink,
+                trailer: movie.trailer,
                 thumbnail: movie.image,
                 movieId: movie.movieId,
                 nameRU: movie.nameRU,
                 nameEN: movie.nameEN,
               }}
               type={'myMovie'}
-              onSaved={true}
               onRemove={onRemoveMovie}
             />)
         }
       </MoviesCardList>
+      {
+        noMovies.isActive && <p 
+        style={styleNoMovies}>
+          {noMovies.message}
+        </p>
+      }
       <Footer />
     </>
   );

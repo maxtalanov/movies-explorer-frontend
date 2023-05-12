@@ -1,8 +1,12 @@
 import React from "react";
-import WithForm from "../WithForm/WithForm";
-import InputEmail from "../Input/InputEmail";
-import InputPassword from "../Input/InputPassword";
-import { useFormWithValidation } from "../../utils/globalMethod/useForm";
+import {
+  WithForm,
+  InputEmail,
+  InputPassword,
+} from "components";
+
+import { useFormWithValidation } from "hooks";
+
 import './Login.css';
 
 function Login({ onLogin }) {
@@ -15,7 +19,6 @@ function Login({ onLogin }) {
     e.preventDefault();
 
     onLogin(loginData.values);
-    loginData.resetForm();
   }
 
   return (

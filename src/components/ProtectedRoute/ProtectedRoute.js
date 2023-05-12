@@ -1,15 +1,17 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import ROUTERS from "../../routers";
+import { Preloader } from "components";
+import { ROUTERS } from 'routers'
 
-// этот компонент принимает другой компонент в качестве пропса
-// он также может взять неограниченное число пропсов и передать их новому компоненту
 const ProtectedRoute = ({ component: Component, ...props }) => {
+  const { isLoggedIn, isTokenCheck } = props;
 
   return (
     <Route>
       {() =>
-        props.isLoggedIn ? <Component {...props} /> : <Redirect to={ROUTERS.LOGIN} />
+        isTokenCheck ? <Preloader massage='Идет проверка авторизации' /> : isLoggedIn 
+        ? <Component {...props} /> 
+        : <Redirect to={ROUTERS.DEFAULT} />
       }
     </Route>
   );

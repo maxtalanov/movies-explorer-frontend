@@ -1,11 +1,22 @@
-import React from "react";
+import { useState } from "react";
 import "./Input.css";
 
 // ф-ый компонент
 function InputEmail ({ label, placeholder, id, name, value, onChange, errMassage}) {
-  const errorActive = (errMassage  === '') ? null : 'form__input-err';
+  const [isValid, setIsValid] = useState(true);
+  const errorActive = (errMassage  === '' && isValid) ? null : 'form__input-err';
 
-  console.log()
+  const validateEmail = (email) => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+  };
+
+  const handleChange = (event) => {
+    const emailValue = event.target.value;
+    onChange(event);
+    setIsValid(validateEmail(emailValue));
+  };
+
   return(
     <>
       <label className={`form__label`}>{label}</label>
@@ -16,12 +27,11 @@ function InputEmail ({ label, placeholder, id, name, value, onChange, errMassage
         id={id}
         name={name}
         value={value}
-        onChange={onChange}
-
-        pattern="([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})"
+        onChange={handleChange}
         autoComplete="off"
         required
       />
+      {!isValid && <span className={`form__span form__span-err`}>Некорректный email-адрес</span>}
       {errMassage ? <span className={`form__span form__span-err`}>{errMassage}</span> : null}
     </>
 

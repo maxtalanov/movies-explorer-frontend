@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Дипломный проект "Movies"
+Проект выполнен с целью закрепления изученных материалов по курсу Frontend-разработки в Яндекс  практикум.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🔎 Информация о проекте
+В данной таблице описано все самое необходимое, что может помочь в построении цепей реализации диплома.
 
-## Available Scripts
+| Тип | Источник | Ссылка |
+| :---- | :----: | :----: |
+| Макет | Figma | [Открыть макет](https://www.figma.com/file/nhwmLa8SW05vL3yE8XHGj0/Diploma-(macet)?node-id=891%3A3857&t=ffSWREYQPUTJHNIY-1) |
+| API | URL-адрес | https://api.maxtalanov.ru/ |
+| IP-адрес | IPv4 | `51.250.2.78` (Для входа нужен SSH)|
+| Deploy | WEB | [maxtalanov.ru](https://maxtalanov.ru/) |
+| Чек лист (3) | PDF | [Открыть документ](https://code.s3.yandex.net/web-developer/static/new-program/web-diploma-criteria-2.0/checklist_react_diplom.pdf) |
+| Pull-request | level-2 | [Посмотреть Pull](https://github.com/maxtalanov/movies-explorer-frontend/pull/1)|
+| Pull-request | level-3 | [Посмотреть Pull](https://github.com/maxtalanov/movies-explorer-frontend/pull/2)|
+| Pull-request | level-3(v.2) | [Посмотреть Pull](https://github.com/maxtalanov/movies-explorer-frontend/pull/10)|
 
-In the project directory, you can run:
+
+
+## 📂 Установка
+
+1. Клонировать репозиторий: 
+```bash
+  git clone git@github.com:maxtalanov/movies-explorer-frontend.git
+  cd movies-explorer-frontend
+
+  //или загрузить пакет из моего профиля гит-хаб
+```
+2. Установить зависимости: 
+
+```bash
+  npm i
+  // или
+  npm install
+```
+
+*после выполнения этих команд, проект можно будет запистить локально
+** для локальной сборки используйте команы из раздела сценариев 
+
+
+## 💻 Доступные сценарии
+В каталоге проекта вы можете запустить:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Запускает приложение в режиме разработки.\
+Откройте [http://localhost:3000](http://localhost:3000) для просмотра в браузере.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Страница будет перезагружена, если вы внесете изменения.\
+Вы также увидите все ошибки lint в консоли.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Собирает приложение для производства в папку `build`.\
+Он правильно подключает React в режиме production и оптимизирует сборку для лучшей производительности.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Сборка минифицирована, а имена файлов включают хэши.\
+Ваше приложение готово к развертыванию!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🛠 Технологии
+JavaScript ES6, 
+HTML5, 
+CSS3,
+React JS v.18,
+React Router v.5

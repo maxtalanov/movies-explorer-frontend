@@ -1,6 +1,7 @@
 import React from "react";
+import { Account } from "components";
 import { Link } from "react-router-dom";
-import Account from "../Account/Account";
+
 import './BurgerMenu.css'
 
 function BurgerMenu({items, active, setActive}) {

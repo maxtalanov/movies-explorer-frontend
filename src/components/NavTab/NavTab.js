@@ -1,5 +1,6 @@
 import React from "react";
-import { navTabLinksConfig} from "../../utils/constant";
+import { navTabLinksConfig } from "../../utils/constant";
+
 import "./NavTab.css";
 
 function NavTab() {

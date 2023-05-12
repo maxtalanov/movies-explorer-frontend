@@ -1,10 +1,14 @@
 import React from "react";
-import WithForm from "../WithForm/WithForm";
-import InputName from "../Input/InputName";
-import InputPassword from "../Input/InputPassword";
-import InputEmail from "../Input/InputEmail";
+import {
+  WithForm,
+  InputName,
+  InputEmail,
+  InputPassword,
+} from "components";
+
+import { useFormWithValidation } from "hooks";
+
 import './Register.css';
-import {useFormWithValidation} from "../../utils/globalMethod/useForm";
 
 function Register({onRegister}) {
   const registerData = useFormWithValidation({

@@ -1,11 +1,13 @@
-import { timeFormat } from '../../utils/globalMethod/time';
+import React from 'react';
+import { useTimeFormat } from 'hooks';
+
 import './MoviesCard.css';
 
 function MoviesCard({movie, type, onSaved, onSave, onRemove}) {
 
   const { nameRU, duration, image, trailer } = movie;
   const active = onSaved ? 'card__btn-like_active' : '';
-  const movieDuration = timeFormat(duration);
+  const movieDuration = useTimeFormat(duration);
 
   function handleSave() {
     onSave(movie);
